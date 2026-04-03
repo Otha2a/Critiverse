@@ -1,0 +1,10 @@
+.gallery {
+  display: inline-block;
+  margin: 10px;
+}
+
+.gallery img {
+  width: 200px;       /* taille des affiches */
+  height: auto;       /* garde les proportions */
+  border-radius: 10px;
+}
