@@ -1,0 +1,100 @@
+/* haut de page */
+
+
+header{
+    background-color: white;
+}
+
+body{
+    margin: 0px;
+    background-color: rgb(251, 234, 214);
+}
+
+
+/* partie de rechercher */
+
+.search input{
+    border-radius: 20px;
+    background-color: #f1f1f1 ;
+    padding: 10px 15px ;
+}
+
+.search button{
+    background-color: #2f6df6;
+    border-radius: 20px;
+    padding: 10px 15px;
+    cursor: pointer;
+    color: white;
+    font-size: 15px;
+}
+
+.search button:hover {
+  background-color: #2559c7;
+}
+
+/*Partie navigation */
+
+.navbar ul{
+    list-style-type: none;
+    background-color: rgb(251, 234, 214);
+    padding: 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+
+.navbar a{
+    color: black;
+    text-decoration: none;
+    padding: 15px;
+    border-radius: 10px;
+    display: block;
+    text-align: center;
+}
+
+.navbar a:hover{
+    background-color: rgb(235, 183, 125);
+}
+
+.navbar li{
+    float: left;
+}
+
+/* Partie film */
+h1{
+    text-align: center;
+}
+
+
+figure {
+  max-width: 500px;
+  margin: 20px ;
+  padding: 15px;
+  
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:5px;
+}
+
+figure img{
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+figcaption{
+    grid-column: span 3;
+    text-align: center;
+    margin-top: 15px;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+}
+
+
+.galerie-container {
+  display: flex;         
+  justify-content: flex-start; 
+  gap: 200px;             
+  padding: 20px;
+}
+
