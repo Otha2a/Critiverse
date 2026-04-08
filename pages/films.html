@@ -5,6 +5,27 @@
     <link rel="icon" type="image/png" href="../images/films/logo.png"> 
     <title>Animes</title>
     <link rel="stylesheet" href="../styles/animes.css">
+<style>
+    main {
+        display: block !important;
+    }
+    #gallery {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 16px;
+        padding: 20px;
+    }
+    #gallery .gallery {
+        width: 180px !important;
+        height: auto !important;
+        overflow: visible !important;
+    }
+    #gallery .gallery img {
+        width: 100% !important;
+        height: auto !important;
+        border-radius: 8px;
+    }
+</style>
 </head>
 <body>
     
@@ -38,122 +59,9 @@
         </ul>
     </nav>
 <!--Galerie d'affiches de films-->
-    <main>
-        <div class="gallery">
-            <a target="_blank" href="../images/films/films/interstellar.jpg">
-                <img src="../images/films/films/interstellar.jpg">
-            </a>
-        </div>
-        <div class="gallery">
-            <a target="_blank" href="../images/films/films/anneaux.jpg">
-                <img src="../images/films/films/anneaux.jpg ">
-            </a>
-        </div>
-        <div class="gallery">
-            <a target="_blank" href="../images/films/films/inception.jpg">
-                <img src="../images/films/films/inception.jpg">
-            </a>
-        </div>
-        <div class="gallery">
-            <a target="_blank" href="../images/films/films/matrix.jpg">
-                <img src="../images/films/films/matrix.jpg">
-            </a>
-        </div>
-        <div class="gallery">
-            <a target="_blank" href="../images/films/the sdark knight.jpg">
-                <img src="../images/films/films/the sdark knight.jpg">
-            </a>
-        </div>
-        <div class="gallery">
-            <a target="_blank" href="../images/films/mad max.jpg">
-                <img src="../images/films/mad max.jpg">
-            </a>
-        </div>
-        <div class="gallery">
-            <a target="_blank" href="../images/films/gladiator.jpg">
-                <img src="../images/films/gladiator.jpg">
-            </a>
-        </div>
-        <div class="gallery">
-            <a target="_blank" href="../images/films/indiana.jpg">
-                <img src="../images/films/indiana.jpg">
-            </a>
-        </div>
-        <div class="gallery">
-            <a target="_blank" href="../images/films/forrest.jpg">
-                <img src="../images/films/forrest.jpg">
-            </a>
-        </div>
-        <div class="gallery">
-            <a target="_blank" href="../images/films/titanic.jpg">
-                <img src="../images/films/titanic.jpg">
-            </a>
-        </div>
-
-
-
-
-        <div class="gallery">
-            <a target="_blank" href="../images/films/ligne verte.jpg">
-                <img src="../images/films/ligne verte.jpg">
-            </a>
-        </div>
-        <div class="gallery">
-            <a target="_blank" href="../images/films/les evades.jpg">
-                <img src="../images/films/les evades.jpg">
-            </a>
-        </div>
-        <div class="gallery">
-            <a target="_blank" href="../images/films/intouchables.jpg">
-                <img src="../images/films/intouchables.jpg">
-            </a>
-        </div>
-        <div class="gallery">
-            <a target="_blank" href="../images/films/yama.jpg">
-                <img src="../images/films/yama.jpg">
-            </a>
-        </div>
-        <div class="gallery">
-            <a target="_blank" href="../images/films/asterix.jpg">
-                <img src="../images/films/asterix.jpg">
-            </a>
-        </div>
-        <div class="gallery">
-            <a target="_blank" href="../images/films/la haine.jpg">
-                <img src="../images/films/la haine.jpg">
-            </a>
-        </div>
-        <div class="gallery">
-            <a target="_blank" href="../images/films/voyage de chiro.jpg">
-                <img src="../images/films/voyage de chiro.jpg">
-            </a>
-        </div>
-        <div class="gallery">
-            <a target="_blank" href="../images/films/roi lion.jpg">
-                <img src="../images/films/roi lion.jpg">
-            </a>
-        </div>
-        <div class="gallery">
-            <a target="_blank" href="../images/films/toy.jpg">
-                <img src="../images/films/toy.jpg">
-            </a>
-        </div>
-        <div class="gallery">
-            <a target="_blank" href="../images/films/spider man.jpg">
-                <img src="../images/films/spider man.jpg">
-            </a>
-        </div>
-<!--Aperçu page actualités-->
-        
-<!--Aperçu page films-->
-
-<!--Aperçu page séries-->
-
-<!--Aperçu page animes-->
-
-<!--Aperçu page critiques populaires-->
-
-    </main>
+  <main>
+    <div id="gallery"></div>
+</main>
     <hr></hr>
 <!--Bas de page (logo + à propos/nous contacter/mentions légales/réseaux...)-->
     <footer class="footer">
@@ -196,5 +104,64 @@
         </div>
     </div>
     </footer>
+ <script>
+    const API_KEY = '7f41925d9303e23359cf5a62ee62de74';
+    const BASE_URL = 'https://api.themoviedb.org/3';
+    const IMG_URL  = 'https://image.tmdb.org/t/p/w500';
+
+    async function loadMovies(query = '') {
+        const endpoint = query
+            ? `/search/movie?api_key=${API_KEY}&language=fr-FR&query=${encodeURIComponent(query)}`
+            : `/movie/popular?api_key=${API_KEY}&language=fr-FR`;
+
+        const res  = await fetch(`${BASE_URL}${endpoint}`);
+        const data = await res.json();
+
+        const gallery = document.getElementById('gallery');
+        gallery.innerHTML = '';
+
+        data.results.filter(movie => movie.poster_path).forEach(movie => {
+            const div = document.createElement('div');
+            div.className = 'gallery';
+            div.innerHTML = `
+                <img src="${IMG_URL}${movie.poster_path}" alt="${movie.title}" style="cursor:pointer" onclick="showModal('${movie.title.replace(/'/g, "\\'")}', '${(movie.overview || 'Aucun synopsis.').replace(/'/g, "\\'")}', '${movie.poster_path}')">
+                <p>${movie.title}</p>
+                <p>★ ${movie.vote_average.toFixed(1)}</p>
+            `;
+            gallery.appendChild(div);
+        });
+    }
+
+    function showModal(title, synopsis, poster) {
+        document.getElementById('modal-title').textContent = title;
+        document.getElementById('modal-synopsis').textContent = synopsis;
+        document.getElementById('modal-poster').src = IMG_URL + poster;
+        document.getElementById('modal').style.display = 'flex';
+    }
+
+    document.addEventListener('click', e => {
+        if (e.target.id === 'modal') document.getElementById('modal').style.display = 'none';
+    });
+
+    document.querySelector('.search button').addEventListener('click', () => {
+        loadMovies(document.querySelector('.search input').value);
+    });
+
+    document.querySelector('.search input').addEventListener('keydown', e => {
+        if (e.key === 'Enter') loadMovies(e.target.value);
+    });
+
+    loadMovies();
+</script>
+<div id="modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:999; justify-content:center; align-items:center;">
+    <div style="background:white; border-radius:12px; padding:24px; max-width:500px; width:90%; display:flex; gap:20px; position:relative;">
+        <img id="modal-poster" style="width:150px; border-radius:8px; object-fit:cover;">
+        <div>
+            <h2 id="modal-title" style="margin:0 0 12px;"></h2>
+            <p id="modal-synopsis" style="font-size:14px; line-height:1.6; color:#333;"></p>
+        </div>
+        <span onclick="document.getElementById('modal').style.display='none'" style="position:absolute; top:12px; right:16px; cursor:pointer; font-size:20px;">✕</span>
+    </div>
+</div>
 </body>
 </html>
