@@ -1,7 +1,15 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <div class="search">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="../images/logo.png"> 
+    <title>Actualités</title>
+    <link rel="stylesheet" href="../actualités.css">
+</head>
+<body>
+    <header>
+        <div class="search">
             <img src="../images/logo.png" class="logo">
             <input type="text" placeholder="Rechercher">
             <button type="submit">🔎</button>
@@ -9,10 +17,42 @@
             <button type="submit">S'inscrire</button>
             <title>Actualités</title>
             <link rel="stylesheet" href="../actualités.css">
-    </div>
-    
-</head>
-<body>
-    
+        </div>
+    </header>
+    <nav class="navbar">
+        <ul>
+            <li><a href="accueil.html">Accueil</a></li>
+            <li><a href="actualités.html">Actualités</a></li>
+            <li><a href="films.html">Films</a></li>
+            <li><a href="séries.html">Séries</a></li>
+            <li><a href="animes.html">Animes</a></li>
+            <li><a href="critiques.html">Critiques Populaires</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section class="galerie"> 
+            <h1>Actualité Films</h1>
+                <div class="galerie-container">
+                <figure>
+                    <a href="../images/avatar_fire.jpg"><img src="../images/avatar_fire.jpg" class="F_reduit"></a href>
+                    <img src="../images/une_bataille.jpg" class="F_reduit">
+                    <img src="../images/zootopie_2.jpg" class="F_reduit">
+                <figcaption>
+                    Les meilleurs films de 2025 
+                </figcaption>
+
+                </figure>
+
+                <figure>
+                    <img src="../images/les_rayons.jpg" class="F_reduit">
+                    <img src="../images/gourou.jpg" class="F_reduit">
+                    <img src="../images/alter-ego.jpg" class="F_reduit">    
+                <figcaption>
+                    Les films français de 2026
+                </figcaption>
+                </figure>
+                </div>
+        </section> 
+    </main>
 </body>
 </html>
