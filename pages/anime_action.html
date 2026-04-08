@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="../images/autres/logo.png"> 
+    <title>Animes - Catalogue Dynamique</title>
+    <link rel="stylesheet" href="../styles/animes.css">
+</head>
+<body>
+    <header>
+        <div class="search">
+            <img src="../images/autres/logo.png" class="logo" alt="Logo">
+            <input type="text" id="searchInput" placeholder="Rechercher un anime...">
+            <button type="button" onclick="searchAnime()">🔎</button>
+            <button type="button">Se connecter</button>
+            <button type="button">S'inscrire</button>
+        </div>
+    </header>
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="accueil.html">Accueil</a></li>
+            <li><a href="actualités.html">Actualités</a></li>
+            <li><a href="films.html">Films</a></li>
+            <li><a href="séries.html">Séries</a></li>
+            <li><a href="animes.html">Animes</a></li>
+            <li><a href="critiques.html">Critiques Populaires</a></li>
+        </ul>
+        <ul>
+            <li><a href="anime_action.html">Action</a></li>
+            <li><a href="anime_romance.html">Romance</a></li>
+            <li><a href="anime_fantasy.html">Fantasy</a></li>
+            <li><a href="anime_science_fiction.html">Science-Fiction</a></li>
+            <li><a href="anime_isekai.html">Isekai</a></li>
+            <li><a href="anime_sport.html">Sports</a></li>
+            <li><a href="anime_horreur.html">Horreur</a></li>
+            <li><a href="anime_aventure.html">Aventure</a></li>
+        </ul>
+    </nav>
+
+    <main id="anime-container">
+        <p style="padding: 20px;">Chargement des animes...</p>
+    </main>
+
+    <hr>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <img src="../images/autres/logo.png" alt="logo" class="logo">
+                <div class="footer-links">
+                    <a href="apropos.html">À Propos</a>
+                    <a href="contacts.html">Nous contacter</a>
+                    <a href="mentionslegales.html">Mentions légales</a>
+                </div>
+                <div class="footer-socials">
+                    <a href="#"><img src="../images/autres/instagram.png" alt="Insta" style="width:20px;"></a>
+                    <a href="#"><img src="../images/autres/linkedin.png" alt="In" style="width:20px;"></a>
+                    <a href="#"><img src="../images/autres/x.png" alt="X" style="width:20px;"></a>
+                </div>
+            </div>
+
+            <div class="footer-right">
+                <div class="footer-col">
+                    <h4>Films</h4>
+                    <a href="#">Top 10</a>
+                    <a href="#">Actualité</a>
+                    <a href="#">Critiques</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Séries</h4>
+                    <a href="#">Top 10</a>
+                    <a href="#">Actualité</a>
+                    <a href="#">Critiques</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Animes</h4>
+                    <a href="#">Top 10</a>
+                    <a href="#">Actualité</a>
+                    <a href="#">Critiques</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const container = document.getElementById('anime-container');
+
+        // Fonction pour charger les tops animes (25 par défaut)
+async function loadTopAnimes() {
+    try {
+        // L'API Jikan limite généralement à 25 par page
+        const response = await fetch('https://api.jikan.moe/v4/top/anime?genres=1&sfw&order_by=score&sort=desc');
+        const data = await response.json();
+        displayAnimes(data.data);
+    } catch (error) {
+        container.innerHTML = "<p>Erreur lors du chargement.</p>";
+    }
+}
+
+// Fonction pour rechercher (on peut monter à 25 aussi)
+async function searchAnime() {
+    const query = document.getElementById('searchInput').value;
+    if(query.length < 3) return alert("Tapez au moins 3 lettres");
+
+    container.innerHTML = "<p>Recherche en cours...</p>";
+    try {
+        const response = await fetch(`https://api.jikan.moe/v4/anime?q=${query}&sfw`);
+        const data = await response.json();
+        displayAnimes(data.data);
+    } catch (error) {
+        container.innerHTML = "<p>Aucun résultat trouvé.</p>";
+    }
+}
+
+        // Fonction d'affichage commune
+        function displayAnimes(animes) {
+            container.innerHTML = ""; // On vide le conteneur
+            
+            animes.forEach(anime => {
+                // On crée la structure exacte de ton CSS
+                const animeCard = `
+                    <div class="gallery">
+                        <a href="page_details.html?id=${anime.mal_id}">
+                            <img src="${anime.images.jpg.large_image_url}" alt="${anime.title}">
+                        </a>
+                    </div>
+                `;
+                container.innerHTML += animeCard;
+            });
+        }
+
+        // Lancer le chargement au démarrage
+        loadTopAnimes();
+    </script>
+</body>
+</html>

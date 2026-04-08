@@ -146,3 +146,38 @@ main {
   color: #333;
   font-size: 13px;
 }
+
+
+
+
+
+
+
+
+
+*** Partie notation */
+
+.star-rating {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    font-size: 35px;
+}
+
+.star {
+    cursor: pointer;
+    color: #ccc; /* Gris par défaut */
+    transition: color 0.2s;
+}
+
+/* Quand on survole une étoile ou qu'elle est sélectionnée */
+.star.active, .star:hover, .star:hover ~ .star {
+    color: #ffd700; /* Jaune or */
+}
+
+/* Inversion pour que le survol allume les étoiles de gauche à droite */
+.star-rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}

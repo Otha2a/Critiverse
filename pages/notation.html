@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Noter l'animé</title>
+    <link rel="stylesheet" href="../styles/animes.css">
+    <style>
+        .details-container { display: flex; padding: 40px; gap: 30px; }
+        .anime-info img { width: 300px; border-radius: 10px; }
+        .rating-section { flex: 1; background: white; padding: 20px; border-radius: 10px; }
+        .stars { color: #ffd700; font-size: 25px; cursor: pointer; }
+        textarea { width: 100%; height: 100px; margin-top: 10px; }
+        button#submit-rating { background: #2f6df6; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    
+    <header>
+        <div class="search">
+            <img src="../images/autres/logo.png" class="logo" alt="Logo">
+            <input type="text" id="searchInput" placeholder="Rechercher un anime...">
+            <button type="button" onclick="searchAnime()">🔎</button>
+            <button type="button">Se connecter</button>
+            <button type="button">S'inscrire</button>
+        </div>
+    </header>
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="accueil.html">Accueil</a></li>
+            <li><a href="actualités.html">Actualités</a></li>
+            <li><a href="films.html">Films</a></li>
+            <li><a href="séries.html">Séries</a></li>
+            <li><a href="animes.html">Animes</a></li>
+            <li><a href="critiques.html">Critiques Populaires</a></li>
+        </ul>
+        <ul>
+            <li><a href="animes.html?genre=1">Action</a></li>            
+            <li><a href="animes.html?genre=22">Romance</a></li>
+            <li><a href="animes.html?genre=10">Fantasy</a></li>
+            <li><a href="animes.html?genre=24">Science-Fiction</a></li>
+            <li><a href="animes.html?genre=62">Isekai</a></li>
+            <li><a href="animes.html?genre=30">Sports</a></li>
+            <li><a href="animes.html?genre=14">Horreur</a></li>
+            <li><a href="animes.html?genre=2">Aventure</a></li>
+        </ul>
+    </nav>
+
+
+    <main id="anime-details" class="details-container">
+        <p>Chargement des détails...</p>
+    </main>
+
+    <script>
+        // 1. Récupérer l'ID de l'animé dans l'URL
+        const params = new URLSearchParams(window.location.search);
+        const animeId = params.get('id');
+
+        async function loadDetails() {
+            try {
+                // 2. Appeler l'API pour cet animé précis
+                const response = await fetch(`https://api.jikan.moe/v4/anime/${animeId}`);
+                const data = await response.json();
+                const anime = data.data;
+
+                // 3. Afficher les infos
+                document.getElementById('anime-details').innerHTML = `
+                    <div class="anime-info">
+                        <img src="${anime.images.jpg.large_image_url}" alt="${anime.title}">
+                        <h1>${anime.title}</h1>
+                        <p><strong>Score Global :</strong> ⭐ ${anime.score}</p>
+                    </div>
+                    <div class="rating-section">
+                        <h2>Laissez votre critique</h2>
+                        <div class="stars">
+                            <div class="star-rating">
+                                <span class="star" data-value="1">★</span>
+                                <span class="star" data-value="2">★</span>
+                                <span class="star" data-value="3">★</span>
+                                <span class="star" data-value="4">★</span>
+                                <span class="star" data-value="5">★</span>
+                            </div>
+                        </div>
+                        <textarea id="user-comment" placeholder="Qu'avez-vous pensé de cet animé ?"></textarea>
+                        <br>
+                        <button id="submit-rating" onclick="saveRating()">Publier ma note</button>
+                        
+                        <div id="confirmation-msg" style="margin-top:20px; color: green;"></div>
+                    </div>
+                `;
+            } catch (error) {
+                console.error("Erreur:", error);
+            }
+        }
+
+        // 4. Sauvegarder la note (Simulation)
+        function saveRating() {
+            const score = document.getElementById('user-score').value;
+            const comment = document.getElementById('user-comment').value;
+
+            // Pour l'instant, on simule une sauvegarde (car il faudrait une vraie BDD)
+            // On peut utiliser le "localStorage" pour que ça reste sur ton ordi
+            const review = { animeId, score, comment };
+            localStorage.setItem(`review_${animeId}`, JSON.stringify(review));
+
+            document.getElementById('confirmation-msg').innerText = "Merci ! Votre critique a été enregistrée localement.";
+        }
+
+        loadDetails();
+
+        async function searchAnime() {
+        const query = document.getElementById('searchInput').value;
+        if(query.length < 3) return alert("Tapez au moins 3 lettres");
+
+        // On réinitialise tout pour la recherche
+        currentPage = 1;
+        currentSearch = query;
+        fetchAnimes(currentPage, currentSearch);
+    }
+
+    fetchAnimes();
+
+    </script>
+</body>
+</html>
