@@ -1,5 +1,8 @@
 <?php
 // Définition des routes
 
+$router->get('/', 'HomeController@index');
+
 // Exemple :
-// GET /movies → MovieController@index
+// $router->get('/movies', 'MovieController@index');
+// $router->post('/reviews', 'ReviewController@store');
