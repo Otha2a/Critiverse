@@ -5,9 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="../images/logo.png"> 
     <title>Contacts</title>
-    <link rel="stylesheet" href="../accueil.css">
+    <link rel="stylesheet" href="../styles/accueil.css">
     <link rel="stylesheet" href="contacts.css">
 </head>
+<div id="popup" class="popup-overlay">
+    <div class="popup-box">
+
+        <a href="#" class="close-btn">✖</a>
+
+        <h2>Contactez l'équipe NAMBRO</h2>
+
+        <form class="popup-form">
+
+            <label>Email</label>
+            <input type="email" placeholder="exemple@mail.com" required>
+
+            <label>Objet</label>
+            <input type="text" placeholder="L'objet du message" required>
+
+            <label>Message</label>
+            <textarea placeholder="Votre message..." required></textarea>
+
+            <label class="file-label">Joindre un fichier</label>
+            <input type="file">
+
+            <button type="submit" class="send-btn">ENVOYER</button>
+
+        </form>
+    </div>
+</div>
 
 <body>
 
@@ -32,31 +58,6 @@
     </ul>
 </nav>
 
-<section class="contact-container">
-
-    <p class="contact-info">
-        Vous avez besoin d'aide ? 
-        vous voulez contacter l'équipe NAMBRO.
-        Vous vous trouvez au bon endroit !
-    </p>
-
-    <form class="contact-form">
-
-        <label>Email</label>
-        <input type="email" placeholder="exemple@mail.com" required>
-
-        <label>Objet</label>
-        <input type="text" placeholder="L'objet du message" required>
-
-        <label>Message</label>
-        <textarea placeholder="Votre message..." required></textarea>
-
-        <label class="file-label">Joindre un fichier</label>
-        <input type="file">
-
-        <button type="submit" class="send-btn">ENVOYER</button>
-
-    </form>
 
 </section>
 
