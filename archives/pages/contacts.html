@@ -3,50 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="../images/logo.png"> 
-    <title>Contacts</title>
+    <link rel="icon" type="image/png" href="../images/autres/logo.png"> 
+    <title>Contactez-nous</title>
     <link rel="stylesheet" href="../styles/accueil.css">
     <link rel="stylesheet" href="contacts.css">
 </head>
-<div id="popup" class="popup-overlay">
-    <div class="popup-box">
-
-        <a href="#" class="close-btn">✖</a>
-
-        <h2>Contactez l'équipe NAMBRO</h2>
-
-        <form class="popup-form">
-
-            <label>Email</label>
-            <input type="email" placeholder="exemple@mail.com" required>
-
-            <label>Objet</label>
-            <input type="text" placeholder="L'objet du message" required>
-
-            <label>Message</label>
-            <textarea placeholder="Votre message..." required></textarea>
-
-            <label class="file-label">Joindre un fichier</label>
-            <input type="file">
-
-            <button type="submit" class="send-btn">ENVOYER</button>
-
-        </form>
-    </div>
-</div>
 
 <body>
 
+<!-- HEADER -->
 <header>
     <div class="search">
-        <img src="../images/logo.png" class="logo">
+        <img src="../images/autres/logo.png" class="logo">
         <input type="text" placeholder="Rechercher">
         <button type="submit">🔎</button>
-        <button type="submit">Se connecter</button>
-        <button type="submit">S'inscrire</button>
+
+        <div class="dropdown">
+            <button>Compte</button>
+            <div class="content">
+                <a href="#" id="open-login">Se connecter</a>
+                <a href="#" id="open-signup">S'inscrire</a>
+            </div>
+
+            <div id="auth-modal" class="modal">
+                <div class="modal-content">
+                    <span id="close-modal">&times;</span>
+                    <h2 id="form-title">Connexion</h2>
+                    <form id="auth-form">
+                        <div id="extra-field" style="display: none;">
+                            <input type="text" placeholder="Nom d'utilisateur" />
+                        </div>
+                        <input type="email" placeholder="Email" required />
+                        <input type="password" placeholder="Mot de passe" required />
+                        <button type="submit">Valider</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <script src="../scripts/accueil.js"></script>
     </div>
 </header>
 
+<!-- NAVBAR -->
 <nav class="navbar">
     <ul>
         <li><a href="accueil.html">Accueil</a></li>
@@ -58,24 +57,47 @@
     </ul>
 </nav>
 
+<!-- FORMULAIRE DE CONTACT -->
+<main>
+    <div class="contact-container">
+        <h2>Contactez l'équipe NAMBRO</h2>
+        <p class="info">Vous avez une question ? Envoyez-nous un message.</p>
 
-</section>
+        <form action="traitement.php" method="POST" enctype="multipart/form-data">
+
+            <label>Email</label>
+            <input type="email" name="email" required>
+
+            <label>Objet</label>
+            <input type="text" name="objet" required>
+
+            <label>Message</label>
+            <textarea name="message" rows="5" required></textarea>
+
+            <label>Joindre un fichier</label>
+            <input type="file" name="fichier">
+
+            <button type="submit" class="btn">ENVOYER</button>
+        </form>
+    </div>
+</main>
 
 <hr>
 
+<!-- FOOTER -->
 <footer class="footer">
     <div class="footer-content">
         <div class="footer-left">
-            <img src="../images/logo.png" alt="logo" class="logo">
+            <img src="../images/autres/logo.png" alt="logo" class="logo">
             <div class="footer-links">
                 <a href="apropos.html">À Propos</a>
                 <a href="contacts.html">Nous contacter</a>
                 <a href="mentionslegales.html">Mentions légales</a>
             </div>
             <div class="footer-socials">
-                <a href="https://instagram.com/"><img src="../images/instagram.png"></a>
-                <a href="https://www.linkedin.com/"><img src="../images/linkedin.png"></a>
-                <a href="https://x.com/"><img src="../images/x.png"></a>
+                <a href="https://instagram.com/"><img src="../images/autres/instagram.png"></a>
+                <a href="https://www.linkedin.com/"><img src="../images/autres/linkedin.png"></a>
+                <a href="https://x.com/"><img src="../images/autres/x.png"></a>
             </div>
         </div>
 
