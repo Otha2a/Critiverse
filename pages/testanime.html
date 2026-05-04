@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="../images/autres/logo.png"> 
+    <title>Animes - Catalogue Dynamique</title>
+    <link rel="stylesheet" href="../styles/animes.css">
+</head>
+<body>
+    <header>
+        <div class="search">
+            <img src="../images/autres/logo.png" class="logo" alt="Logo">
+            <input type="text" id="searchInput" placeholder="Rechercher un anime...">
+            <button type="button" onclick="searchAnime()">🔎</button>
+            <button type="button">Se connecter</button>
+            <button type="button">S'inscrire</button>
+        </div>
+    </header>
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="accueil.html">Accueil</a></li>
+            <li><a href="actualités.html">Actualités</a></li>
+            <li><a href="films.html">Films</a></li>
+            <li><a href="séries.html">Séries</a></li>
+            <li><a href="animes.html">Animes</a></li>
+            <li><a href="critiques.html">Critiques Populaires</a></li>
+        </ul>
+        <ul>
+            <li><a href="animes.html?genre=1">Action</a></li>            
+            <li><a href="animes.html?genre=22">Romance</a></li>
+            <li><a href="animes.html?genre=10">Fantasy</a></li>
+            <li><a href="animes.html?genre=24">Science-Fiction</a></li>
+            <li><a href="animes.html?genre=62">Isekai</a></li>
+            <li><a href="animes.html?genre=30">Sports</a></li>
+            <li><a href="animes.html?genre=14">Horreur</a></li>
+            <li><a href="animes.html?genre=2">Aventure</a></li>
+        </ul>
+    </nav>
+
+    <main id="anime-container">
+        <p style="padding: 20px;">Chargement des animes...</p>
+    </main>
+
+    <hr>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <img src="../images/autres/logo.png" alt="logo" class="logo">
+                <div class="footer-links">
+                    <a href="apropos.html">À Propos</a>
+                    <a href="contacts.html">Nous contacter</a>
+                    <a href="mentionslegales.html">Mentions légales</a>
+                </div>
+                <div class="footer-socials">
+                    <a href="#"><img src="../images/autres/instagram.png" alt="Insta" style="width:20px;"></a>
+                    <a href="#"><img src="../images/autres/linkedin.png" alt="In" style="width:20px;"></a>
+                    <a href="#"><img src="../images/autres/x.png" alt="X" style="width:20px;"></a>
+                </div>
+            </div>
+
+            <div class="footer-right">
+                <div class="footer-col">
+                    <h4>Films</h4>
+                    <a href="#">Top 10</a>
+                    <a href="#">Actualité</a>
+                    <a href="#">Critiques</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Séries</h4>
+                    <a href="#">Top 10</a>
+                    <a href="#">Actualité</a>
+                    <a href="#">Critiques</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Animes</h4>
+                    <a href="#">Top 10</a>
+                    <a href="#">Actualité</a>
+                    <a href="#">Critiques</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+    <script>
+    const container = document.getElementById('anime-container');
+    let currentPage = 1;      
+    let isLoading = false;    
+    let currentSearch = "";   
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const currentGenre = urlParams.get('genre');
+    
+    // On garde cette liste en dehors pour qu'elle persiste au scroll
+    let displayedAnimeIds = new Set();
+
+    async function fetchAnimes(page = 1, query = "") {
+        if (isLoading) return; 
+        isLoading = true;
+
+        const pageNumber = parseInt(page) || 1;
+
+        // Si c'est la page 1 (nouvelle recherche ou changement de genre), on vide tout
+        if(pageNumber === 1) {
+            container.innerHTML = ""; 
+            displayedAnimeIds.clear(); // ON VIDE AUSSI LE FILTRE DES IDs
+        }
+        
+        // Construction de l'URL avec "&type=tv" pour éviter les doublons Films/Spéciaux
+        let url = `https://api.jikan.moe/v4/anime?page=${pageNumber}&sfw&type=tv&order_by=score&sort=desc`;
+
+        if (currentGenre && !query) {
+            url += `&genres=${currentGenre}`;
+        }
+        else if (query) {
+            // Pour la recherche, on garde aussi le type=tv pour la clarté
+            url = `https://api.jikan.moe/v4/anime?q=${query}&page=${pageNumber}&sfw&type=tv`;
+        }
+        else {
+            url = `https://api.jikan.moe/v4/top/anime?page=${pageNumber}&sfw&type=tv`;
+        }
+
+        try {
+            const response = await fetch(url);
+            const data = await response.json();
+
+            if (data.status >= 400) {
+                console.error("Erreur API:", data.messages);
+                return;
+            }
+            
+            if (data.data && data.data.length > 0) {
+                // --- LOGIQUE DE FILTRAGE CORRIGÉE ---
+                const uniqueAnimes = data.data.filter(anime => {
+                    if (displayedAnimeIds.has(anime.mal_id)) {
+                        return false; 
+                    } else {
+                        displayedAnimeIds.add(anime.mal_id); 
+                        return true; 
+                    }
+                });
+
+                // ON N'APPELLE displayAnimes QU'UNE SEULE FOIS AVEC LES UNIQUES
+                displayAnimes(uniqueAnimes);
+                
+                currentPage++; 
+            }
+        } catch (error) {
+            console.error("Erreur de chargement :", error);
+        } finally {
+            isLoading = false; 
+        }
+    }
+
+    function displayAnimes(animes) {
+        animes.forEach(anime => {
+            const animeCard = `
+                <div class="gallery">
+                    <a href="notation.html?id=${anime.mal_id}">
+                        <img src="${anime.images.jpg.large_image_url}" alt="${anime.title}" loading="lazy">
+                    </a>
+                </div>
+            `;
+            container.insertAdjacentHTML('beforeend', animeCard);
+        });
+    }
+
+    window.onscroll = function() {
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 800) {
+            fetchAnimes(currentPage, currentSearch);
+        }
+    };
+
+    async function searchAnime() {
+        const query = document.getElementById('searchInput').value;
+        if(query.length < 3) return alert("Tapez au moins 3 lettres");
+
+        // On réinitialise tout pour la recherche
+        currentPage = 1;
+        currentSearch = query;
+        fetchAnimes(currentPage, currentSearch);
+    }
+
+    fetchAnimes();
+    </script>
+</body>
+</html>
