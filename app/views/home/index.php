@@ -13,6 +13,11 @@
     <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
+    <nav>
+        <a href="/">Accueil</a> |
+        <a href="/apropos">À propos</a>
+    </nav>
+
     <header>
         <h1><?= htmlspecialchars($welcome) ?></h1>
         <p><?= htmlspecialchars($description) ?></p>
@@ -25,6 +30,7 @@
                 <li>Reproduire la section accueil de votre site statique depuis <code>archives/pages/accueil.html</code>.</li>
                 <li>Ajouter une carte de présentation pour les films récents.</li>
                 <li>Créer une route pour les films avec <code>/movies</code> ensuite.</li>
+                <li>Aller à la page <a href="/apropos">À propos</a>.</li>
             </ul>
         </section>
 
