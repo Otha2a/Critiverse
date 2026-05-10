@@ -5,9 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="../images/autres/logo.png"> 
     <title>Séries</title>
-    <link rel="stylesheet" href="../styles/accueil.css">
+    <link rel="stylesheet" href="../styles/animes.css">
+<style>
+    main {
+        display: block !important;
+    }
+    #gallery {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 16px;
+        padding: 20px;
+    }
+    #gallery .gallery {
+        width: 180px !important;
+        height: auto !important;
+        overflow: visible !important;
+    }
+    #gallery .gallery img {
+        width: 100% !important;
+        height: auto !important;
+        border-radius: 8px;
+    }
+</style>
 </head>
 <body>
+    
     <header>
         <div class="search">
             <img src="../images/autres/logo.png" class="logo">
@@ -27,120 +49,20 @@
             <li><a href="animes.html">Animes</a></li>
             <li><a href="critiques.html">Critiques Populaires</a></li>
         </ul>
+        <ul>
+            <li><a href="accueil.html">Action</a></li>
+            <li><a href="actualités.html">Romance</a></li>
+            <li><a href="films.html">Fantasy</a></li>
+            <li><a href="séries.html">Science-Fiction</a></li>
+            <li><a href="critiques.html">Sports</a></li>
+            <li><a href="critiques.html">Horreur</a></li>
+            <li><a href="critiques.html">Aventure</a></li>
+        </ul>
     </nav>
 <!--Galerie d'affiches de séries-->
-    <main>
-        <div class="gallery">
-            <a target="_blank" href="../images/series/myname.jpg">
-                <img src="../images/series/myname.jpg">
-            </a>
-        </div>
-        <div class="gallery">
-            <a target="_blank" href="../images/series/Alice.jpg">
-                <img src="../images/series/Alice.jpg">
-            </a>
-        </div>
-        <div class="gallery">
-            <a target="_blank" href="../images/series/PrisonBreak.jpg">
-                <img src="../images/series/PrisonBreak.jpg">
-            </a>
-        </div>
-        <div class="gallery">
-            <a target="_blank" href="../images/series/Merlin.jpg">
-                <img src="../images/series/Merlin.jpg">
-            </a>
-        </div>
-        <div class="gallery">
-            <a target="_blank" href="../images/series/TheWitcher.jpg">
-                <img src="../images/series/TheWitcher.jpg">
-            </a>
-        </div>
-        <div class="gallery">
-            <a target="_blank" href="../images/series/GoT.jpg">
-                <img src="../images/series/GoT.jpg">
-            </a>
-        </div>
-        <div class="gallery">
-            <a target="_blank" href="../images/series/Friends.jpg">
-                <img src="../images/series/Friends.jpg">
-            </a>
-        </div>
-        <div class="gallery">
-            <a target="_blank" href="../images/series/Brok.jpg">
-                <img src="../images/series/Brok.jpg">
-            </a>
-        </div>
-        <div class="gallery">
-            <a target="_blank" href="../images/series/BigBang.jpg">
-                <img src="../images/series/BigBang.jpg">
-            </a>
-        </div>
-        <div class="gallery">
-            <a target="_blank" href="../images/series/Brigerton.jpg">
-                <img src="../images/series/Brigerton.jpg">
-            </a>
-        </div>
-        <div class="gallery">
-            <a target="_blank" href="../images/series/Emily.jpg">
-                <img src="../images/series/Emily.jpg">
-            </a>
-        </div>
-        <div class="gallery">
-            <a target="_blank" href="../images/series/Gossip.jpg">
-                <img src="../images/series/Gossip.jpg">
-            </a>
-        </div>
-        <div class="gallery">
-            <a target="_blank" href="../images/series/Walking.jpg">
-                <img src="../images/series/Walking.jpg">
-            </a>
-        </div>
-        <div class="gallery">
-            <a target="_blank" href="../images/series/American.jpeg">
-                <img src="../images/series/American .jpg">
-            </a>
-        </div>
-        <div class="gallery">
-            <a target="_blank" href="../images/series/Welcome.jpg">
-                <img src="../images/series/Welcome.jpg">
-            </a>
-        </div>
-        <div class="gallery">
-            <a target="_blank" href="../images/series/Stranger.jpg">
-                <img src="../images/series/Stranger.jpg">
-            </a>
-        </div>
-        <div class="gallery">
-            <a target="_blank" href="../images/series/Dexter.jpg">
-                <img src="../images/series/Dexter.jpg">
-            </a>
-        </div>
-        <div class="gallery">
-            <a target="_blank" href="../images/series/Last.jpg">
-                <img src="../images/series/Last.jpg">
-            </a>
-        </div>
-        <div class="gallery">
-            <a target="_blank" href="../images/series/100.jpg">
-                <img src="../images/series/100.jpg">
-            </a>
-        </div>
-        <div class="gallery">
-            <a target="_blank" href="../images/series/carlos_ghosn.jpg">
-                <img src="../images/series/carlos_ghosn.jpg">
-            </a>
-        </div>
-<!--Aperçu page actualités-->
-        
-<!--Aperçu page films-->
-
-<!--Aperçu page séries-->
-
-<!--Aperçu page animes-->
-
-<!--Aperçu page critiques populaires-->
-
-    </main>
+  <main>
+    <div id="gallery"></div>
+</main>
     <hr></hr>
 <!--Bas de page (logo + à propos/nous contacter/mentions légales/réseaux...)-->
     <footer class="footer">
@@ -183,5 +105,64 @@
         </div>
     </div>
     </footer>
+ <script>
+    const API_KEY = '7f41925d9303e23359cf5a62ee62de74';
+    const BASE_URL = 'https://api.themoviedb.org/3';
+    const IMG_URL  = 'https://image.tmdb.org/t/p/w500';
+
+    async function loadMovies(query = '') {
+        const endpoint = query
+            ? `/search/tv?api_key=${API_KEY}&language=fr-FR&query=${encodeURIComponent(query)}`
+            : `/tv/popular?api_key=${API_KEY}&language=fr-FR`;
+
+        const res  = await fetch(`${BASE_URL}${endpoint}`);
+        const data = await res.json();
+
+        const gallery = document.getElementById('gallery');
+        gallery.innerHTML = '';
+
+        data.results.filter(movie => movie.poster_path).forEach(movie => {
+            const div = document.createElement('div');
+            div.className = 'gallery';
+            div.innerHTML = `
+                <img src="${IMG_URL}${movie.poster_path}" alt="${movie.name}" style="cursor:pointer" onclick="showModal('${movie.name.replace(/'/g, "\\'")}', '${(movie.overview || 'Aucun synopsis.').replace(/'/g, "\\'")}', '${movie.poster_path}')">
+                <p>${movie.name}</p>
+                <p>★ ${movie.vote_average.toFixed(1)}</p>
+            `;
+            gallery.appendChild(div);
+        });
+    }
+
+    function showModal(title, synopsis, poster) {
+        document.getElementById('modal-title').textContent = title;
+        document.getElementById('modal-synopsis').textContent = synopsis;
+        document.getElementById('modal-poster').src = IMG_URL + poster;
+        document.getElementById('modal').style.display = 'flex';
+    }
+
+    document.addEventListener('click', e => {
+        if (e.target.id === 'modal') document.getElementById('modal').style.display = 'none';
+    });
+
+    document.querySelector('.search button').addEventListener('click', () => {
+        loadMovies(document.querySelector('.search input').value);
+    });
+
+    document.querySelector('.search input').addEventListener('keydown', e => {
+        if (e.key === 'Enter') loadMovies(e.target.value);
+    });
+
+    loadMovies();
+</script>
+<div id="modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:999; justify-content:center; align-items:center;">
+    <div style="background:white; border-radius:12px; padding:24px; max-width:500px; width:90%; display:flex; gap:20px; position:relative;">
+        <img id="modal-poster" style="width:150px; border-radius:8px; object-fit:cover;">
+        <div>
+            <h2 id="modal-title" style="margin:0 0 12px;"></h2>
+            <p id="modal-synopsis" style="font-size:14px; line-height:1.6; color:#333;"></p>
+        </div>
+        <span onclick="document.getElementById('modal').style.display='none'" style="position:absolute; top:12px; right:16px; cursor:pointer; font-size:20px;">✕</span>
+    </div>
+</div>
 </body>
 </html>
