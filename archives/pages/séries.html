@@ -3,43 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="../images/autres/logo.png"> 
-    <title>Séries</title>
+    <link rel="icon" type="image/png" href="../images/autres/logo.png">
+    <title>Séries - Catalogue</title>
     <link rel="stylesheet" href="../styles/animes.css">
-<style>
-    main {
-        display: block !important;
-    }
-    #gallery {
-        display: flex !important;
-        flex-wrap: wrap !important;
-        gap: 16px;
-        padding: 20px;
-    }
-    #gallery .gallery {
-        width: 180px !important;
-        height: auto !important;
-        overflow: visible !important;
-    }
-    #gallery .gallery img {
-        width: 100% !important;
-        height: auto !important;
-        border-radius: 8px;
-    }
-</style>
+    <style>
+        main { display: block !important; }
+        #gallery {
+            display: flex !important;
+            flex-wrap: wrap !important;
+            gap: 16px;
+            padding: 20px;
+            justify-content: center;
+        }
+        .gallery {
+            width: 180px !important;
+            height: auto !important;
+            text-align: center;
+        }
+        .gallery img {
+            width: 100% !important;
+            height: 260px !important;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .gallery img:hover { transform: scale(1.05); }
+        .gallery p {
+            font-size: 14px;
+            margin: 5px 0;
+            font-weight: bold;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    </style>
 </head>
 <body>
-    
+
     <header>
         <div class="search">
             <img src="../images/autres/logo.png" class="logo">
-            <input type="text" placeholder="Rechercher">
-            <button type="submit">🔎</button>
-            <button type="submit">Se connecter</button>
-            <button type="submit">S'inscrire</button>
+            <input type="text" id="searchInput" placeholder="Rechercher une série...">
+            <button type="button" onclick="searchSerie()">🔎</button>
+            <button type="button">Se connecter</button>
+            <button type="button">S'inscrire</button>
         </div>
     </header>
-<!--Barre de navigation entre les différentes pages du site-->
+
     <nav class="navbar">
         <ul>
             <li><a href="accueil.html">Accueil</a></li>
@@ -49,111 +60,153 @@
             <li><a href="animes.html">Animes</a></li>
             <li><a href="critiques.html">Critiques Populaires</a></li>
         </ul>
+        <ul>
+            <li><a href="séries.html?genre=10759">Action</a></li>
+            <li><a href="séries.html?genre=35">Comédie</a></li>
+            <li><a href="séries.html?genre=18">Drame</a></li>
+            <li><a href="séries.html?genre=27">Horreur</a></li>
+            <li><a href="séries.html?genre=10749">Romance</a></li>
+            <li><a href="séries.html?genre=10765">Science-Fiction</a></li>
+            <li><a href="séries.html?genre=9648">Mystère</a></li>
+            <li><a href="séries.html?genre=80">Crime</a></li>
+        </ul>
     </nav>
-<!--Galerie d'affiches de séries-->
-  <main>
-    <div id="gallery"></div>
-</main>
-    <hr></hr>
-<!--Bas de page (logo + à propos/nous contacter/mentions légales/réseaux...)-->
+
+    <main>
+        <div id="gallery"></div>
+        <p id="loading-msg" style="text-align:center; padding: 20px; display:none;">Chargement...</p>
+    </main>
+
+    <hr>
+
     <footer class="footer">
-        
-    <div class="footer-content">
-        <div class="footer-left">
-            <img src="../images/autres/logo.png" alt="logo" class="logo">
-            <div class="footer-links">
-                <a href="apropos.html">À Propos</a>
-                <a href="contacts.html">Nous contacter</a>
-                <a href="mentionslegales.html">Mentions légales</a>
+        <div class="footer-content">
+            <div class="footer-left">
+                <img src="../images/autres/logo.png" alt="logo" class="logo">
+                <div class="footer-links">
+                    <a href="apropos.html">À Propos</a>
+                    <a href="contacts.html">Nous contacter</a>
+                    <a href="mentionslegales.html">Mentions légales</a>
+                </div>
+                <div class="footer-socials">
+                    <a href="https://instagram.com/"><img src="../images/autres/instagram.png"></a>
+                    <a href="https://www.linkedin.com/"><img src="../images/autres/linkedin.png"></a>
+                    <a href="https://x.com/"><img src="../images/autres/x.png"></a>
+                </div>
             </div>
-            <div class="footer-socials">
-                <a href="https://instagram.com/"><img src="../images/autres/instagram.png"></a>
-                <a href="https://www.linkedin.com/"><img src="../images/autres/linkedin.png"></a>
-                <a href="https://x.com/"><img src="../images/autres/x.png"></a>
+            <div class="footer-right">
+                <div class="footer-col">
+                    <h4>Films</h4>
+                    <a href="#">Top 10</a>
+                    <a href="#">Actualité</a>
+                    <a href="#">Critiques</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Séries</h4>
+                    <a href="#">Top 10</a>
+                    <a href="#">Actualité</a>
+                    <a href="#">Critiques</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Animes</h4>
+                    <a href="#">Top 10</a>
+                    <a href="#">Actualité</a>
+                    <a href="#">Critiques</a>
+                </div>
             </div>
         </div>
-
-        <div class="footer-right">
-            <div class="footer-col">
-                <h4>Films</h4>
-                <a href="#">Top 10</a>
-                <a href="#">Actualité</a>
-                <a href="#">Critiques</a>
-            </div>
-            <div class="footer-col">
-                <h4>Séries</h4>
-                <a href="#">Top 10</a>
-                <a href="#">Actualité</a>
-                <a href="#">Critiques</a>
-            </div>
-            <div class="footer-col">
-                <h4>Animes</h4>
-                <a href="#">Top 10</a>
-                <a href="#">Actualité</a>
-                <a href="#">Critiques</a>
-            </div>
-
-        </div>
-    </div>
     </footer>
- <script>
-    const API_KEY = '7f41925d9303e23359cf5a62ee62de74';
-    const BASE_URL = 'https://api.themoviedb.org/3';
-    const IMG_URL  = 'https://image.tmdb.org/t/p/w500';
 
-    async function loadMovies(query = '') {
-        const endpoint = query
-            ? `/search/tv?api_key=${API_KEY}&language=fr-FR&query=${encodeURIComponent(query)}`
-            : `/tv/popular?api_key=${API_KEY}&language=fr-FR`;
+    <script>
+        const API_KEY = '7f41925d9303e23359cf5a62ee62de74';
+        const BASE_URL = 'https://api.themoviedb.org/3';
+        const IMG_URL  = 'https://image.tmdb.org/t/p/w500';
 
-        const res  = await fetch(`${BASE_URL}${endpoint}`);
-        const data = await res.json();
+        const gallery     = document.getElementById('gallery');
+        const loadingMsg  = document.getElementById('loading-msg');
+        const urlParams   = new URLSearchParams(window.location.search);
+        const genreId     = urlParams.get('genre');
+        const searchQuery = urlParams.get('q');
 
-        const gallery = document.getElementById('gallery');
-        gallery.innerHTML = '';
+        let currentPage   = 1;
+        let totalPages    = 999;
+        let isLoading     = false;
+        let currentSearch = searchQuery || "";
 
-        data.results.filter(movie => movie.poster_path).forEach(movie => {
-            const div = document.createElement('div');
-            div.className = 'gallery';
-            div.innerHTML = `
-                <img src="${IMG_URL}${movie.poster_path}" alt="${movie.name}" style="cursor:pointer" onclick="showModal('${movie.name.replace(/'/g, "\\'")}', '${(movie.overview || 'Aucun synopsis.').replace(/'/g, "\\'")}', '${movie.poster_path}')">
-                <p>${movie.name}</p>
-                <p>★ ${movie.vote_average.toFixed(1)}</p>
-            `;
-            gallery.appendChild(div);
+        if (searchQuery) {
+            document.getElementById('searchInput').value = searchQuery;
+        }
+
+        async function loadSeries(page, query) {
+            if (isLoading || page > totalPages) return;
+            isLoading = true;
+            loadingMsg.style.display = 'block';
+
+            if (page === 1) gallery.innerHTML = "";
+
+            let endpoint;
+            if (query) {
+                endpoint = `/search/tv?api_key=${API_KEY}&language=fr-FR&query=${encodeURIComponent(query)}&page=${page}`;
+            } else if (genreId) {
+                endpoint = `/discover/tv?api_key=${API_KEY}&language=fr-FR&with_genres=${genreId}&sort_by=popularity.desc&page=${page}`;
+            } else {
+                endpoint = `/tv/popular?api_key=${API_KEY}&language=fr-FR&page=${page}`;
+            }
+
+            try {
+                const res  = await fetch(`${BASE_URL}${endpoint}`);
+                const data = await res.json();
+
+                if (data.total_pages) totalPages = data.total_pages;
+
+                (data.results || []).filter(s => s.poster_path).forEach(serie => {
+                    const div = document.createElement('div');
+                    div.className = 'gallery';
+                    div.innerHTML = `
+                        <a href="notation-serie.html?id=${serie.id}">
+                            <img src="${IMG_URL}${serie.poster_path}" alt="${serie.name}">
+                        </a>
+                        <p>${serie.name}</p>
+                        <p>★ ${serie.vote_average.toFixed(1)}</p>
+                    `;
+                    gallery.appendChild(div);
+                });
+
+                currentPage++;
+            } catch (err) {
+                console.error("Erreur:", err);
+            } finally {
+                isLoading = false;
+                loadingMsg.style.display = 'none';
+                // Si la page n'est pas encore scrollable, charger la suite automatiquement
+                if (document.body.scrollHeight <= window.innerHeight + 200 && currentPage <= totalPages) {
+                    loadSeries(currentPage, currentSearch);
+                }
+            }
+        }
+
+        // Scroll infini
+        window.addEventListener('scroll', () => {
+            if (!isLoading && currentPage <= totalPages &&
+                window.innerHeight + window.scrollY >= document.body.scrollHeight - 600) {
+                loadSeries(currentPage, currentSearch);
+            }
         });
-    }
 
-    function showModal(title, synopsis, poster) {
-        document.getElementById('modal-title').textContent = title;
-        document.getElementById('modal-synopsis').textContent = synopsis;
-        document.getElementById('modal-poster').src = IMG_URL + poster;
-        document.getElementById('modal').style.display = 'flex';
-    }
+        function searchSerie() {
+            const val = document.getElementById('searchInput').value.trim();
+            if (val.length < 2) return alert("2 lettres minimum");
+            currentSearch = val;
+            currentPage   = 1;
+            totalPages    = 999;
+            loadSeries(1, val);
+        }
 
-    document.addEventListener('click', e => {
-        if (e.target.id === 'modal') document.getElementById('modal').style.display = 'none';
-    });
+        document.getElementById('searchInput').addEventListener('keydown', e => {
+            if (e.key === 'Enter') searchSerie();
+        });
 
-    document.querySelector('.search button').addEventListener('click', () => {
-        loadMovies(document.querySelector('.search input').value);
-    });
-
-    document.querySelector('.search input').addEventListener('keydown', e => {
-        if (e.key === 'Enter') loadMovies(e.target.value);
-    });
-
-    loadMovies();
-</script>
-<div id="modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:999; justify-content:center; align-items:center;">
-    <div style="background:white; border-radius:12px; padding:24px; max-width:500px; width:90%; display:flex; gap:20px; position:relative;">
-        <img id="modal-poster" style="width:150px; border-radius:8px; object-fit:cover;">
-        <div>
-            <h2 id="modal-title" style="margin:0 0 12px;"></h2>
-            <p id="modal-synopsis" style="font-size:14px; line-height:1.6; color:#333;"></p>
-        </div>
-        <span onclick="document.getElementById('modal').style.display='none'" style="position:absolute; top:12px; right:16px; cursor:pointer; font-size:20px;">✕</span>
-    </div>
-</div>
+        loadSeries(1, currentSearch);
+    </script>
 </body>
 </html>
