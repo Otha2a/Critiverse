@@ -11,24 +11,35 @@
 
 <!-- ══════ HEADER ══════ -->
 <header>
-  <img src="../images/autres/logo.png" class="logo" alt="CritiVerse"/>
+        <div class="search">
+            <img src="../images/autres/logo.png" class="logo">
+            <input type="text" placeholder="Rechercher">
+            <button type="submit">🔎</button>
+            <div class="dropdown">
+                <button>Compte</button>
+                <div class="content">
+                    <a href="#" id="open-login">Se connecter</a>
+                    <a href="#" id="open-signup">S'inscrire</a>
+                </div>
 
-  <div class="search">
-    <input type="text" placeholder="Rechercher un film, une série..."/>
-    <button>🔍</button>
-  </div>
-
-  <div style="display:flex; gap:10px; align-items:center;">
-    <button class="search" style="background-color:#2f6df6;color:white;border:none;border-radius:20px;padding:10px 15px;cursor:pointer;font-size:14px;"
-      onclick="document.getElementById('modal-login').style.display='flex'">
-      Se connecter
-    </button>
-    <button class="search" style="background-color:white;color:#2f6df6;border:2px solid #2f6df6;border-radius:20px;padding:9px 15px;cursor:pointer;font-size:14px;"
-      onclick="document.getElementById('modal-register').style.display='flex'">
-      S'inscrire
-    </button>
-  </div>
-</header>
+                <div id="auth-modal" class="modal">
+                    <div class="modal-content">
+                        <span id="close-modal">&times;</span>
+                        <h2 id="form-title">Connexion</h2>
+                        <form id="auth-form">
+                        <div id="extra-field" style="display: none;">
+                            <input type="text" placeholder="Nom d'utilisateur" />
+                        </div>
+                        <input type="email" placeholder="Email" required />
+                        <input type="password" placeholder="Mot de passe" required />
+                        <button type="submit">Valider</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <script src="../scripts/accueil.js"></script>
+        </div>
+    </header>
 
 <!-- ══════ NAVBAR ══════ -->
 <div class="navbar">
