@@ -3,14 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="../images/autres/logo.png"> 
-    <title>Animes - Catalogue Dynamique</title>
+    <link rel="icon" type="image/png" href="../images/films/logo.png"> 
+    <title>Animes - Catalogue</title>
     <link rel="stylesheet" href="../styles/animes.css">
+    <style>
+        main { display: block !important; }
+        #gallery {
+            display: flex !important;
+            flex-wrap: wrap !important;
+            gap: 16px;
+            padding: 20px;
+            justify-content: center;
+        }
+        .gallery {
+            width: 180px !important;
+            height: auto !important;
+            text-align: center;
+        }
+        .gallery img {
+            width: 100% !important;
+            height: 260px !important; /* Hauteur fixe pour l'harmonie */
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .gallery img:hover { transform: scale(1.05); }
+        .gallery p { 
+            font-size: 14px; 
+            margin: 5px 0; 
+            font-weight: bold;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    </style>
 </head>
 <body>
+    
     <header>
         <div class="search">
-            <img src="../images/autres/logo.png" class="logo" alt="Logo">
+            <img src="../images/films/logo.png" class="logo">
             <input type="text" id="searchInput" placeholder="Rechercher un anime...">
             <button type="button" onclick="searchAnime()">🔎</button>
             <button type="button">Se connecter</button>
@@ -28,7 +61,7 @@
             <li><a href="critiques.html">Critiques Populaires</a></li>
         </ul>
         <ul>
-            <li><a href="animes.html?genre=1">Action</a></li>            
+            <li><a href="animes.html?genre=1">Action</a></li>
             <li><a href="animes.html?genre=22">Romance</a></li>
             <li><a href="animes.html?genre=10">Fantasy</a></li>
             <li><a href="animes.html?genre=24">Science-Fiction</a></li>
@@ -39,13 +72,13 @@
         </ul>
     </nav>
 
-    <main id="anime-container">
-        <p style="padding: 20px;">Chargement des animes...</p>
+    <main>
+        <div id="gallery"></div>
+        <p id="loading-msg" style="text-align:center; padding: 20px;">Chargement...</p>
     </main>
 
-    <hr>
-
     <footer class="footer">
+<<<<<<< HEAD:archives/pages/testanime.html
         <div class="footer-content">
             <div class="footer-left">
                 <img src="../images/autres/logo.png" alt="logo" class="logo">
@@ -106,105 +139,82 @@
 
 
     <script>
-    const container = document.getElementById('anime-container');
-    let currentPage = 1;      
-    let isLoading = false;    
-    let currentSearch = "";   
+        const gallery = document.getElementById('gallery');
+        let currentPage = 1;
+        let isLoading = false;
+        let currentSearch = "";
+        let displayedIds = new Set();
 
-    const urlParams = new URLSearchParams(window.location.search);
-    const currentGenre = urlParams.get('genre');
-    
-    // On garde cette liste en dehors pour qu'elle persiste au scroll
-    let displayedAnimeIds = new Set();
+        const urlParams = new URLSearchParams(window.location.search);
+        const genreId = urlParams.get('genre');
 
-    async function fetchAnimes(page = 1, query = "") {
-        if (isLoading) return; 
-        isLoading = true;
+        async function loadAnimes(page = 1, query = "") {
+            if (isLoading) return;
+            isLoading = true;
 
-        const pageNumber = parseInt(page) || 1;
-
-        // Si c'est la page 1 (nouvelle recherche ou changement de genre), on vide tout
-        if(pageNumber === 1) {
-            container.innerHTML = ""; 
-            displayedAnimeIds.clear(); // ON VIDE AUSSI LE FILTRE DES IDs
-        }
-        
-        // Construction de l'URL avec "&type=tv" pour éviter les doublons Films/Spéciaux
-        let url = `https://api.jikan.moe/v4/anime?page=${pageNumber}&sfw&type=tv&order_by=score&sort=desc`;
-
-        if (currentGenre && !query) {
-            url += `&genres=${currentGenre}`;
-        }
-        else if (query) {
-            // Pour la recherche, on garde aussi le type=tv pour la clarté
-            url = `https://api.jikan.moe/v4/anime?q=${query}&page=${pageNumber}&sfw&type=tv`;
-        }
-        else {
-            url = `https://api.jikan.moe/v4/top/anime?page=${pageNumber}&sfw&type=tv`;
-        }
-
-        try {
-            const response = await fetch(url);
-            const data = await response.json();
-
-            if (data.status >= 400) {
-                console.error("Erreur API:", data.messages);
-                return;
+            if (page === 1) {
+                gallery.innerHTML = "";
+                displayedIds.clear();
             }
+
+            // Construction de l'URL Jikan (SFW + Type TV pour éviter les doublons)
+            let url = `https://api.jikan.moe/v4/anime?page=${page}&sfw&type=tv&order_by=score&sort=desc`;
             
-            if (data.data && data.data.length > 0) {
-                // --- LOGIQUE DE FILTRAGE CORRIGÉE ---
-                const uniqueAnimes = data.data.filter(anime => {
-                    if (displayedAnimeIds.has(anime.mal_id)) {
-                        return false; 
-                    } else {
-                        displayedAnimeIds.add(anime.mal_id); 
-                        return true; 
-                    }
-                });
-
-                // ON N'APPELLE displayAnimes QU'UNE SEULE FOIS AVEC LES UNIQUES
-                displayAnimes(uniqueAnimes);
-                
-                currentPage++; 
+            if (genreId && !query) {
+                url += `&genres=${genreId}`;
+            } else if (query) {
+                url = `https://api.jikan.moe/v4/anime?q=${query}&page=${page}&sfw&type=tv`;
             }
-        } catch (error) {
-            console.error("Erreur de chargement :", error);
-        } finally {
-            isLoading = false; 
+
+            try {
+                const res = await fetch(url);
+                const data = await res.json();
+
+                if (data.data && data.data.length > 0) {
+                    data.data.forEach(anime => {
+                        // Filtre anti-doublon technique
+                        if (!displayedIds.has(anime.mal_id)) {
+                            displayedIds.add(anime.mal_id);
+                            
+                            const div = document.createElement('div');
+                            div.className = 'gallery';
+                            div.innerHTML = `
+                                <a href="notation.html?id=${anime.mal_id}">
+                                    <img src="${anime.images.jpg.large_image_url}" alt="${anime.title}">
+                                </a>
+                                <p>${anime.title}</p>
+                                <p>★ ${anime.score || 'N/A'}</p>
+                            `;
+                            gallery.appendChild(div);
+                        }
+                    });
+                    currentPage++;
+                }
+            } catch (err) {
+                console.error("Erreur:", err);
+            } finally {
+                isLoading = false;
+                document.getElementById('loading-msg').style.display = 'none';
+            }
         }
-    }
 
-    function displayAnimes(animes) {
-        animes.forEach(anime => {
-            const animeCard = `
-                <div class="gallery">
-                    <a href="notation.html?id=${anime.mal_id}">
-                        <img src="${anime.images.jpg.large_image_url}" alt="${anime.title}" loading="lazy">
-                    </a>
-                </div>
-            `;
-            container.insertAdjacentHTML('beforeend', animeCard);
-        });
-    }
-
-    window.onscroll = function() {
-        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 800) {
-            fetchAnimes(currentPage, currentSearch);
+        function searchAnime() {
+            const val = document.getElementById('searchInput').value;
+            if (val.length < 3) return alert("3 lettres minimum");
+            currentSearch = val;
+            currentPage = 1;
+            loadAnimes(1, val);
         }
-    };
 
-    async function searchAnime() {
-        const query = document.getElementById('searchInput').value;
-        if(query.length < 3) return alert("Tapez au moins 3 lettres");
+        // Scroll Infini
+        window.onscroll = () => {
+            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 800) {
+                loadAnimes(currentPage, currentSearch);
+            }
+        };
 
-        // On réinitialise tout pour la recherche
-        currentPage = 1;
-        currentSearch = query;
-        fetchAnimes(currentPage, currentSearch);
-    }
-
-    fetchAnimes();
+        // Lancement
+        loadAnimes();
     </script>
 </body>
 </html>
