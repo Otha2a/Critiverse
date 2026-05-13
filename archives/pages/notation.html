@@ -2,22 +2,54 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Noter l'animé</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notation - CineAnime</title>
     <link rel="stylesheet" href="../styles/animes.css">
     <style>
-        .details-container { display: flex; padding: 40px; gap: 30px; }
-        .anime-info img { width: 300px; border-radius: 10px; }
-        .rating-section { flex: 1; background: white; padding: 20px; border-radius: 10px; }
-        .stars { color: #ffd700; font-size: 25px; cursor: pointer; }
-        textarea { width: 100%; height: 100px; margin-top: 10px; }
-        button#submit-rating { background: #2f6df6; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; }
+        /* Structure principale */
+        main { display: block; }
+        .details-container { display: flex; flex-wrap: wrap; gap: 40px; max-width: 1200px; margin: auto; padding: 40px; }
+        .anime-info { flex: 1 1 580px; min-width: 320px; }
+        .anime-top { display: flex; flex-wrap: wrap; gap: 30px; align-items: flex-start; }
+        .anime-cover { flex: 0 0 280px; }
+        .anime-cover img { width: 100%; border-radius: 12px; box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+        .anime-summary { flex: 1; min-width: 260px; }
+        .anime-info h1 { margin-top: 0; color: #333; }
+        
+        .rating-section { flex: 1 1 320px; min-width: 320px; background: #fff; padding: 30px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); height: fit-content; margin-left: auto; }
+        
+        /* Système d'étoiles (Méthode Radio pour éviter l'inversion) */
+        .star-rating { display: flex; flex-direction: row-reverse; justify-content: flex-end; gap: 10px; margin: 15px 0; }
+        .star-rating input { display: none; }
+        .star-rating label { font-size: 45px; color: #ddd; cursor: pointer; transition: 0.2s; }
+        
+        /* Coloration : survole et sélection */
+        .star-rating label:hover,
+        .star-rating label:hover ~ label,
+        .star-rating input:checked ~ label { color: #ffca08; }
+
+        /* Résumé et Textarea */
+        .synopsis-box { margin: 20px 0; line-height: 1.7; background: #f9f9f9; padding: 20px; border-radius: 10px; border-left: 4px solid #2f6df6; font-size: 15px; color: #444; }
+        textarea { width: 100%; height: 120px; padding: 15px; border: 1px solid #ddd; border-radius: 8px; resize: none; font-family: inherit; margin-bottom: 15px; box-sizing: border-box; }
+        
+        #submit-rating { background: #2f6df6; color: white; border: none; padding: 15px; border-radius: 8px; cursor: pointer; width: 100%; font-weight: bold; font-size: 16px; transition: 0.3s; }
+        #submit-rating:hover { background: #1a52d5; }
+
+        /* Commentaires en bas */
+        .reviews-area { max-width: 1200px; margin: 40px auto; padding: 0 40px; }
+        .review-card { background: white; padding: 20px; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .review-header { display: flex; justify-content: space-between; margin-bottom: 10px; }
+        .stars-display { color: #ffca08; font-weight: bold; }
+        .review-date { color: #888; font-size: 0.9em; }
     </style>
 </head>
 <body>
-    
+
+
+
     <header>
         <div class="search">
-            <img src="../images/autres/logo.png" class="logo" alt="Logo">
+            <img src="../images/films/logo.png" class="logo">
             <input type="text" id="searchInput" placeholder="Rechercher un anime...">
             <button type="button" onclick="searchAnime()">🔎</button>
             <button type="button">Se connecter</button>
@@ -35,7 +67,7 @@
             <li><a href="critiques.html">Critiques Populaires</a></li>
         </ul>
         <ul>
-            <li><a href="animes.html?genre=1">Action</a></li>            
+            <li><a href="animes.html?genre=1">Action</a></li>
             <li><a href="animes.html?genre=22">Romance</a></li>
             <li><a href="animes.html?genre=10">Fantasy</a></li>
             <li><a href="animes.html?genre=24">Science-Fiction</a></li>
@@ -47,82 +79,157 @@
     </nav>
 
 
-    <main id="anime-details" class="details-container">
-        <p>Chargement des détails...</p>
+
+    <main id="content">
+        <div id="anime-details-target" class="details-container">
+            <p>Chargement de l'animé...</p>
+        </div>
+
+        <section class="reviews-area">
+            <hr>
+            <h2>Avis des utilisateurs</h2>
+            <div id="reviews-list">
+                <p style="color: #999;">Soyez le premier à donner votre avis sur cet animé !</p>
+            </div>
+        </section>
     </main>
 
     <script>
-
-        const urlParams = new URLSearchParams(window.location.search);
-        
-        // 1. Récupérer l'ID de l'animé dans l'URL
         const params = new URLSearchParams(window.location.search);
         const animeId = params.get('id');
+        let selectedScore = 0;
 
-        async function loadDetails() {
+        function cleanSynopsis(text) {
+            if (!text) return text;
+            return text
+                .replace(/\s*\[Written by MAL Rewrite\]\s*$/i, '')
+                .replace(/\s*\[Written by MAL rewrite\]\s*$/i, '')
+                .replace(/\s*\(Written by MAL Rewrite\)\s*$/i, '')
+                .trim();
+        }
+
+        async function fetchFrenchSynopsis(id, fallback) {
             try {
-                // 2. Appeler l'API pour cet animé précis
-                const response = await fetch(`https://api.jikan.moe/v4/anime/${animeId}`);
-                const data = await response.json();
-                const anime = data.data;
+                const res = await fetch(`https://api.jikan.moe/v4/anime/${id}/translations`);
+                if (!res.ok) return fallback;
+                const json = await res.json();
+                if (!json.data || !Array.isArray(json.data)) return fallback;
+                const fr = json.data.find(item => item.language === 'fr' || item.language === 'français');
+                if (fr && fr.synopsis) return cleanSynopsis(fr.synopsis);
+            } catch (err) {
+                // ignore translation errors and use fallback
+            }
+            return fallback;
+        }
 
-                // 3. Afficher les infos
-                document.getElementById('anime-details').innerHTML = `
+        async function loadAnimeData() {
+            if (!animeId) {
+                document.getElementById('anime-details-target').innerHTML = "<h2>Erreur : Aucun animé sélectionné.</h2>";
+                return;
+            }
+
+            try {
+                const res = await fetch(`https://api.jikan.moe/v4/anime/${animeId}`);
+                const json = await res.json();
+                const anime = json.data;
+                const rawSynopsis = anime.synopsis || "Désolé, aucun résumé n'est disponible pour cet animé.";
+                const synopsisText = await fetchFrenchSynopsis(animeId, cleanSynopsis(rawSynopsis));
+
+                // On injecte le HTML
+                document.getElementById('anime-details-target').innerHTML = `
                     <div class="anime-info">
-                        <img src="${anime.images.jpg.large_image_url}" alt="${anime.title}">
-                        <h1>${anime.title}</h1>
-                        <p><strong>Score Global :</strong> ⭐ ${anime.score}</p>
-                    </div>
-                    <div class="rating-section">
-                        <h2>Laissez votre critique</h2>
-                        <div class="stars">
-                            <div class="star-rating">
-                                <span class="star" data-value="1">★</span>
-                                <span class="star" data-value="2">★</span>
-                                <span class="star" data-value="3">★</span>
-                                <span class="star" data-value="4">★</span>
-                                <span class="star" data-value="5">★</span>
+                        <div class="anime-top">
+                            <div class="anime-cover">
+                                <img src="${anime.images.jpg.large_image_url}" alt="${anime.title}">
+                            </div>
+                            <div class="anime-summary">
+                                <h1>${anime.title}</h1>
+                                <p><strong>Note MyAnimeList :</strong> ⭐ ${anime.score || 'N/A'}/10</p>
+                                <div class="synopsis-box">
+                                    <strong>Résumé :</strong><br>
+                                    ${synopsisText}
+                                </div>
                             </div>
                         </div>
-                        <textarea id="user-comment" placeholder="Qu'avez-vous pensé de cet animé ?"></textarea>
-                        <br>
-                        <button id="submit-rating" onclick="saveRating()">Publier ma note</button>
-                        
-                        <div id="confirmation-msg" style="margin-top:20px; color: green;"></div>
+                    </div>
+
+                    <div class="rating-section">
+                        <h2>Donnez votre avis</h2>
+                        <div class="star-rating">
+                            <input type="radio" name="star" id="star5" value="5"><label for="star5">★</label>
+                            <input type="radio" name="star" id="star4" value="4"><label for="star4">★</label>
+                            <input type="radio" name="star" id="star3" value="3"><label for="star3">★</label>
+                            <input type="radio" name="star" id="star2" value="2"><label for="star2">★</label>
+                            <input type="radio" name="star" id="star1" value="1"><label for="star1">★</label>
+                        </div>
+                        <p id="rating-label">Sélectionnez une note</p>
+                        <textarea id="comment-text" placeholder="Alors, chef-d'œuvre ou déception ?"></textarea>
+                        <button id="submit-rating" onclick="publishReview()">Publier mon avis</button>
                     </div>
                 `;
-            } catch (error) {
-                console.error("Erreur:", error);
+
+                // Écouteur pour la note
+                document.querySelectorAll('input[name="star"]').forEach(radio => {
+                    radio.addEventListener('change', (e) => {
+                        selectedScore = e.target.value;
+                        document.getElementById('rating-label').innerText = `Ma note : ${selectedScore}/5`;
+                    });
+                });
+
+                showStoredReviews();
+
+            } catch (err) {
+                console.error(err);
+                document.getElementById('anime-details-target').innerHTML = "<p>Erreur lors du chargement.</p>";
             }
         }
 
-        // 4. Sauvegarder la note (Simulation)
-        function saveRating() {
-            const score = document.getElementById('user-score').value;
-            const comment = document.getElementById('user-comment').value;
+        function publishReview() {
+            const comment = document.getElementById('comment-text').value;
 
-            // Pour l'instant, on simule une sauvegarde (car il faudrait une vraie BDD)
-            // On peut utiliser le "localStorage" pour que ça reste sur ton ordi
-            const review = { animeId, score, comment };
-            localStorage.setItem(`review_${animeId}`, JSON.stringify(review));
+            if (selectedScore === 0) return alert("N'oubliez pas de mettre des étoiles !");
+            if (comment.trim() === "") return alert("Laissez un petit commentaire.");
 
-            document.getElementById('confirmation-msg').innerText = "Merci ! Votre critique a été enregistrée localement.";
+            const reviewData = {
+                score: selectedScore,
+                text: comment,
+                date: new Date().toLocaleDateString('fr-FR')
+            };
+
+            // Sauvegarde dans le localStorage
+            let allReviews = JSON.parse(localStorage.getItem(`anime_reviews_${animeId}`)) || [];
+            allReviews.push(reviewData);
+            localStorage.setItem(`anime_reviews_${animeId}`, JSON.stringify(allReviews));
+
+            // Reset et rafraîchissement
+            document.getElementById('comment-text').value = "";
+            alert("Merci ! Votre avis a été publié.");
+            showStoredReviews();
         }
 
-        loadDetails();
+        function showStoredReviews() {
+            const list = document.getElementById('reviews-list');
+            const reviews = JSON.parse(localStorage.getItem(`anime_reviews_${animeId}`)) || [];
 
-        async function searchAnime() {
-        const query = document.getElementById('searchInput').value;
-        if(query.length < 3) return alert("Tapez au moins 3 lettres");
+            if (reviews.length === 0) return;
 
-        // On réinitialise tout pour la recherche
-        currentPage = 1;
-        currentSearch = query;
-        fetchAnimes(currentPage, currentSearch);
-    }
+            list.innerHTML = reviews.reverse().map(r => `
+                <div class="review-card">
+                    <div class="review-header">
+                        <span class="stars-display">${"★".repeat(r.score)}${"☆".repeat(5-r.score)}</span>
+                        <span class="review-date">Le ${r.date}</span>
+                    </div>
+                    <p>${r.text}</p>
+                </div>
+            `).join('');
+        }
 
-    fetchAnimes();
-
+        loadAnimeData();
     </script>
+
+
+
+
+
 </body>
 </html>
