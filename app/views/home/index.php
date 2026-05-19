@@ -1,44 +1,58 @@
 <?php
-/**
- * Vue de la page d’accueil
- * Variables attendues : $title, $welcome, $description
- */
+$activePage = 'accueil';
+$css = 'accueil';
+require_once __DIR__ . '/../layouts/header.php';
 ?>
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= htmlspecialchars($title) ?></title>
-    <link rel="stylesheet" href="/assets/css/style.css">
-</head>
-<body>
-    <nav>
-        <a href="/">Accueil</a> |
-        <a href="/apropos">À propos</a> |
-        <a href="/contact">Contact</a>
-    </nav>
-
-    <header>
-        <h1><?= htmlspecialchars($welcome) ?></h1>
-        <p><?= htmlspecialchars($description) ?></p>
-    </header>
-
     <main>
-        <section>
-            <h2>Quelques idées pour commencer</h2>
-            <ul>
-                <li>Reproduire la section accueil de votre site statique depuis <code>archives/pages/accueil.html</code>.</li>
-                <li>Ajouter une carte de présentation pour les films récents.</li>
-                <li>Créer une route pour les films avec <code>/movies</code> ensuite.</li>
-                <li>Aller à la page <a href="/apropos">À propos</a>.</li>
-            </ul>
-        </section>
-
-        <section>
-            <h2>Étapes réalisées</h2>
-            <p>La route <code>/</code> est maintenant active et affiche cette page.</p>
-        </section>
+        <div class="gallery">
+            <a href="/Critiverse/archives/images/series/the_bear.jpg" target="_blank">
+                <img src="/Critiverse/archives/images/series/the_bear.jpg" alt="The Bear">
+            </a>
+        </div>
+        <div class="gallery">
+            <a href="/Critiverse/archives/images/series/carlos_ghosn.jpg" target="_blank">
+                <img src="/Critiverse/archives/images/series/carlos_ghosn.jpg" alt="Carlos Ghosn">
+            </a>
+        </div>
+        <div class="gallery">
+            <a href="/Critiverse/archives/images/series/crowded_room.jpg" target="_blank">
+                <img src="/Critiverse/archives/images/series/crowded_room.jpg" alt="Crowded Room">
+            </a>
+        </div>
+        <div class="gallery">
+            <a href="/Critiverse/archives/images/series/babylon_berlin.jpg" target="_blank">
+                <img src="/Critiverse/archives/images/series/babylon_berlin.jpg" alt="Babylon Berlin">
+            </a>
+        </div>
+        <div class="gallery">
+            <a href="/Critiverse/archives/images/series/mask_girl.jpg" target="_blank">
+                <img src="/Critiverse/archives/images/series/mask_girl.jpg" alt="Mask Girl">
+            </a>
+        </div>
+        <div class="gallery">
+            <a href="/Critiverse/archives/images/films/piece.jpg" target="_blank">
+                <img src="/Critiverse/archives/images/films/piece.jpg" alt="Piece">
+            </a>
+        </div>
+        <div class="gallery">
+            <a href="/Critiverse/archives/images/films/1985.jpg" target="_blank">
+                <img src="/Critiverse/archives/images/films/1985.jpg" alt="1985">
+            </a>
+        </div>
+        <div class="gallery">
+            <a href="/Critiverse/archives/images/series/hjack.jpg" target="_blank">
+                <img src="/Critiverse/archives/images/series/hjack.jpg" alt="Hjack">
+            </a>
+        </div>
+        <div class="gallery">
+            <a href="/Critiverse/archives/images/series/tapie.jpg" target="_blank">
+                <img src="/Critiverse/archives/images/series/tapie.jpg" alt="Tapie">
+            </a>
+        </div>
+        <div class="gallery">
+            <a href="/Critiverse/archives/images/series/back_to_life.jpg" target="_blank">
+                <img src="/Critiverse/archives/images/series/back_to_life.jpg" alt="Back to Life">
+            </a>
+        </div>
     </main>
-</body>
-</html>
+<?php require_once __DIR__ . '/../layouts/footer.php'; ?>

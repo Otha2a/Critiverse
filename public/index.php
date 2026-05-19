@@ -1,16 +1,26 @@
 <?php
-// Front Controller
+session_start();
 
 require_once __DIR__ . '/../app/core/Router.php';
 require_once __DIR__ . '/../app/core/Controller.php';
+
+// Controllers
 require_once __DIR__ . '/../app/controllers/HomeController.php';
 require_once __DIR__ . '/../app/controllers/AproposController.php';
 require_once __DIR__ . '/../app/controllers/ContactController.php';
+require_once __DIR__ . '/../app/controllers/AnimesController.php';
+require_once __DIR__ . '/../app/controllers/FilmsController.php';
+require_once __DIR__ . '/../app/controllers/SeriesController.php';
+require_once __DIR__ . '/../app/controllers/NotationController.php';
+require_once __DIR__ . '/../app/controllers/NotationFilmController.php';
+require_once __DIR__ . '/../app/controllers/NotationSerieController.php';
+require_once __DIR__ . '/../app/controllers/CritiquesController.php';
+require_once __DIR__ . '/../app/controllers/ActualitesController.php';
+require_once __DIR__ . '/../app/controllers/AuthController.php';
 
-// URL demandée par l’utilisateur
+// URL demandée
 $uri = rawurldecode(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
 
-// Supprimer le segment de base si le projet n’est pas à la racine du serveur
 $basePath = str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME']));
 $basePath = $basePath === '/' ? '' : rtrim($basePath, '/');
 if ($basePath !== '' && strpos($uri, $basePath) === 0) {
@@ -23,7 +33,6 @@ if ($uri === '' || $uri === '/index.php') {
 
 $router = new Router($_SERVER['REQUEST_METHOD'], $uri);
 
-// Définir les routes de l’application
 require_once __DIR__ . '/../routes/web.php';
 
 $router->dispatch();

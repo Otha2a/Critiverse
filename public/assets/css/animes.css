@@ -1,0 +1,183 @@
+/* haut de page */
+
+header{
+    background-color: white;
+}
+
+body{
+    margin: 0px;
+    background-color: rgb(251, 234, 214);
+}
+
+/* partie recherche */
+
+
+.search input{
+    border-radius: 20px;
+    background-color: #f1f1f1;
+    padding: 10px 15px;
+}
+
+.search button{
+    background-color: #2f6df6;
+    border-radius: 20px;
+    padding: 10px 15px;
+    cursor: pointer;
+    color: white;
+    font-size: 15px;
+}
+
+.search button:hover {
+  background-color: #2559c7;
+}
+
+/* partie navigation */
+
+.navbar ul{
+    list-style-type: none;
+    background-color: rgb(251, 234, 214);
+    padding: 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+
+.navbar a{
+    color: black;
+    text-decoration: none;
+    padding: 15px;
+    display: block;
+    text-align: center;
+}
+
+.navbar a:hover{
+    background-color: rgb(235, 183, 125);
+}
+
+.navbar li{
+    float: left;
+}
+
+/* partie images */
+
+main {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    padding: 0px;
+    margin: 0px;
+    gap: 0px;
+}
+
+.gallery{
+    display: block;
+    margin: 10px;
+    width: 90%;
+    height: 500px;
+    overflow: hidden;
+}
+
+.gallery img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* partie basse */
+
+.footer {
+  background-color: rgb(251, 234, 214);
+  padding: 40px 60px;
+  font-size: 14px;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-left {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.logo {
+  width: 60px;
+}
+
+.footer-links {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: #333;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 15px;
+}
+
+.footer-socials a {
+  text-decoration: none;
+  color: #333;
+  font-size: 18px;
+}
+
+.footer-right {
+  display: flex;
+  gap: 60px;
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-col h4 {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.footer-col a {
+  text-decoration: none;
+  color: #333;
+  font-size: 13px;
+}
+
+
+
+
+
+
+
+
+
+*** Partie notation */
+
+.star-rating {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    font-size: 35px;
+}
+
+.star {
+    cursor: pointer;
+    color: #ccc; /* Gris par défaut */
+    transition: color 0.2s;
+}
+
+/* Quand on survole une étoile ou qu'elle est sélectionnée */
+.star.active, .star:hover, .star:hover ~ .star {
+    color: #ffd700; /* Jaune or */
+}
+
+/* Inversion pour que le survol allume les étoiles de gauche à droite */
+.star-rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}
