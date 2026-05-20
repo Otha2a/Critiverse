@@ -282,45 +282,9 @@
             }
         }
 
-        function publishReview() {
-            const comment = document.getElementById('comment-text').value;
-
-            if (selectedScore === 0) return alert("N'oubliez pas de mettre des étoiles !");
-            if (comment.trim() === "") return alert("Laissez un petit commentaire.");
-
-            const reviewData = {
-                score: selectedScore,
-                text: comment,
-                date: new Date().toLocaleDateString('fr-FR')
-            };
-
-            // Sauvegarde dans le localStorage
-            let allReviews = JSON.parse(localStorage.getItem(`anime_reviews_${animeId}`)) || [];
-            allReviews.push(reviewData);
-            localStorage.setItem(`anime_reviews_${animeId}`, JSON.stringify(allReviews));
-
-            // Reset et rafraîchissement
-            document.getElementById('comment-text').value = "";
-            alert("Merci ! Votre avis a été publié.");
-            showStoredReviews();
-        }
-
-        function showStoredReviews() {
-            const list = document.getElementById('reviews-list');
-            const reviews = JSON.parse(localStorage.getItem(`anime_reviews_${animeId}`)) || [];
-
-            if (reviews.length === 0) return;
-
-            list.innerHTML = reviews.reverse().map(r => `
-                <div class="review-card">
-                    <div class="review-header">
-                        <span class="stars-display">${"★".repeat(r.score)}${"☆".repeat(5-r.score)}</span>
-                        <span class="review-date">Le ${r.date}</span>
-                    </div>
-                    <p>${r.text}</p>
-                </div>
-            `).join('');
-        }
+        // Délégué à critiverse.js (API base de données)
+        function publishReview()     { critvPublishReview('anime', animeId); }
+        function showStoredReviews() { critvLoadReviews('anime', animeId); }
 
         loadAnimeData();
     </script>
