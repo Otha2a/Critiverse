@@ -132,56 +132,25 @@ body{
 /* partie images */
 
 main {
-    display: block;
-    padding: 20px;
-    margin: 0px;
-}
-
-.galerie {
-    width: 100%;
-}
-
-.galerie h1 {
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-.galerie-container {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    flex-wrap: wrap;
-    padding: 0px;
-}
-
-figure {
-    max-width: 300px;
-    margin: 0px;
-    padding: 0px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+    grid-template-columns: repeat(5, 1fr);
+    padding: 0px;
+    margin: 0px;
+    gap: 0px;
 }
 
-figure img {
+.gallery{
+    display: block;
+    margin: 0px;
     width: 100%;
-    aspect-ratio: 1/1;
-    object-fit: cover;
-    border-radius: 4px;
+    height: 300px;
+    overflow: hidden;
 }
 
-.F_reduit {
+.gallery img{
     width: 100%;
-    height: auto;
+    height: 100%;
     object-fit: cover;
-}
-
-figcaption {
-    grid-column: span 3;
-    text-align: center;
-    margin-top: 15px;
-    font-weight: bold;
-    font-family: Arial, sans-serif;
 }
 
 /* partie basse */
@@ -229,3 +198,24 @@ figcaption {
   font-size: 18px;
 }
 
+.footer-right {
+  display: flex;
+  gap: 60px;
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-col h4 {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.footer-col a {
+  text-decoration: none;
+  color: #333;
+  font-size: 13px;
+}

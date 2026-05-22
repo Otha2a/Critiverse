@@ -1,11 +1,368 @@
-<!DOCTYPE html>
-<html lang="en">
+﻿<!DOCTYPE html>
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mentions légales</title>
+    <link rel="icon" type="image/png" href="../images/autres/logo.png">
+    <title>Mentions Légales — CritiVerse</title>
+    <link rel="stylesheet" href="../styles/accueil.css">
+    <link rel="stylesheet" href="../styles/mentionslegales.css">
 </head>
 <body>
-    
+
+<!-- ══════ HEADER ══════ -->
+<header>
+    <div class="search">
+        <img src="../images/autres/logo.png" class="logo" alt="CritiVerse">
+        <input type="text" placeholder="Rechercher">
+        <button type="submit">🔎</button>
+        <div class="dropdown">
+            <button>Compte</button>
+            <div class="content">
+                <a href="#" id="open-login">Se connecter</a>
+                <a href="#" id="open-signup">S'inscrire</a>
+            </div>
+
+            <div id="auth-modal" class="modal">
+                <div class="modal-content">
+                    <span id="close-modal">&times;</span>
+                    <h2 id="form-title">Connexion</h2>
+                    <form id="auth-form">
+                        <div id="extra-field" style="display: none;">
+                            <input type="text" placeholder="Nom d'utilisateur" />
+                        </div>
+                        <input type="email" placeholder="Email" required />
+                        <input type="password" placeholder="Mot de passe" required />
+                        <button type="submit">Valider</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <script src="../scripts/accueil.js"></script>
+    </div>
+</header>
+
+<!-- ══════ NAVBAR ══════ -->
+<nav class="navbar">
+    <ul>
+        <li><a href="accueil.html">Accueil</a></li>
+        <li><a href="actualités.html">Actualités</a></li>
+        <li><a href="films.html">Films</a></li>
+        <li><a href="séries.html">Séries</a></li>
+        <li><a href="animes.html">Animes</a></li>
+        <li><a href="critiques.html">Critiques Populaires</a></li>
+    </ul>
+</nav>
+
+<!-- ══════ HERO ══════ -->
+<div class="page-hero">
+    <h1>Mentions Légales</h1>
+    <p class="sous-titre">Informations légales &amp; protection des données</p>
+</div>
+
+<!-- ══════ SOMMAIRE STICKY ══════ -->
+<nav class="sommaire-bande" aria-label="Sommaire">
+    <div class="sommaire-inner">
+        <span class="sommaire-label">Sommaire</span>
+        <a href="#editeur">Éditeur</a>
+        <a href="#hebergement">Hébergement</a>
+        <a href="#propriete">Propriété intellectuelle</a>
+        <a href="#donnees">Données personnelles</a>
+        <a href="#cookies">Cookies</a>
+        <a href="#responsabilite">Responsabilité</a>
+        <a href="#liens">Liens externes</a>
+        <a href="#droit">Droit applicable</a>
+        <a href="#contact-ml">Contact</a>
+    </div>
+</nav>
+
+<!-- ══════ CONTENU ══════ -->
+<main class="contenu-mentions">
+
+    <!-- 1 — ÉDITEUR DU SITE -->
+    <section class="section-ml" id="editeur">
+        <h2><span class="numero">01 —</span> Éditeur du site</h2>
+        <table class="table-infos">
+            <tr>
+                <td>Nom du site</td>
+                <td><strong>CritiVerse</strong></td>
+            </tr>
+            <tr>
+                <td>Projet</td>
+                <td>Projet étudiant réalisé dans le cadre d'une formation en développement web</td>
+            </tr>
+            <tr>
+                <td>Équipe</td>
+                <td>
+                    Al Mutwaly Nour, Desmazon Alexane-Lee, Ly Mathys, Chattou Othmane,
+                    Muller Benjamin, Jannin Raphael, Demaire David
+                    <br><em>(Équipe NAMBRO)</em>
+                </td>
+            </tr>
+            <tr>
+                <td>Adresse e-mail</td>
+                <td><a href="mailto:contact@critiverse.fr" class="lien-contact">contact@critiverse.fr</a></td>
+            </tr>
+            <tr>
+                <td>Statut</td>
+                <td>Site non commercial — projet pédagogique</td>
+            </tr>
+        </table>
+    </section>
+
+    <!-- 2 — HÉBERGEMENT -->
+    <section class="section-ml" id="hebergement">
+        <h2><span class="numero">02 —</span> Hébergement</h2>
+        <p>
+            Dans le cadre de son développement, ce site est hébergé localement via
+            <strong>XAMPP</strong> (serveur Apache + MySQL) sur les machines des membres de l'équipe.
+        </p>
+        <p>
+            En cas de mise en production, l'hébergeur définitif sera mentionné ici conformément
+            à l'article 6 de la loi n° 2004-575 du 21 juin 2004 pour la confiance dans l'économie
+            numérique (LCEN).
+        </p>
+        <table class="table-infos">
+            <tr>
+                <td>Environnement actuel</td>
+                <td>Localhost (développement local)</td>
+            </tr>
+            <tr>
+                <td>Serveur web</td>
+                <td>Apache 2.4 via XAMPP</td>
+            </tr>
+            <tr>
+                <td>Base de données</td>
+                <td>MySQL 8.x — base <code>critiverse</code></td>
+            </tr>
+            <tr>
+                <td>Langage serveur</td>
+                <td>PHP 8.x</td>
+            </tr>
+        </table>
+    </section>
+
+    <!-- 3 — PROPRIÉTÉ INTELLECTUELLE -->
+    <section class="section-ml" id="propriete">
+        <h2><span class="numero">03 —</span> Propriété intellectuelle</h2>
+        <p>
+            L'ensemble des éléments constituant ce site (structure, textes, graphismes, logo,
+            icônes, code source) est la propriété exclusive de l'équipe NAMBRO, sauf mention
+            contraire explicite.
+        </p>
+        <p>
+            Toute reproduction, représentation, modification, publication ou adaptation de tout
+            ou partie des éléments du site, quel que soit le moyen ou le procédé utilisé, est
+            interdite sans l'autorisation écrite préalable de l'équipe.
+        </p>
+        <p>
+            Les <strong>affiches de films, séries et animes</strong> affichées sur le site
+            sont issues d'APIs tierces (<strong>The Movie Database — TMDB</strong> et
+            <strong>Jikan / MyAnimeList</strong>). Elles restent la propriété de leurs
+            détenteurs respectifs et sont utilisées à des fins non commerciales et pédagogiques,
+            dans le respect des conditions d'utilisation de ces services.
+        </p>
+    </section>
+
+    <!-- 4 — DONNÉES PERSONNELLES (RGPD) -->
+    <section class="section-ml" id="donnees">
+        <h2><span class="numero">04 —</span> Données personnelles &amp; RGPD</h2>
+        <p>
+            Conformément au <strong>Règlement Général sur la Protection des Données (RGPD)</strong>
+            — Règlement UE 2016/679 — et à la loi n° 78-17 du 6 janvier 1978 modifiée
+            (loi Informatique et Libertés), les utilisateurs disposent des droits suivants
+            sur leurs données :
+        </p>
+        <ul>
+            <li><strong>Droit d'accès</strong> : consulter les données vous concernant.</li>
+            <li><strong>Droit de rectification</strong> : corriger des informations inexactes.</li>
+            <li><strong>Droit à l'effacement</strong> (« droit à l'oubli ») : demander la suppression de vos données.</li>
+            <li><strong>Droit à la portabilité</strong> : récupérer vos données dans un format lisible.</li>
+            <li><strong>Droit d'opposition</strong> : vous opposer au traitement de vos données.</li>
+            <li><strong>Droit à la limitation</strong> : restreindre temporairement l'utilisation de vos données.</li>
+        </ul>
+        <p>
+            Les données collectées lors de l'inscription (pseudo, adresse e-mail, mot de passe
+            chiffré) sont utilisées <strong>uniquement</strong> pour le fonctionnement du site
+            (authentification, affichage des critiques) et ne sont jamais cédées à des tiers.
+        </p>
+        <p>
+            Pour exercer vos droits, contactez-nous à :
+            <a href="mailto:contact@critiverse.fr" class="lien-contact">contact@critiverse.fr</a>
+        </p>
+        <div class="alerte-rgpd">
+            Vous disposez également du droit d'introduire une réclamation auprès de la
+            <strong>CNIL</strong> (Commission Nationale de l'Informatique et des Libertés) —
+            <a href="https://www.cnil.fr" target="_blank" rel="noopener noreferrer" class="lien-contact">www.cnil.fr</a>
+        </div>
+    </section>
+
+    <!-- 5 — COOKIES -->
+    <section class="section-ml" id="cookies">
+        <h2><span class="numero">05 —</span> Cookies</h2>
+        <p>
+            Le site utilise des <strong>cookies de session</strong> strictement nécessaires
+            à son bon fonctionnement, notamment pour maintenir l'état de connexion des
+            utilisateurs enregistrés.
+        </p>
+        <p>
+            Aucun cookie publicitaire, de traçage ou d'analyse comportementale n'est
+            déposé sans votre consentement.
+        </p>
+        <table class="table-infos">
+            <tr>
+                <td>Nom du cookie</td>
+                <td><code>critiverse_session</code></td>
+            </tr>
+            <tr>
+                <td>Finalité</td>
+                <td>Maintien de la session utilisateur (connexion)</td>
+            </tr>
+            <tr>
+                <td>Durée</td>
+                <td>Session (supprimé à la fermeture du navigateur) ou 1 heure d'inactivité</td>
+            </tr>
+            <tr>
+                <td>Tiers</td>
+                <td>Aucun — cookie interne uniquement</td>
+            </tr>
+        </table>
+    </section>
+
+    <!-- 6 — LIMITATION DE RESPONSABILITÉ -->
+    <section class="section-ml" id="responsabilite">
+        <h2><span class="numero">06 —</span> Limitation de responsabilité</h2>
+        <p>
+            L'équipe NAMBRO s'efforce de maintenir les informations publiées sur CritiVerse
+            aussi précises et à jour que possible. Cependant, elle ne peut garantir
+            l'exactitude, l'exhaustivité ou l'actualité des contenus, notamment ceux
+            provenant d'APIs tierces.
+        </p>
+        <p>
+            Les <strong>critiques et avis</strong> publiés sur le site sont ceux de leurs
+            auteurs et n'engagent pas la responsabilité de l'équipe. Tout contenu jugé
+            inapproprié peut être signalé via la page Contact.
+        </p>
+        <p>
+            Ce site étant un <strong>projet étudiant</strong>, il est susceptible de
+            contenir des erreurs ou d'être temporairement indisponible sans préavis.
+        </p>
+    </section>
+
+    <!-- 7 — LIENS HYPERTEXTES -->
+    <section class="section-ml" id="liens">
+        <h2><span class="numero">07 —</span> Liens hypertextes</h2>
+        <p>
+            Ce site peut contenir des liens vers des sites tiers. L'équipe NAMBRO n'exerce
+            aucun contrôle sur ces sites et décline toute responsabilité quant à leur contenu,
+            à leurs pratiques en matière de confidentialité ou à leur disponibilité.
+        </p>
+        <p>
+            L'existence d'un lien depuis CritiVerse vers un site tiers ne constitue pas
+            une validation ou une approbation de ce site.
+        </p>
+        <p>
+            APIs tierces utilisées par CritiVerse :
+        </p>
+        <ul>
+            <li>
+                <strong>The Movie Database (TMDB)</strong> —
+                <a href="https://www.themoviedb.org" class="lien-contact" target="_blank" rel="noopener noreferrer">themoviedb.org</a>
+                — utilisée pour les films et séries
+            </li>
+            <li>
+                <strong>Jikan API (MyAnimeList)</strong> —
+                <a href="https://jikan.moe" class="lien-contact" target="_blank" rel="noopener noreferrer">jikan.moe</a>
+                — utilisée pour les animes
+            </li>
+        </ul>
+    </section>
+
+    <!-- 8 — DROIT APPLICABLE -->
+    <section class="section-ml" id="droit">
+        <h2><span class="numero">08 —</span> Droit applicable &amp; juridiction</h2>
+        <p>
+            Les présentes mentions légales sont régies par le <strong>droit français</strong>.
+            En cas de litige, et après tentative de résolution amiable, les tribunaux
+            français seront seuls compétents.
+        </p>
+        <p>
+            Textes de référence applicables :
+        </p>
+        <ul>
+            <li>Loi n° 2004-575 du 21 juin 2004 pour la confiance dans l'économie numérique (LCEN)</li>
+            <li>Loi n° 78-17 du 6 janvier 1978 modifiée — Informatique et Libertés</li>
+            <li>Règlement UE 2016/679 du 27 avril 2016 (RGPD)</li>
+            <li>Code de la propriété intellectuelle</li>
+        </ul>
+    </section>
+
+    <!-- 9 — CONTACT -->
+    <section class="section-ml" id="contact-ml">
+        <h2><span class="numero">09 —</span> Contact</h2>
+        <p>
+            Pour toute question relative aux présentes mentions légales, à vos données
+            personnelles ou au fonctionnement du site, vous pouvez contacter l'équipe NAMBRO :
+        </p>
+        <table class="table-infos">
+            <tr>
+                <td>E-mail</td>
+                <td><a href="mailto:contact@critiverse.fr" class="lien-contact">contact@critiverse.fr</a></td>
+            </tr>
+            <tr>
+                <td>Formulaire</td>
+                <td><a href="contacts.html" class="lien-contact">Page Contact du site</a></td>
+            </tr>
+            <tr>
+                <td>Délai de réponse</td>
+                <td>Nous nous efforçons de répondre dans un délai de 30 jours.</td>
+            </tr>
+        </table>
+    </section>
+
+    <p class="mention-date">Dernière mise à jour : Mai 2026</p>
+
+</main>
+
+<!-- ══════ FOOTER ══════ -->
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-left">
+            <img src="../images/autres/logo.png" alt="logo" class="logo">
+            <div class="footer-links">
+                <a href="apropos.html">À Propos</a>
+                <a href="contacts.html">Nous contacter</a>
+                <a href="mentionslegales.html">Mentions légales</a>
+            </div>
+            <div class="footer-socials">
+                <a href="https://instagram.com/"><img src="../images/autres/instagram.png" alt="Instagram"></a>
+                <a href="https://www.linkedin.com/"><img src="../images/autres/linkedin.png" alt="LinkedIn"></a>
+                <a href="https://x.com/"><img src="../images/autres/x.png" alt="X"></a>
+            </div>
+        </div>
+        <div class="footer-right">
+            <div class="footer-col">
+                <h4>Films</h4>
+                <a href="#">Top 10</a>
+                <a href="#">Actualité</a>
+                <a href="#">Critiques</a>
+            </div>
+            <div class="footer-col">
+                <h4>Séries</h4>
+                <a href="#">Top 10</a>
+                <a href="#">Actualité</a>
+                <a href="#">Critiques</a>
+            </div>
+            <div class="footer-col">
+                <h4>Animes</h4>
+                <a href="#">Top 10</a>
+                <a href="#">Actualité</a>
+                <a href="#">Critiques</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="../scripts/critiverse.js"></script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="icon" type="image/png" href="../images/autres/logo.png"> 
+  <link rel="icon" type="image/png" href="../images/autres/logo.png">
   <title>Critiques Populaires — CritiVerse</title>
   <link rel="stylesheet" href="../styles/critiques.css"/>
 </head>
@@ -11,23 +11,13 @@
 
 <!-- ══════ HEADER ══════ -->
 <header>
-  <img src="../images/autres/logo.png" class="logo" alt="CritiVerse"/>
-
-  <div class="search">
-    <input type="text" placeholder="Rechercher un film, une série..."/>
-    <button>🔍</button>
-  </div>
-
-  <div style="display:flex; gap:10px; align-items:center;">
-    <button class="search" style="background-color:#2f6df6;color:white;border:none;border-radius:20px;padding:10px 15px;cursor:pointer;font-size:14px;"
-      onclick="document.getElementById('modal-login').style.display='flex'">
-      Se connecter
-    </button>
-    <button class="search" style="background-color:white;color:#2f6df6;border:2px solid #2f6df6;border-radius:20px;padding:9px 15px;cursor:pointer;font-size:14px;"
-      onclick="document.getElementById('modal-register').style.display='flex'">
-      S'inscrire
-    </button>
-  </div>
+    <div class="search">
+        <img src="../images/autres/logo.png" class="logo" alt="Logo Critiverse">
+        <input type="text" placeholder="Rechercher">
+        <button type="submit">🔎</button>
+        <button type="button">Se connecter</button>
+        <button type="button">S'inscrire</button>
+    </div>
 </header>
 
 <!-- ══════ NAVBAR ══════ -->
@@ -42,369 +32,80 @@
   </ul>
 </div>
 
-<!-- ══════ CONTENU ══════ -->
+<!-- ══════ CONTENU — chargé dynamiquement depuis la BDD ══════ -->
 
-<!-- ████ SECTION FILMS ████ -->
 <div class="section-block">
   <div class="section-head">
-    <h2>Critiques Populaires Films</h2>
+    <h2>Top 10 Critiques Films</h2>
   </div>
-
-  <div class="reviews-grid">
-
-    <article class="review-card">
-      <div class="rc-top">
-        <div class="rc-poster-ph bg-parasite">🎬</div>
-        <div class="rc-meta">
-          <span class="rc-badge badge-film">Film</span>
-          <div class="rc-title">Parasite</div>
-          <div class="rc-sub">Bong Joon-ho · 2019</div>
-          <div class="rc-score"><span class="rc-stars">★★★★★</span><span class="rc-note">9/10</span></div>
-        </div>
-      </div>
-      <div class="rc-body">
-        <p class="rc-text">Un chef-d'œuvre de satire sociale. Bong Joon-ho mélange les genres avec une maîtrise absolue. Chaque plan est calculé, chaque dialogue chargé de sens.</p>
-        <div class="rc-footer">
-          <div class="rc-author"><div class="rc-avatar avatar-blue">M</div><span class="rc-author-name">Marie_D</span></div>
-          <button class="rc-like" onclick="toggleLike(this)">♥ 247</button>
-        </div>
-      </div>
-    </article>
-
-    <article class="review-card">
-      <div class="rc-top">
-        <div class="rc-poster-ph bg-purple-pink">🎬</div>
-        <div class="rc-meta">
-          <span class="rc-badge badge-film">Film</span>
-          <div class="rc-title">Everything Everywhere</div>
-          <div class="rc-sub">Daniels · 2022</div>
-          <div class="rc-score"><span class="rc-stars">★★★★</span><span class="rc-note">8/10</span></div>
-        </div>
-      </div>
-      <div class="rc-body">
-        <p class="rc-text">Un film fou qui émeut profondément grâce à une relation mère-fille universelle. Michelle Yeoh est extraordinaire dans ce rôle inoubliable.</p>
-        <div class="rc-footer">
-          <div class="rc-author"><div class="rc-avatar avatar-red">C</div><span class="rc-author-name">Clara_V</span></div>
-          <button class="rc-like" onclick="toggleLike(this)">♥ 134</button>
-        </div>
-      </div>
-    </article>
-
-    <article class="review-card">
-      <div class="rc-top">
-        <div class="rc-poster-ph bg-nolan">🎬</div>
-        <div class="rc-meta">
-          <span class="rc-badge badge-film">Film</span>
-          <div class="rc-title">Oppenheimer</div>
-          <div class="rc-sub">Christopher Nolan · 2023</div>
-          <div class="rc-score"><span class="rc-stars">★★★★½</span><span class="rc-note">9/10</span></div>
-        </div>
-      </div>
-      <div class="rc-body">
-        <p class="rc-text">Nolan signe son film le plus ambitieux. La reconstitution du projet Manhattan est vertigineuse. Cillian Murphy porte le film avec une intensité rare.</p>
-        <div class="rc-footer">
-          <div class="rc-author"><div class="rc-avatar avatar-navy">L</div><span class="rc-author-name">Lucas_B</span></div>
-          <button class="rc-like" onclick="toggleLike(this)">♥ 112</button>
-        </div>
-      </div>
-    </article>
-
-    <article class="review-card">
-      <div class="rc-top">
-        <div class="rc-poster-ph bg-poor">🎬</div>
-        <div class="rc-meta">
-          <span class="rc-badge badge-film">Film</span>
-          <div class="rc-title">Poor Things</div>
-          <div class="rc-sub">Yorgos Lanthimos · 2023</div>
-          <div class="rc-score"><span class="rc-stars">★★★★</span><span class="rc-note">8/10</span></div>
-        </div>
-      </div>
-      <div class="rc-body">
-        <p class="rc-text">Visuellement somptueux et narrativement audacieux. Emma Stone livre une performance de carrière dans ce conte féministe déjanté.</p>
-        <div class="rc-footer">
-          <div class="rc-author"><div class="rc-avatar avatar-purple">S</div><span class="rc-author-name">Sophie_R</span></div>
-          <button class="rc-like" onclick="toggleLike(this)">♥ 98</button>
-        </div>
-      </div>
-    </article>
-
+  <div id="critiques-films" style="padding:10px 0;">
+    <p style="color:#888;">Chargement...</p>
   </div>
-</div>
-
-<div class="voir-plus-wrap">
-  <a href="critiques-films.html" class="btn-voir-plus">Voir plus de critiques films →</a>
 </div>
 
 <hr class="sep"/>
 
-<!-- ████ SECTION SÉRIES ████ -->
 <div class="section-block">
   <div class="section-head">
     <span class="section-tag tag-serie">Séries</span>
-    <h2>Critiques Populaires Séries</h2>
+    <h2>Top 10 Critiques Séries</h2>
   </div>
-
-  <div class="reviews-grid">
-
-    <article class="review-card">
-      <div class="rc-top">
-        <div class="rc-poster-ph bg-breakingbad">📺</div>
-        <div class="rc-meta">
-          <span class="rc-badge badge-serie">Série</span>
-          <div class="rc-title">Breaking Bad</div>
-          <div class="rc-sub">Vince Gilligan · S5</div>
-          <div class="rc-score"><span class="rc-stars">★★★★★</span><span class="rc-note">10/10</span></div>
-        </div>
-      </div>
-      <div class="rc-body">
-        <p class="rc-text">La saison finale la plus parfaite que la télévision ait jamais produite. Walter White est le personnage le mieux écrit de l'histoire.</p>
-        <div class="rc-footer">
-          <div class="rc-author"><div class="rc-avatar avatar-cyan">T</div><span class="rc-author-name">Thomas_L</span></div>
-          <button class="rc-like" onclick="toggleLike(this)">♥ 198</button>
-        </div>
-      </div>
-    </article>
-
-    <article class="review-card">
-      <div class="rc-top">
-        <div class="rc-poster-ph bg-thecrown">📺</div>
-        <div class="rc-meta">
-          <span class="rc-badge badge-serie">Série</span>
-          <div class="rc-title">Succession</div>
-          <div class="rc-sub">Jesse Armstrong · S4</div>
-          <div class="rc-score"><span class="rc-stars">★★★★½</span><span class="rc-note">9/10</span></div>
-        </div>
-      </div>
-      <div class="rc-body">
-        <p class="rc-text">La série la plus mordante sur le capitalisme familial. La saison 4 livre une conclusion déchirante. Les acteurs sont tous impeccables.</p>
-        <div class="rc-footer">
-          <div class="rc-author"><div class="rc-avatar avatar-red">A</div><span class="rc-author-name">Anaïs_M</span></div>
-          <button class="rc-like" onclick="toggleLike(this)">♥ 156</button>
-        </div>
-      </div>
-    </article>
-
-    <article class="review-card">
-      <div class="rc-top">
-        <div class="rc-poster-ph bg-lastofus">📺</div>
-        <div class="rc-meta">
-          <span class="rc-badge badge-serie">Série</span>
-          <div class="rc-title">The Last of Us</div>
-          <div class="rc-sub">Craig Mazin · S1</div>
-          <div class="rc-score"><span class="rc-stars">★★★★★</span><span class="rc-note">10/10</span></div>
-        </div>
-      </div>
-      <div class="rc-body">
-        <p class="rc-text">L'adaptation parfaite du jeu vidéo. Pedro Pascal et Bella Ramsey forment un duo inoubliable. L'épisode 3 seul vaut toutes les récompenses.</p>
-        <div class="rc-footer">
-          <div class="rc-author"><div class="rc-avatar avatar-green">J</div><span class="rc-author-name">Jules_P</span></div>
-          <button class="rc-like" onclick="toggleLike(this)">♥ 143</button>
-        </div>
-      </div>
-    </article>
-
-    <article class="review-card">
-      <div class="rc-top">
-        <div class="rc-poster-ph bg-squid">📺</div>
-        <div class="rc-meta">
-          <span class="rc-badge badge-serie">Série</span>
-          <div class="rc-title">Squid Game</div>
-          <div class="rc-sub">Hwang Dong-hyuk · S1</div>
-          <div class="rc-score"><span class="rc-stars">★★★★</span><span class="rc-note">8/10</span></div>
-        </div>
-      </div>
-      <div class="rc-body">
-        <p class="rc-text">Un phénomène mondial justifié. La critique du capitalisme à travers des jeux d'enfants est brutale et efficace. Captivant du début à la fin.</p>
-        <div class="rc-footer">
-          <div class="rc-author"><div class="rc-avatar avatar-orange">N</div><span class="rc-author-name">Nadia_K</span></div>
-          <button class="rc-like" onclick="toggleLike(this)">♥ 121</button>
-        </div>
-      </div>
-    </article>
-
+  <div id="critiques-series" style="padding:10px 0;">
+    <p style="color:#888;">Chargement...</p>
   </div>
-</div>
-
-<div class="voir-plus-wrap">
-  <a href="critiques-series.html" class="btn-voir-plus">Voir plus de critiques séries →</a>
 </div>
 
 <hr class="sep"/>
 
-<!-- ████ SECTION ANIMES ████ -->
 <div class="section-block">
   <div class="section-head">
     <span class="section-tag tag-anime">Animes</span>
-    <h2>Critiques Populaires Animes</h2>
+    <h2>Top 10 Critiques Animés</h2>
   </div>
-
-  <div class="reviews-grid">
-
-    <article class="review-card">
-      <div class="rc-top">
-        <div class="rc-poster-ph bg-vinland">⚔️</div>
-        <div class="rc-meta">
-          <span class="rc-badge badge-anime">Animé</span>
-          <div class="rc-title">Vinland Saga</div>
-          <div class="rc-sub">Makoto Yukimura · S2</div>
-          <div class="rc-score"><span class="rc-stars">★★★★½</span><span class="rc-note">9/10</span></div>
-        </div>
-      </div>
-      <div class="rc-body">
-        <p class="rc-text">Une épopée philosophique sur la paix et la violence. La saison 2 approfondit les personnages de façon bouleversante. Thorfinn trouve enfin sa voie.</p>
-        <div class="rc-footer">
-          <div class="rc-author"><div class="rc-avatar avatar-purple">K</div><span class="rc-author-name">Kenji_T</span></div>
-          <button class="rc-like" onclick="toggleLike(this)">♥ 183</button>
-        </div>
-      </div>
-    </article>
-
-    <article class="review-card">
-      <div class="rc-top">
-        <div class="rc-poster-ph bg-orange">🔥</div>
-        <div class="rc-meta">
-          <span class="rc-badge badge-anime">Animé</span>
-          <div class="rc-title">Shangri-La Frontier</div>
-          <div class="rc-sub">C2C · S2 Partie 1</div>
-          <div class="rc-score"><span class="rc-stars">★★★★</span><span class="rc-note">8/10</span></div>
-        </div>
-      </div>
-      <div class="rc-body">
-        <p class="rc-text">Les combats de boss sont époustouflants visuellement. Sunraku reste le protagoniste le plus fun de la saison. Quelques longueurs dans les arcs secondaires.</p>
-        <div class="rc-footer">
-          <div class="rc-author"><div class="rc-avatar avatar-navy">S</div><span class="rc-author-name">Sakura_N</span></div>
-          <button class="rc-like" onclick="toggleLike(this)">♥ 97</button>
-        </div>
-      </div>
-    </article>
-
-    <article class="review-card">
-      <div class="rc-top">
-        <div class="rc-poster-ph bg-demon">🌊</div>
-        <div class="rc-meta">
-          <span class="rc-badge badge-anime">Animé</span>
-          <div class="rc-title">Demon Slayer</div>
-          <div class="rc-sub">ufotable · S3</div>
-          <div class="rc-score"><span class="rc-stars">★★★★★</span><span class="rc-note">10/10</span></div>
-        </div>
-      </div>
-      <div class="rc-body">
-        <p class="rc-text">ufotable au sommet de son art. L'arc du Forgeron de l'Épée est visuellement le plus beau de la série. Les combats contre Hantengu sont sublimes.</p>
-        <div class="rc-footer">
-          <div class="rc-author"><div class="rc-avatar avatar-teal">R</div><span class="rc-author-name">Ryu_H</span></div>
-          <button class="rc-like" onclick="toggleLike(this)">♥ 165</button>
-        </div>
-      </div>
-    </article>
-
-    <article class="review-card">
-      <div class="rc-top">
-        <div class="rc-poster-ph bg-aot">🤖</div>
-        <div class="rc-meta">
-          <span class="rc-badge badge-anime">Animé</span>
-          <div class="rc-title">Attack on Titan</div>
-          <div class="rc-sub">MAPPA · Final</div>
-          <div class="rc-score"><span class="rc-stars">★★★★½</span><span class="rc-note">9/10</span></div>
-        </div>
-      </div>
-      <div class="rc-body">
-        <p class="rc-text">Une conclusion digne de l'une des plus grandes œuvres du medium. L'Ultime Rumble est un spectacle total. La qualité d'ensemble est incontestable.</p>
-        <div class="rc-footer">
-          <div class="rc-author"><div class="rc-avatar avatar-gray">Y</div><span class="rc-author-name">Yuki_A</span></div>
-          <button class="rc-like" onclick="toggleLike(this)">♥ 152</button>
-        </div>
-      </div>
-    </article>
-
+  <div id="critiques-animes" style="padding:10px 0;">
+    <p style="color:#888;">Chargement...</p>
   </div>
 </div>
 
-<div class="voir-plus-wrap">
-  <a href="critiques-animes.html" class="btn-voir-plus">Voir plus de critiques animes →</a>
-</div>
-
-<!--Bas de page (logo + à propos/nous contacter/mentions légales/réseaux...)-->
-    <footer class="footer">
-    <div class="footer-content">
-        <div class="footer-left">
-            <img src="../images/autres/logo.png" alt="logo" class="logo">
-            <div class="footer-links">
-                <a href="apropos.html">À Propos</a>
-                <a href="contacts.html">Nous contacter</a>
-                <a href="mentionslegales.html">Mentions légales</a>
-            </div>
-            <div class="footer-socials">
-                <a href="https://instagram.com/"><img src="../images/autres/instagram.png"></a>
-                <a href="https://www.linkedin.com/"><img src="../images/autres/linkedin.png"></a>
-                <a href="https://x.com/"><img src="../images/autres/x.png"></a>
-            </div>
-        </div>
-
-        <div class="footer-right">
-            <div class="footer-col">
-                <h4>Films</h4>
-                <a href="#">Top 10</a>
-                <a href="#">Actualité</a>
-                <a href="#">Critiques</a>
-            </div>
-            <div class="footer-col">
-                <h4>Séries</h4>
-                <a href="#">Top 10</a>
-                <a href="#">Actualité</a>
-                <a href="#">Critiques</a>
-            </div>
-            <div class="footer-col">
-                <h4>Animes</h4>
-                <a href="#">Top 10</a>
-                <a href="#">Actualité</a>
-                <a href="#">Critiques</a>
-            </div>
-
-        </div>
+<!-- ══════ FOOTER ══════ -->
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-left">
+      <img src="../images/autres/logo.png" alt="logo" class="logo">
+      <div class="footer-links">
+        <a href="apropos.html">À Propos</a>
+        <a href="contacts.html">Nous contacter</a>
+        <a href="mentionslegales.html">Mentions légales</a>
+      </div>
+      <div class="footer-socials">
+        <a href="https://instagram.com/"><img src="../images/autres/instagram.png" alt="Instagram"></a>
+        <a href="https://www.linkedin.com/"><img src="../images/autres/linkedin.png" alt="LinkedIn"></a>
+        <a href="https://x.com/"><img src="../images/autres/x.png" alt="X"></a>
+      </div>
     </div>
-    </footer>
-</body>
-</html>
-
-<!-- Modals login/register (structure existante du site) -->
-<div class="modal" id="modal-login">
-  <div class="modal-content">
-    <span id="close-modal" onclick="document.getElementById('modal-login').style.display='none'">✕</span>
-    <h3 style="margin-bottom:16px;">Se connecter</h3>
-    <div style="display:flex;flex-direction:column;gap:10px;">
-      <input type="email" placeholder="Email" style="padding:10px;border-radius:8px;border:1px solid #ddd;font-size:14px;"/>
-      <input type="password" placeholder="Mot de passe" style="padding:10px;border-radius:8px;border:1px solid #ddd;font-size:14px;"/>
-      <button style="background:#2f6df6;color:#fff;border:none;border-radius:8px;padding:11px;cursor:pointer;font-size:14px;">Connexion</button>
+    <div class="footer-right">
+      <div class="footer-col">
+        <h4>Films</h4>
+        <a href="#">Top 10</a>
+        <a href="#">Actualité</a>
+        <a href="#">Critiques</a>
+      </div>
+      <div class="footer-col">
+        <h4>Séries</h4>
+        <a href="#">Top 10</a>
+        <a href="#">Actualité</a>
+        <a href="#">Critiques</a>
+      </div>
+      <div class="footer-col">
+        <h4>Animes</h4>
+        <a href="#">Top 10</a>
+        <a href="#">Actualité</a>
+        <a href="#">Critiques</a>
+      </div>
     </div>
   </div>
-</div>
+</footer>
 
-<div class="modal" id="modal-register">
-  <div class="modal-content">
-    <span id="close-modal" onclick="document.getElementById('modal-register').style.display='none'">✕</span>
-    <h3 style="margin-bottom:16px;">S'inscrire</h3>
-    <div style="display:flex;flex-direction:column;gap:10px;">
-      <input type="text" placeholder="Pseudo" style="padding:10px;border-radius:8px;border:1px solid #ddd;font-size:14px;"/>
-      <input type="email" placeholder="Email" style="padding:10px;border-radius:8px;border:1px solid #ddd;font-size:14px;"/>
-      <input type="password" placeholder="Mot de passe" style="padding:10px;border-radius:8px;border:1px solid #ddd;font-size:14px;"/>
-      <button style="background:#2f6df6;color:#fff;border:none;border-radius:8px;padding:11px;cursor:pointer;font-size:14px;">Créer mon compte</button>
-    </div>
-  </div>
-</div>
-
-<script>
-  function toggleLike(btn) {
-    const liked = btn.classList.toggle('liked');
-    const n = parseInt(btn.textContent.replace(/[^\d]/g, ''));
-    btn.textContent = '♥ ' + (liked ? n + 1 : n - 1);
-  }
-  window.addEventListener('click', function(e) {
-    ['modal-login','modal-register'].forEach(id => {
-      const m = document.getElementById(id);
-      if (e.target === m) m.style.display = 'none';
-    });
-  });
-</script>
-
+<script src="../scripts/critiverse.js"></script>
 </body>
 </html>

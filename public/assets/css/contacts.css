@@ -1,0 +1,70 @@
+/* Fond beige comme SensCritique */
+body {
+    background: #f5f1e8;
+}
+
+/* Conteneur centré */
+.contact-page {
+    display: flex;
+    justify-content: center;
+    padding: 50px 0;
+}
+
+/* Boîte blanche du formulaire */
+.contact-box {
+    width: 450px;
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Titre */
+.contact-box h2 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* Sous-texte */
+.contact-info {
+    text-align: center;
+    color: #666;
+    margin-bottom: 25px;
+}
+
+/* Labels */
+label {
+    font-weight: bold;
+    margin-top: 15px;
+    display: block;
+}
+
+/* Inputs */
+input[type="email"],
+input[type="text"],
+input[type="file"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 6px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #fafafa;
+}
+
+/* Bouton envoyer */
+.btn-send {
+    width: 100%;
+    margin-top: 25px;
+    padding: 12px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-send:hover {
+    background: #005fcc;
+}
