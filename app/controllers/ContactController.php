@@ -15,6 +15,25 @@ class ContactController extends Controller
 
     public function send(): void
     {
-        // Envoyer message (mail ou BDD)
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            $this->redirect('/contact');
+            return;
+        }
+
+        $name = $_POST['name'] ?? '';
+        $email = $_POST['email'] ?? '';
+        $message = $_POST['message'] ?? '';
+
+        if (empty($name) || empty($email) || empty($message)) {
+            $this->redirect('/contact?error=validation');
+            return;
+        }
+
+        $db = new Database();
+        if ($db->insertContact($name, $email, $message)) {
+            $this->redirect('/contact?success=1');
+        } else {
+            $this->redirect('/contact?error=db');
+        }
     }
 }

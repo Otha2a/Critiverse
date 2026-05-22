@@ -17,6 +17,11 @@ class Router {
         $this->register('GET', $path, $handler);
     }
 
+    public function post(string $path, string $handler): void
+    {
+        $this->register('POST', $path, $handler);
+    }
+
     private function register(string $method, string $path, string $handler): void
     {
         $path = rtrim($path, '/') === '' ? '/' : rtrim($path, '/');

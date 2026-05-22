@@ -10,7 +10,7 @@ header{
 
 body{
     margin: 0px;
-    background-color: rgb(251, 234, 214);
+    background-color: #E6F1FB;
 }
 
 /* partie recherche */
@@ -107,7 +107,7 @@ body{
 
 .navbar ul{
     list-style-type: none;
-    background-color: rgb(251, 234, 214);
+    background-color: #E6F1FB;
     padding: 0px;
     margin: 0px;
     overflow: hidden;
@@ -122,7 +122,7 @@ body{
 }
 
 .navbar a:hover{
-    background-color: rgb(235, 183, 125);
+    background-color:#E6F1FB;
 }
 
 .navbar li{
@@ -156,7 +156,7 @@ main {
 /* partie basse */
 
 .footer {
-  background-color: rgb(251, 234, 214);
+  background-color: #E6F1FB;
   padding: 40px 60px;
   font-size: 14px;
 }
