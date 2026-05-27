@@ -24,7 +24,19 @@
     </header>
 
     <main>
-        <form method="get" action="/contact">
+        <script>
+            <?php if (isset($_GET['success'])): ?>
+                alert("Message envoyé avec succès !");
+            <?php elseif (isset($_GET['error'])): ?>
+                <?php if ($_GET['error'] === 'validation'): ?>
+                    alert("Tous les champs sont requis.");
+                <?php elseif ($_GET['error'] === 'db'): ?>
+                    alert("Erreur lors de la sauvegarde du message.");
+                <?php endif; ?>
+            <?php endif; ?>
+        </script>
+
+        <form method="post" action="/contact">
             <div>
                 <label for="name">Nom :</label>
                 <input type="text" id="name" name="name" required>
