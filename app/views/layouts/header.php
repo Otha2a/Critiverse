@@ -5,7 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="/Critiverse/archives/images/autres/logo.png">
     <title><?= htmlspecialchars($title ?? 'Critiverse') ?></title>
-    <link rel="stylesheet" href="/Critiverse/public/assets/css/<?= htmlspecialchars($css ?? 'accueil') ?>.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <?php $cssFile = htmlspecialchars($css ?? 'accueil'); $cssVer = @filemtime($_SERVER['DOCUMENT_ROOT'] . '/Critiverse/public/assets/css/' . $cssFile . '.css') ?: time(); ?>
+    <link rel="stylesheet" href="/Critiverse/public/assets/css/<?= $cssFile ?>.css?v=<?= $cssVer ?>">
     <?php if (!empty($extraCss)): ?><style><?= $extraCss ?></style><?php endif; ?>
 </head>
 <body>

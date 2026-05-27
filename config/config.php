@@ -23,3 +23,9 @@ define('SHOW_ERRORS', DEBUG_MODE);                      // Variable reliée
 // Session
 define('SESSION_TIMEOUT', 3600);                        // Durée en secondes avant de déconnecter un user
 define('SESSION_NAME', 'critiverse_session');           // Nom de session pour cookies
+
+// TMDB API (themoviedb.org - gratuit)
+// Pour obtenir une clé : https://www.themoviedb.org/settings/api
+define('TMDB_API_KEY', 'VOTRE_CLE_API_TMDB');
+define('TMDB_BASE_URL', 'https://api.themoviedb.org/3');
+define('TMDB_IMG_BASE', 'https://image.tmdb.org/t/p/w500');
