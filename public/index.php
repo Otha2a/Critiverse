@@ -5,6 +5,7 @@ require_once __DIR__ . '/../app/core/Router.php';
 require_once __DIR__ . '/../app/core/Controller.php';
 
 // Controllers
+require_once __DIR__ . '/../app/models/Database.php';
 require_once __DIR__ . '/../app/controllers/HomeController.php';
 require_once __DIR__ . '/../app/controllers/AproposController.php';
 require_once __DIR__ . '/../app/controllers/ContactController.php';
@@ -17,6 +18,7 @@ require_once __DIR__ . '/../app/controllers/NotationSerieController.php';
 require_once __DIR__ . '/../app/controllers/CritiquesController.php';
 require_once __DIR__ . '/../app/controllers/ActualitesController.php';
 require_once __DIR__ . '/../app/controllers/AuthController.php';
+require_once __DIR__ . '/../app/controllers/ForumController.php';
 
 // URL demandée
 $uri = rawurldecode(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));

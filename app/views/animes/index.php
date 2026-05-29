@@ -19,6 +19,8 @@ require_once __DIR__ . '/../layouts/header.php';
 ?>
     <nav class="navbar">
         <ul>
+            <li><a href="/Critiverse/public/animes">Populaires</a></li>
+            <li><a href="/Critiverse/public/animes?sort=recent">Récents</a></li>
             <li><a href="/Critiverse/public/animes?genre=1">Action</a></li>
             <li><a href="/Critiverse/public/animes?genre=22">Romance</a></li>
             <li><a href="/Critiverse/public/animes?genre=10">Fantasy</a></li>
@@ -46,6 +48,7 @@ require_once __DIR__ . '/../layouts/header.php';
         const loadingMsg = document.getElementById('loading-msg');
         const urlParams  = new URLSearchParams(window.location.search);
         const genreId    = urlParams.get('genre');
+        const sortMode   = urlParams.get('sort');
 
         let currentPage = 1;
         let totalPages  = 1;
@@ -76,6 +79,8 @@ require_once __DIR__ . '/../layouts/header.php';
                 url = `https://api.jikan.moe/v4/anime?q=${encodeURIComponent(currentSearch)}&page=${page}&sfw&type=tv`;
             } else if (genreId) {
                 url = `https://api.jikan.moe/v4/anime?page=${page}&sfw&type=tv&order_by=score&sort=desc&genres=${genreId}`;
+            } else if (sortMode === 'recent') {
+                url = `https://api.jikan.moe/v4/anime?page=${page}&sfw&type=tv&order_by=start_date&sort=desc`;
             } else {
                 url = `https://api.jikan.moe/v4/anime?page=${page}&sfw&type=tv&order_by=score&sort=desc`;
             }

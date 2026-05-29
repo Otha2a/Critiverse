@@ -1,1 +1,147 @@
-/* Style du site */
+/* ── Reset & base ───────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+/* ── Header unifié sticky ───────────────────────────────────────────────────── */
+#site-header {
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,.08);
+}
+
+#site-header header {
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 24px;
+    gap: 12px;
+}
+
+#site-header .search {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+}
+
+#site-header .search .logo {
+    width: 46px;
+    height: auto;
+    flex-shrink: 0;
+}
+
+#site-header .search input {
+    flex: 1;
+    max-width: 360px;
+    border-radius: 20px;
+    background-color: #f1f1f1;
+    border: none;
+    padding: 10px 18px;
+    font-size: 14px;
+    outline: none;
+    transition: background .2s;
+}
+#site-header .search input:focus { background: #e8e8e8; }
+
+#site-header .search button[onclick] {
+    background: #2f6df6;
+    border-radius: 20px;
+    padding: 10px 16px;
+    cursor: pointer;
+    color: white;
+    font-size: 15px;
+    border: none;
+    transition: background .2s;
+    flex-shrink: 0;
+}
+#site-header .search button[onclick]:hover { background: #2559c7; }
+
+#site-header .search a button,
+#site-header .search > a > button {
+    background: #f1f1f1;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    white-space: nowrap;
+    transition: background .2s;
+}
+#site-header .search a button:hover { background: #e0e0e0; }
+
+#site-header .search span {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    white-space: nowrap;
+}
+
+/* Barre de navigation */
+#site-header .navbar ul {
+    list-style: none;
+    background: white;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    border-top: 1px solid rgba(0,0,0,.06);
+    display: flex;
+}
+
+#site-header .navbar li { float: none; }
+
+#site-header .navbar a {
+    color: #333;
+    text-decoration: none;
+    padding: 12px 18px;
+    display: block;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background .15s, color .15s;
+}
+
+#site-header .navbar a:hover {
+    background: rgb(251, 234, 214);
+    color: #111;
+}
+
+/* Footer commun */
+.footer {
+    background-color: rgb(251, 234, 214);
+    padding: 40px 60px;
+    font-size: 14px;
+}
+.footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; }
+.footer-left { display: flex; flex-direction: column; gap: 20px; }
+.footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+.footer-links a { text-decoration: none; color: #333; }
+.footer-socials { display: flex; gap: 15px; }
+.footer-socials img { width: 22px; height: 22px; object-fit: contain; }
+.footer-right { display: flex; gap: 60px; flex-wrap: wrap; }
+.footer-col { display: flex; flex-direction: column; gap: 8px; }
+.footer-col h4 { margin: 0 0 8px; font-size: 14px; }
+.footer-col a { text-decoration: none; color: #333; font-size: 13px; }
+
+/* ── Responsive base ────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+    #site-header header { flex-wrap: wrap; padding: 10px 14px; }
+    #site-header .search input { max-width: 100%; }
+    #site-header .search span { display: none; }
+    #site-header .navbar ul { flex-wrap: wrap; }
+    #site-header .navbar a { padding: 10px 12px; font-size: 13px; }
+    .footer { padding: 30px 20px; }
+    .footer-right { gap: 30px; }
+}
+
+@media (max-width: 480px) {
+    #site-header .search > a > button { padding: 7px 12px; font-size: 13px; }
+    #site-header .navbar a { padding: 9px 10px; font-size: 12px; }
+}

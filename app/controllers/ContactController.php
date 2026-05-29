@@ -5,12 +5,7 @@ class ContactController extends Controller
 {
     public function index(): void
     {
-        $data = [
-            'title' => 'Contact',
-            'heading' => 'Contactez-nous',
-        ];
-
-        $this->render('contact/form', $data);
+        $this->render('contact/form', ['title' => 'Contact - Critiverse']);
     }
 
     public function send(): void
@@ -25,15 +20,15 @@ class ContactController extends Controller
         $message = $_POST['message'] ?? '';
 
         if (empty($name) || empty($email) || empty($message)) {
-            $this->redirect('/contact?error=validation');
+            $this->redirect('/Critiverse/public/contact?error=validation');
             return;
         }
 
         $db = new Database();
         if ($db->insertContact($name, $email, $message)) {
-            $this->redirect('/contact?success=1');
+            $this->redirect('/Critiverse/public/contact?success=1');
         } else {
-            $this->redirect('/contact?error=db');
+            $this->redirect('/Critiverse/public/contact?error=db');
         }
     }
 }

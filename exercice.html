@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercice</title>
+</head>
+<body>
+
+<p id = "message">Nouveau texte  </p>
+<button onclick = "ajouter()">Ajouter</button>
+<button onclick = "rendreRouge()">Rouge    </button>
+<button onclick ="direBonjour()">Bonjour</button>
+<button onclick = "Effacer()">Effacer</button>
+<button onclick ="rendreNoir()">Noir</button>
+<button id = "btnSupprimer">Supprimer</button>
+
+    <script>
+        
+            document.getElementById("btnSupprimer").addEventListener("click", function() {
+                document.getElementById("message").remove();
+            });
+        
+
+        function ajouter () {
+            let nouveauParagraphe = document.createElement("h1");
+            nouveauParagraphe.innerHTML = "Je viens d'être créer " ; 
+            document.body.appendChild(nouveauParagraphe); 
+        }
+
+        function rendreNoir() {
+            document.getElementById("message").style.color = "black";
+        }
+        function rendreRouge() {
+            document.getElementById("message").style.color = "red";
+        }
+        function direBonjour() {
+            document.getElementById("message").innerHTML = "Bonjour !";
+        }
+        function Effacer() 
+        {
+            document.getElementById("message").innerHTML = "Nouveau texte  !";
+        }
+</script>
+</body>
+</html>
+
+ <form method="POST">
+   <input type="text" name="prenom" placeholder="Ton prénom">
+   <input type="text" name="age" placeholder="Ton age">
+   <button type="submit">Envoyer</button>
+</form>

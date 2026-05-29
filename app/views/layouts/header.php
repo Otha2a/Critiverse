@@ -8,11 +8,17 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <?php $cssFile = htmlspecialchars($css ?? 'accueil'); $cssVer = @filemtime($_SERVER['DOCUMENT_ROOT'] . '/Critiverse/public/assets/css/' . $cssFile . '.css') ?: time(); ?>
+    <?php
+    $cssFile = htmlspecialchars($css ?? 'accueil');
+    $cssVer  = @filemtime($_SERVER['DOCUMENT_ROOT'] . '/Critiverse/public/assets/css/' . $cssFile . '.css') ?: time();
+    $baseVer = @filemtime($_SERVER['DOCUMENT_ROOT'] . '/Critiverse/public/assets/css/style.css') ?: time();
+    ?>
+    <link rel="stylesheet" href="/Critiverse/public/assets/css/style.css?v=<?= $baseVer ?>">
     <link rel="stylesheet" href="/Critiverse/public/assets/css/<?= $cssFile ?>.css?v=<?= $cssVer ?>">
     <?php if (!empty($extraCss)): ?><style><?= $extraCss ?></style><?php endif; ?>
 </head>
 <body>
+<div id="site-header">
     <header>
         <div class="search">
             <a href="/Critiverse/public/"><img src="/Critiverse/archives/images/autres/logo.png" class="logo" alt="Logo"></a>
@@ -20,7 +26,7 @@
             <button type="button" onclick="if(typeof doSearch==='function')doSearch()">🔎</button>
 
             <?php if (isset($_SESSION['user_id'])): ?>
-                <span style="font-weight:bold;padding:8px 12px;">👤 <?= htmlspecialchars($_SESSION['username']) ?></span>
+                <span>👤 <?= htmlspecialchars($_SESSION['username']) ?></span>
                 <a href="/Critiverse/public/logout">
                     <button type="button">Déconnexion</button>
                 </a>
@@ -46,5 +52,7 @@
             <li><a href="/Critiverse/public/series"<?= $nav==='series'? $activeStyle:''?>>Séries</a></li>
             <li><a href="/Critiverse/public/animes"<?= $nav==='animes'? $activeStyle:''?>>Animes</a></li>
             <li><a href="/Critiverse/public/critiques"<?= $nav==='critiques'? $activeStyle:''?>>Critiques Populaires</a></li>
+            <li><a href="/Critiverse/public/forum"<?= $nav==='forum'  ? $activeStyle:''?>>Forum</a></li>
         </ul>
     </nav>
+</div>

@@ -18,6 +18,13 @@ $router->get('/notation',       'NotationController@index');
 $router->get('/notation-film',  'NotationFilmController@index');
 $router->get('/notation-serie', 'NotationSerieController@index');
 
+// Forum
+$router->get('/forum',        'ForumController@index');
+$router->get('/forum/topic',  'ForumController@show');
+$router->get('/forum/new',    'ForumController@newForm');
+$router->post('/forum/new',   'ForumController@create');
+$router->post('/forum/reply', 'ForumController@reply');
+
 // Authentification
 $router->get('/login',    'AuthController@loginForm');
 $router->post('/login',   'AuthController@loginProcess');
