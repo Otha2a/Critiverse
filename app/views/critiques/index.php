@@ -143,7 +143,11 @@ async function loadSection(type, containerId, getInfo, tagClass, emoji) {
         const res  = await fetch(`/Critiverse/public/api/top-reviews.php?type=${type}&limit=10`);
         const data = await res.json();
 
-        if (!data.success || data.reviews.length === 0) {
+        if (!data.success) {
+            container.innerHTML = '<p class="empty-msg" style="color:#c0392b;">⚠️ Erreur base de données — vérifiez que MySQL est démarré dans XAMPP et que la base <strong>critiverse</strong> existe.</p>';
+            return;
+        }
+        if (data.reviews.length === 0) {
             container.innerHTML = '<p class="empty-msg">Aucun avis publié pour le moment.</p>';
             return;
         }

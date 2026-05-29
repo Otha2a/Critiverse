@@ -31,6 +31,7 @@ function etoiles(float $note): string {
         <p>Films, séries et animés populaires — mis à jour en temps réel.</p>
     </div>
 
+
     <!-- ── FILMS ── -->
     <section class="actu-section">
         <div class="actu-section-header">
