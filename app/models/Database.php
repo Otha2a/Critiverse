@@ -2,16 +2,20 @@
 // Gère la connexion à la base de données (PDO)
 
 class Database {
-    private $pdo;
+    private PDO $pdo;
 
     public function __construct() {
-        $config = require __DIR__ . '/../../config/database.php';
-        $dsn = "mysql:host={$config['host']};dbname={$config['dbname']};charset=utf8";
-        $this->pdo = new PDO($dsn, $config['user'], $config['password']);
-        $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $this->pdo = getDatabaseConnection();
+        $this->pdo->exec("CREATE TABLE IF NOT EXISTS contacts (
+            id         INT AUTO_INCREMENT PRIMARY KEY,
+            name       VARCHAR(100) NOT NULL,
+            email      VARCHAR(100) NOT NULL,
+            message    TEXT NOT NULL,
+            created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
     }
 
-    public function insertContact($name, $email, $message) {
+    public function insertContact(string $name, string $email, string $message): bool {
         $stmt = $this->pdo->prepare("INSERT INTO contacts (name, email, message) VALUES (?, ?, ?)");
         return $stmt->execute([$name, $email, $message]);
     }

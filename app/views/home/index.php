@@ -135,9 +135,28 @@ require_once __DIR__ . '/../layouts/header.php';
     </div>
 </section>
 
+<!-- APERÇU ACTUALITÉS -->
+<section style="background:#fff;padding:48px 0 36px;">
+    <h2 class="section-title fade-in">Dernières actualités</h2>
+    <p class="section-sub fade-in">Les sorties et tendances du moment</p>
+    <div id="actu-preview" style="display:flex;gap:18px;padding:20px 40px;overflow-x:auto;justify-content:center;flex-wrap:wrap;"></div>
+    <div style="text-align:center;margin-top:12px;">
+        <a href="/Critiverse/public/actualites" style="color:#2f6df6;font-weight:600;font-size:14px;text-decoration:none;">Voir toutes les actualités →</a>
+    </div>
+</section>
+
+<!-- APERÇU CRITIQUES POPULAIRES -->
+<section style="padding:48px 0 36px;background:rgb(251,234,214);">
+    <h2 class="section-title fade-in">Critiques populaires</h2>
+    <p class="section-sub fade-in">Les avis les plus likés de la communauté</p>
+    <div id="critique-preview" style="max-width:860px;margin:0 auto;padding:0 24px;"></div>
+    <div style="text-align:center;margin-top:20px;">
+        <a href="/Critiverse/public/critiques" style="color:#2f6df6;font-weight:600;font-size:14px;text-decoration:none;">Voir toutes les critiques →</a>
+    </div>
+</section>
+
 <script>
 (function () {
-    // Stagger delay automatique pour les posters
     document.querySelectorAll('.poster.fade-in').forEach(function (el, i) {
         el.style.transitionDelay = (i * 0.04) + 's';
     });
@@ -154,6 +173,63 @@ require_once __DIR__ . '/../layouts/header.php';
     document.querySelectorAll('.fade-in').forEach(function (el) {
         observer.observe(el);
     });
+
+    // Aperçu actualités (3 films populaires TMDB)
+    (async function loadActu() {
+        const TMDB_KEY = '7f41925d9303e23359cf5a62ee62de74';
+        const IMG      = 'https://image.tmdb.org/t/p/w300';
+        const box      = document.getElementById('actu-preview');
+        try {
+            const res  = await fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${TMDB_KEY}&language=fr-FR&page=1`);
+            const data = await res.json();
+            (data.results || []).slice(0, 6).forEach(function (m) {
+                if (!m.poster_path) return;
+                const card = document.createElement('a');
+                card.href  = '/Critiverse/public/films';
+                card.style.cssText = 'display:flex;flex-direction:column;align-items:center;text-decoration:none;color:inherit;width:130px;flex-shrink:0;';
+                card.innerHTML = `<img src="${IMG}${m.poster_path}" alt="${m.title}" style="width:130px;height:195px;object-fit:cover;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,.15);">
+                    <span style="font-size:12px;font-weight:600;margin-top:8px;text-align:center;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;width:100%;">${m.title}</span>
+                    <span style="font-size:11px;color:#888;">★ ${m.vote_average.toFixed(1)}</span>`;
+                box.appendChild(card);
+            });
+        } catch (e) { box.innerHTML = '<p style="color:#aaa;font-size:13px;">Impossible de charger les actualités.</p>'; }
+    })();
+
+    // Aperçu critiques (top 3 films depuis l'API locale)
+    (async function loadCritiques() {
+        const box = document.getElementById('critique-preview');
+        const TMDB_KEY = '7f41925d9303e23359cf5a62ee62de74';
+        const IMG = 'https://image.tmdb.org/t/p/w92';
+        try {
+            const res  = await fetch('/Critiverse/public/api/top-reviews.php?type=film&limit=3');
+            const data = await res.json();
+            if (!data.success || !data.reviews.length) {
+                box.innerHTML = '<p style="color:#aaa;font-size:13px;text-align:center;">Aucune critique pour le moment — soyez le premier !</p>';
+                return;
+            }
+            const cards = await Promise.all(data.reviews.map(async function (r) {
+                let title = '?', poster = null;
+                try {
+                    const mr   = await fetch(`https://api.themoviedb.org/3/movie/${r.media_id}?api_key=${TMDB_KEY}&language=fr-FR`);
+                    const md   = await mr.json();
+                    title  = md.title || '?';
+                    poster = md.poster_path ? IMG + md.poster_path : null;
+                } catch (e) {}
+                const stars = '★'.repeat(r.score) + '☆'.repeat(5 - r.score);
+                return `<div style="display:flex;gap:14px;background:white;padding:16px;border-radius:12px;margin-bottom:12px;box-shadow:0 2px 10px rgba(0,0,0,.07);">
+                    ${poster ? `<img src="${poster}" style="width:56px;height:84px;object-fit:cover;border-radius:6px;flex-shrink:0;">` : '<div style="width:56px;height:84px;background:#eee;border-radius:6px;flex-shrink:0;"></div>'}
+                    <div>
+                        <div style="font-weight:700;font-size:14px;margin-bottom:2px;">${title}</div>
+                        <div style="color:#ffca08;font-size:15px;">${stars}</div>
+                        <div style="font-size:12px;color:#888;margin-bottom:6px;">👤 ${r.username || 'Anonyme'}</div>
+                        <div style="font-size:13px;color:#444;line-height:1.5;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;">${r.comment}</div>
+                        <div style="font-size:12px;color:#aaa;margin-top:4px;">👍 ${r.likes} &nbsp; 👎 ${r.dislikes}</div>
+                    </div>
+                </div>`;
+            }));
+            box.innerHTML = cards.join('');
+        } catch (e) { box.innerHTML = ''; }
+    })();
 })();
 </script>
 

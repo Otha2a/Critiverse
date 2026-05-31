@@ -1,56 +1,45 @@
 <?php
-/**
- * Vue du formulaire de contact
- * Variables attendues : $title, $heading
- */
+$activePage = 'contact';
+$css        = 'contacts';
+$title      = 'Contact - Critiverse';
+require_once __DIR__ . '/../layouts/header.php';
+
+$success = isset($_GET['success']);
+$error   = $_GET['error'] ?? null;
 ?>
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= htmlspecialchars($title) ?></title>
-    <link rel="stylesheet" href="/assets/css/style.css">
-</head>
-<body>
-    <nav>
-        <a href="/">Accueil</a> |
-        <a href="/apropos">À propos</a> |
-        <a href="/contact">Contact</a>
-    </nav>
 
-    <header>
-        <h1><?= htmlspecialchars($heading) ?></h1>
-    </header>
+<main style="display:flex;justify-content:center;padding:60px 20px;min-height:60vh;">
+    <div class="contact-box">
+        <h2>Nous contacter</h2>
+        <p class="contact-info">Une question ou une suggestion ? Écrivez-nous !</p>
 
-    <main>
-        <script>
-            <?php if (isset($_GET['success'])): ?>
-                alert("Message envoyé avec succès !");
-            <?php elseif (isset($_GET['error'])): ?>
-                <?php if ($_GET['error'] === 'validation'): ?>
-                    alert("Tous les champs sont requis.");
-                <?php elseif ($_GET['error'] === 'db'): ?>
-                    alert("Erreur lors de la sauvegarde du message.");
-                <?php endif; ?>
-            <?php endif; ?>
-        </script>
+        <?php if ($success): ?>
+            <div style="background:#e8f5e9;color:#2e7d32;padding:12px 16px;border-radius:8px;margin-bottom:20px;font-size:14px;">
+                Votre message a bien été envoyé, merci !
+            </div>
+        <?php elseif ($error === 'validation'): ?>
+            <div style="background:#ffe0e0;color:#c00;padding:12px 16px;border-radius:8px;margin-bottom:20px;font-size:14px;">
+                Tous les champs sont requis.
+            </div>
+        <?php elseif ($error === 'db'): ?>
+            <div style="background:#ffe0e0;color:#c00;padding:12px 16px;border-radius:8px;margin-bottom:20px;font-size:14px;">
+                Erreur lors de l'envoi du message, réessayez plus tard.
+            </div>
+        <?php endif; ?>
 
-        <form method="post" action="/contact">
-            <div>
-                <label for="name">Nom :</label>
-                <input type="text" id="name" name="name" required>
-            </div>
-            <div>
-                <label for="email">Email :</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div>
-                <label for="message">Message :</label>
-                <textarea id="message" name="message" rows="5" required></textarea>
-            </div>
-            <button type="submit">Envoyer</button>
+        <form method="POST" action="/Critiverse/public/contact">
+            <label>Nom</label>
+            <input type="text" name="name" placeholder="Votre nom" required>
+
+            <label>Email</label>
+            <input type="email" name="email" placeholder="votre@email.com" required>
+
+            <label>Message</label>
+            <textarea name="message" rows="6" placeholder="Votre message..." required></textarea>
+
+            <button type="submit" class="btn-send">Envoyer</button>
         </form>
-    </main>
-</body>
-</html>
+    </div>
+</main>
+
+<?php require_once __DIR__ . '/../layouts/footer.php'; ?>
