@@ -1,2 +1,178 @@
+/* ── Hero ────────────────────────────────────────────────────── */
+.apropos-hero {
+    text-align: center;
+    padding: 60px 24px 48px;
+    background: linear-gradient(135deg, #2f6df6 0%, #7c3aed 100%);
+    color: white;
+}
 
+.apropos-logo {
+    width: 80px;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
+}
 
+.apropos-hero h1 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin: 0 0 12px;
+}
+
+.apropos-hero h1 span { color: #fde68a; }
+
+.apropos-hero p {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin: 0;
+}
+
+/* ── Sections ────────────────────────────────────────────────── */
+.apropos-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 52px 24px;
+}
+
+.apropos-section-title {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--text);
+    margin: 0 0 10px;
+}
+
+.apropos-section-sub {
+    text-align: center;
+    color: #777;
+    font-size: 14px;
+    margin: 0 0 36px;
+}
+
+/* ── Cards mission/vision ─────────────────────────────────────── */
+.apropos-cards-2 {
+    display: flex;
+    gap: 24px;
+}
+
+.apropos-card {
+    flex: 1;
+    background: var(--bg-card);
+    border-radius: 16px;
+    padding: 36px 32px;
+    box-shadow: 0 4px 20px rgba(0,0,0,.07);
+}
+
+.apropos-card-icon {
+    font-size: 2rem;
+    margin-bottom: 14px;
+}
+
+.apropos-card h2 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text);
+    margin: 0 0 12px;
+}
+
+.apropos-card p {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.75;
+    margin: 0;
+}
+
+/* ── Features ────────────────────────────────────────────────── */
+.apropos-features {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.apropos-feature {
+    background: var(--bg-card);
+    border-radius: 14px;
+    padding: 30px 24px;
+    text-align: center;
+    flex: 0 0 220px;
+    box-shadow: 0 4px 16px rgba(0,0,0,.06);
+    transition: transform 0.2s;
+}
+
+.apropos-feature:hover { transform: translateY(-4px); }
+
+.apropos-feature span {
+    font-size: 2.2rem;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.apropos-feature h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text);
+    margin: 0 0 8px;
+}
+
+.apropos-feature p {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* ── Équipe ──────────────────────────────────────────────────── */
+.apropos-team {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 8px;
+}
+
+.apropos-membre {
+    background: var(--bg-card);
+    border-radius: 14px;
+    padding: 28px 20px;
+    text-align: center;
+    width: 140px;
+    box-shadow: 0 4px 16px rgba(0,0,0,.06);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.2s;
+}
+
+.apropos-membre:hover { transform: translateY(-4px); }
+
+.apropos-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 4px;
+}
+
+.apropos-membre strong {
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.3;
+}
+
+.apropos-membre span {
+    font-size: 12px;
+    color: #888;
+}
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 768px) {
+    .apropos-cards-2 { flex-direction: column; }
+    .apropos-hero h1 { font-size: 1.6rem; }
+    .apropos-feature { flex: 0 0 160px; }
+}

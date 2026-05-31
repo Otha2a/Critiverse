@@ -2,8 +2,16 @@
 // Définition des routes
 
 $router->get('/', 'HomeController@index');
-$router->get('/apropos', 'AproposController@index');
-$router->get('/contact', 'ContactController@index');
+$router->get('/profile',        'ProfileController@index');
+$router->post('/profile/update', 'ProfileController@update');
+$router->get('/apropos',         'AproposController@index');
+$router->get('/mentions',    'MentionsController@index');
+$router->get('/abonnement',              'AbonnementController@index');
+$router->post('/abonnement',             'AbonnementController@subscribe');
+$router->get('/messages',                'MessagesController@inbox');
+$router->get('/messages/conversation',   'MessagesController@conversation');
+$router->post('/messages/send',          'MessagesController@send');
+$router->get('/contact',     'ContactController@index');
 $router->post('/contact', 'ContactController@send');
 
 // Pages principales

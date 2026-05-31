@@ -32,6 +32,7 @@ class AuthController extends Controller
             session_regenerate_id(true);
             $_SESSION['user_id']  = $user['id'];
             $_SESSION['username'] = $user['username'];
+            $_SESSION['plan']     = $user['plan'] ?? 'gratuit';
             $redirect = $_SESSION['redirect_after_login'] ?? self::BASE;
             unset($_SESSION['redirect_after_login']);
             $this->redirect($redirect);
@@ -70,6 +71,7 @@ class AuthController extends Controller
         session_regenerate_id(true);
         $_SESSION['user_id']  = $user['id'];
         $_SESSION['username'] = $user['username'];
+        $_SESSION['plan']     = 'gratuit';
         $this->redirect(self::BASE);
     }
 

@@ -23,7 +23,7 @@ require_once __DIR__ . '/../layouts/header.php';
             <li><a href="/Critiverse/public/series?genre=10759"<?= $g==='10759' ? $activeStyle:''?>>Action</a></li>
             <li><a href="/Critiverse/public/series?genre=35"<?= $g==='35'    ? $activeStyle:''?>>Com&eacute;die</a></li>
             <li><a href="/Critiverse/public/series?genre=18"<?= $g==='18'    ? $activeStyle:''?>>Drame</a></li>
-            <li><a href="/Critiverse/public/series?genre=27"<?= $g==='27'    ? $activeStyle:''?>>Horreur</a></li>
+            <li><a href="/Critiverse/public/series?genre=10768"<?= $g==='10768' ? $activeStyle:''?>>Guerre</a></li>
             <li><a href="/Critiverse/public/series?genre=10749"<?= $g==='10749' ? $activeStyle:''?>>Romance</a></li>
             <li><a href="/Critiverse/public/series?genre=10765"<?= $g==='10765' ? $activeStyle:''?>>Science-Fiction</a></li>
             <li><a href="/Critiverse/public/series?genre=9648"<?= $g==='9648'  ? $activeStyle:''?>>Myst&egrave;re</a></li>

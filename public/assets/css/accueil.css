@@ -4,59 +4,7 @@
 
 * { box-sizing: border-box; }
 
-body {
-    margin: 0;
-    background-color: rgb(251, 234, 214);
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-}
-
-/* ── HEADER ───────────────────────────────────────────────────────────────── */
-
-header {
-    background-color: white;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 12px 24px;
-    box-shadow: 0 1px 0 rgba(0,0,0,0.08);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-}
-
-/* ── SEARCH ───────────────────────────────────────────────────────────────── */
-
-.search {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.search input {
-    border-radius: 20px;
-    background-color: #f3f4f6;
-    padding: 10px 50px;
-    border: 1px solid #e5e7eb;
-    font-family: inherit;
-    font-size: 14px;
-    outline: none;
-    transition: border-color 0.2s;
-}
-
-.search input:focus { border-color: #2f6df6; }
-
-.search button {
-    background-color: #2f6df6;
-    border-radius: 20px;
-    padding: 10px 16px;
-    cursor: pointer;
-    color: white;
-    font-size: 15px;
-    border: none;
-    transition: background-color 0.2s;
-}
-
-.search button:hover { background-color: #2559c7; }
+body { margin: 0; }
 
 /* ── DROPDOWN ─────────────────────────────────────────────────────────────── */
 
@@ -107,7 +55,7 @@ header {
 }
 
 .modal-content {
-    background: white;
+    background: var(--bg-card);
     padding: 30px;
     border-radius: 10px;
     width: 300px;
@@ -123,40 +71,15 @@ header {
 
 /* ── NAVBAR ───────────────────────────────────────────────────────────────── */
 
-.navbar ul {
-    list-style-type: none;
-    background-color: rgb(251, 234, 214);
-    padding: 0; margin: 0;
-    overflow: hidden;
-    border-bottom: 1px solid rgb(220, 185, 140);
-}
-
-.navbar a {
-    color: #333;
-    text-decoration: none;
-    padding: 13px 18px;
-    display: block;
-    text-align: center;
-    font-size: 14px;
-    font-weight: 500;
-    transition: background-color 0.15s;
-}
-
-.navbar a:hover { background-color: rgb(235, 183, 125); }
-
-.navbar li { float: left; }
-
-/* ── LOGO ─────────────────────────────────────────────────────────────────── */
-
 .logo { margin-right: auto; width: 60px; }
 
 /* ── HERO ─────────────────────────────────────────────────────────────────── */
 
 .hero {
-    background: white;
+    background: var(--bg-card);
     padding: 90px 40px 100px;
     text-align: center;
-    border-bottom: 1px solid #f0e0cc;
+    border-bottom: 1px solid var(--border);
     position: relative;
     overflow: hidden;
 }
@@ -185,7 +108,7 @@ header {
 .hero-title {
     font-size: 62px;
     font-weight: 900;
-    color: #111;
+    color: var(--text);
     line-height: 1.1;
     margin: 0 0 22px;
     letter-spacing: -2px;
@@ -197,7 +120,7 @@ header {
 
 .hero-sub {
     font-size: 18px;
-    color: #6b7280;
+    color: var(--text-muted);
     max-width: 500px;
     margin: 0 auto 44px;
     line-height: 1.7;
@@ -258,7 +181,7 @@ header {
 .section-title {
     font-size: 32px;
     font-weight: 800;
-    color: #111;
+    color: var(--text);
     text-align: center;
     margin: 0 0 6px;
     letter-spacing: -0.5px;
@@ -266,7 +189,7 @@ header {
 
 .section-sub {
     text-align: center;
-    color: #6b7280;
+    color: var(--text-muted);
     font-size: 15px;
     margin: 0 0 44px;
 }
@@ -275,7 +198,7 @@ header {
 
 .offer-section {
     padding: 90px 40px;
-    background-color: rgb(251, 234, 214);
+    background-color: var(--bg);
 }
 
 .offer-grid {
@@ -287,7 +210,7 @@ header {
 }
 
 .offer-card {
-    background: white;
+    background: var(--bg-card);
     border-radius: 20px;
     padding: 30px 24px;
     text-decoration: none;
@@ -313,13 +236,13 @@ header {
 .offer-card h3 {
     font-size: 20px;
     font-weight: 700;
-    color: #111;
+    color: var(--text);
     margin: 0;
 }
 
 .offer-card p {
     font-size: 14px;
-    color: #6b7280;
+    color: var(--text-muted);
     line-height: 1.65;
     margin: 0;
     flex: 1;
@@ -335,10 +258,10 @@ header {
 /* ── MISSION SECTION ──────────────────────────────────────────────────────── */
 
 .mission-section {
-    background-color: white;
+    background-color: var(--bg-card);
     padding: 90px 40px;
-    border-top: 1px solid #f0e0cc;
-    border-bottom: 1px solid #f0e0cc;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
 }
 
 .mission-inner {
@@ -350,7 +273,7 @@ header {
 .mission-inner h2 {
     font-size: 32px;
     font-weight: 800;
-    color: #111;
+    color: var(--text);
     margin: 0 0 20px;
     letter-spacing: -0.5px;
 }
@@ -362,18 +285,18 @@ header {
     margin-bottom: 16px;
 }
 
-.mission-inner strong { color: #111; }
+.mission-inner strong { color: var(--text); }
 
 /* ── TEAM SECTION ─────────────────────────────────────────────────────────── */
 
 .team-section {
     padding: 90px 40px;
-    background-color: rgb(251, 234, 214);
+    background-color: var(--bg);
     text-align: center;
 }
 
 .team-sub {
-    color: #6b7280;
+    color: var(--text-muted);
     font-size: 15px;
     margin: 6px 0 44px;
     text-align: center;
@@ -389,7 +312,7 @@ header {
 }
 
 .team-card {
-    background: white;
+    background: var(--bg-card);
     border-radius: 16px;
     padding: 24px 16px 20px;
     display: flex;
@@ -430,9 +353,9 @@ header {
 /* ── PREVIEW SECTION ──────────────────────────────────────────────────────── */
 
 .preview-section {
-    background: white;
+    background: var(--bg-card);
     padding: 80px 0 70px;
-    border-top: 1px solid #f0e0cc;
+    border-top: 1px solid var(--border);
 }
 
 .preview-section .section-title { margin-bottom: 6px; }
@@ -487,30 +410,6 @@ header {
 
 .poster:hover .poster-title { opacity: 1; }
 
-/* ── FOOTER ───────────────────────────────────────────────────────────────── */
-
-.footer {
-    background-color: rgb(251, 234, 214);
-    padding: 40px 60px;
-    font-size: 14px;
-    border-top: 1px solid rgb(220, 185, 140);
-}
-
-.footer-content { display: flex; justify-content: space-between; }
-
-.footer-left { display: flex; flex-direction: column; gap: 20px; }
-
-.footer-links { display: flex; gap: 20px; }
-.footer-links a { text-decoration: none; color: #555; }
-
-.footer-socials { display: flex; gap: 15px; }
-.footer-socials a { text-decoration: none; color: #555; font-size: 18px; }
-
-.footer-right { display: flex; gap: 60px; }
-
-.footer-col { display: flex; flex-direction: column; gap: 8px; }
-.footer-col h4 { margin-bottom: 10px; font-size: 14px; color: #333; }
-.footer-col a { text-decoration: none; color: #555; font-size: 13px; }
 
 /* ── SCROLL ANIMATIONS ────────────────────────────────────────────────────── */
 

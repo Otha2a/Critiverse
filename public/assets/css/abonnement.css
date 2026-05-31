@@ -1,0 +1,219 @@
+/* ── Hero ────────────────────────────────────────────────────── */
+.abo-hero {
+    text-align: center;
+    padding: 52px 24px 40px;
+    background: linear-gradient(135deg, #1e3a8a 0%, #2f6df6 100%);
+    color: white;
+}
+
+.abo-hero h1 { font-size: 2rem; font-weight: 800; margin: 0 0 10px; }
+.abo-hero p  { font-size: 1rem; opacity: 0.88; margin: 0; }
+
+/* ── Plans ───────────────────────────────────────────────────── */
+.abo-plans {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    padding: 48px 24px;
+    flex-wrap: wrap;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.abo-card {
+    background: var(--bg-card);
+    border-radius: 16px;
+    padding: 36px 28px;
+    width: 300px;
+    box-shadow: 0 4px 20px rgba(0,0,0,.08);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    transition: transform 0.2s;
+}
+
+.abo-card:hover { transform: translateY(-4px); }
+
+.abo-card-featured {
+    border: 2px solid #2f6df6;
+    transform: scale(1.03);
+}
+
+.abo-card-featured:hover { transform: scale(1.03) translateY(-4px); }
+
+.abo-badge-popular, .abo-badge-current {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 16px;
+    border-radius: 20px;
+    white-space: nowrap;
+    color: white;
+}
+
+.abo-badge-popular  { background: #2f6df6; }
+.abo-badge-current  { background: #16a34a; }
+
+.abo-card-current {
+    border: 2px solid #16a34a;
+}
+
+.abo-btn-disabled {
+    background: #e5e7eb;
+    color: #9ca3af;
+    cursor: not-allowed;
+}
+
+.abo-card-header { text-align: center; }
+
+.abo-icon { font-size: 2.2rem; display: block; margin-bottom: 8px; }
+
+.abo-card-header h2 {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #111;
+    margin: 0 0 10px;
+}
+
+.abo-price { display: flex; align-items: baseline; justify-content: center; gap: 4px; }
+.abo-amount { font-size: 2rem; font-weight: 800; color: #2f6df6; }
+.abo-period { font-size: 14px; color: #888; }
+
+.abo-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+}
+
+.abo-features li { font-size: 14px; color: var(--text); }
+
+/* ── Boutons ─────────────────────────────────────────────────── */
+.abo-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    transition: background 0.2s, transform 0.1s;
+    text-align: center;
+}
+
+.abo-btn:active { transform: scale(0.98); }
+
+.abo-btn-primary {
+    background: #2f6df6;
+    color: white;
+}
+
+.abo-btn-primary:hover { background: #2559c7; }
+
+.abo-btn-outline {
+    background: var(--bg-card);
+    color: #2f6df6;
+    border: 2px solid #2f6df6;
+}
+
+.abo-btn-outline:hover { background: #f0f5ff; }
+.abo-btn-full { width: 100%; margin-top: 8px; }
+
+/* ── Formulaire ──────────────────────────────────────────────── */
+.abo-form-section {
+    background: var(--bg);
+    padding: 60px 24px;
+}
+
+.abo-form-box {
+    max-width: 580px;
+    margin: 0 auto;
+    background: var(--bg-card);
+    border-radius: 16px;
+    padding: 44px 48px;
+    box-shadow: 0 4px 24px rgba(0,0,0,.09);
+}
+
+.abo-form-box h2 {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #111;
+    margin: 0 0 6px;
+}
+
+.abo-form-sub { color: #888; font-size: 14px; margin: 0 0 28px; }
+
+.abo-form { display: flex; flex-direction: column; gap: 18px; }
+
+.abo-form-row { display: flex; gap: 16px; }
+.abo-form-row .abo-form-group { flex: 1; }
+
+.abo-form-group { display: flex; flex-direction: column; gap: 6px; }
+
+.abo-form-group label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #333;
+}
+
+.abo-form-group input {
+    padding: 11px 14px;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    font-size: 14px;
+    font-family: inherit;
+    background: var(--bg-input);
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.abo-form-group input:focus {
+    border-color: #2f6df6;
+    background: var(--bg-card);
+}
+
+/* Sélection du plan */
+.abo-plan-select {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.abo-radio {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--text);
+    transition: border-color 0.2s, background 0.2s;
+}
+
+.abo-radio:hover { border-color: #2f6df6; background: #f0f5ff; }
+.abo-radio input { accent-color: #2f6df6; width: 16px; height: 16px; }
+.abo-radio-featured { border-color: #2f6df6; background: #f0f5ff; font-weight: 600; color: #1a1a1a; }
+
+/* Alerte succès */
+.abo-alert { padding: 14px 16px; border-radius: 10px; font-size: 14px; margin-bottom: 24px; }
+.abo-alert-success { background: #e8f5e9; color: #2e7d32; border: 1px solid #a5d6a7; }
+
+.abo-secure { text-align: center; font-size: 12px; color: #999; margin: 8px 0 0; }
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 768px) {
+    .abo-card { width: 100%; }
+    .abo-card-featured { transform: none; }
+    .abo-form-box { padding: 30px 24px; }
+    .abo-form-row { flex-direction: column; }
+}

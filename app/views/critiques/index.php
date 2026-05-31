@@ -121,7 +121,7 @@ function buildCard(review, media, tagClass, emoji) {
                 <a href="${media.url}" style="text-decoration:none;color:inherit;">${media.title}</a>
             </div>
             <div class="critique-stars">${stars} <span style="color:#555;font-size:13px;">${review.score}/5</span></div>
-            <div class="critique-meta">👤 <strong>${review.username || 'Anonyme'}</strong> — Le ${date}</div>
+            <div class="critique-meta">👤 <strong class="username-link" data-username="${review.username || ''}" onclick="openProfile('${review.username || ''}', this)">${review.username || 'Anonyme'}</strong> — Le ${date}</div>
             <div class="critique-text">${review.comment}</div>
             <div class="vote-row">
                 <button type="button" class="vote-btn" data-vote="like" onclick="vote(${review.id},'like',this)"

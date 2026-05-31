@@ -136,7 +136,7 @@ require_once __DIR__ . '/../layouts/header.php';
 </section>
 
 <!-- APERÇU ACTUALITÉS -->
-<section style="background:#fff;padding:48px 0 36px;">
+<section style="background:var(--bg-card);padding:48px 0 36px;">
     <h2 class="section-title fade-in">Dernières actualités</h2>
     <p class="section-sub fade-in">Les sorties et tendances du moment</p>
     <div id="actu-preview" style="display:flex;gap:18px;padding:20px 40px;overflow-x:auto;justify-content:center;flex-wrap:wrap;"></div>
@@ -146,7 +146,7 @@ require_once __DIR__ . '/../layouts/header.php';
 </section>
 
 <!-- APERÇU CRITIQUES POPULAIRES -->
-<section style="padding:48px 0 36px;background:rgb(251,234,214);">
+<section style="padding:48px 0 36px;background:var(--bg);">
     <h2 class="section-title fade-in">Critiques populaires</h2>
     <p class="section-sub fade-in">Les avis les plus likés de la communauté</p>
     <div id="critique-preview" style="max-width:860px;margin:0 auto;padding:0 24px;"></div>
@@ -216,14 +216,14 @@ require_once __DIR__ . '/../layouts/header.php';
                     poster = md.poster_path ? IMG + md.poster_path : null;
                 } catch (e) {}
                 const stars = '★'.repeat(r.score) + '☆'.repeat(5 - r.score);
-                return `<div style="display:flex;gap:14px;background:white;padding:16px;border-radius:12px;margin-bottom:12px;box-shadow:0 2px 10px rgba(0,0,0,.07);">
+                return `<div style="display:flex;gap:14px;background:var(--bg-card);padding:16px;border-radius:12px;margin-bottom:12px;box-shadow:0 2px 10px rgba(0,0,0,.15);">
                     ${poster ? `<img src="${poster}" style="width:56px;height:84px;object-fit:cover;border-radius:6px;flex-shrink:0;">` : '<div style="width:56px;height:84px;background:#eee;border-radius:6px;flex-shrink:0;"></div>'}
                     <div>
-                        <div style="font-weight:700;font-size:14px;margin-bottom:2px;">${title}</div>
+                        <div style="font-weight:700;font-size:14px;margin-bottom:2px;color:var(--text);">${title}</div>
                         <div style="color:#ffca08;font-size:15px;">${stars}</div>
-                        <div style="font-size:12px;color:#888;margin-bottom:6px;">👤 ${r.username || 'Anonyme'}</div>
-                        <div style="font-size:13px;color:#444;line-height:1.5;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;">${r.comment}</div>
-                        <div style="font-size:12px;color:#aaa;margin-top:4px;">👍 ${r.likes} &nbsp; 👎 ${r.dislikes}</div>
+                        <div style="font-size:12px;color:var(--text-muted);margin-bottom:6px;">👤 ${r.username || 'Anonyme'}</div>
+                        <div style="font-size:13px;color:var(--text-muted);line-height:1.5;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;">${r.comment}</div>
+                        <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">👍 ${r.likes} &nbsp; 👎 ${r.dislikes}</div>
                     </div>
                 </div>`;
             }));
