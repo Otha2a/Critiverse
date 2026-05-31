@@ -17,16 +17,17 @@ main{display:block!important}
 ';
 require_once __DIR__ . '/../layouts/header.php';
 ?>
+    <?php $g = $_GET['genre'] ?? ''; ?>
     <nav class="navbar">
         <ul>
-            <li><a href="/Critiverse/public/animes?genre=1">Action</a></li>
-            <li><a href="/Critiverse/public/animes?genre=22">Romance</a></li>
-            <li><a href="/Critiverse/public/animes?genre=10">Fantasy</a></li>
-            <li><a href="/Critiverse/public/animes?genre=24">Science-Fiction</a></li>
-            <li><a href="/Critiverse/public/animes?genre=62">Isekai</a></li>
-            <li><a href="/Critiverse/public/animes?genre=30">Sports</a></li>
-            <li><a href="/Critiverse/public/animes?genre=14">Horreur</a></li>
-            <li><a href="/Critiverse/public/animes?genre=2">Aventure</a></li>
+            <li><a href="/Critiverse/public/animes?genre=1"<?= $g==='1'  ? $activeStyle:''?>>Action</a></li>
+            <li><a href="/Critiverse/public/animes?genre=22"<?= $g==='22' ? $activeStyle:''?>>Romance</a></li>
+            <li><a href="/Critiverse/public/animes?genre=10"<?= $g==='10' ? $activeStyle:''?>>Fantasy</a></li>
+            <li><a href="/Critiverse/public/animes?genre=24"<?= $g==='24' ? $activeStyle:''?>>Science-Fiction</a></li>
+            <li><a href="/Critiverse/public/animes?genre=62"<?= $g==='62' ? $activeStyle:''?>>Isekai</a></li>
+            <li><a href="/Critiverse/public/animes?genre=30"<?= $g==='30' ? $activeStyle:''?>>Sports</a></li>
+            <li><a href="/Critiverse/public/animes?genre=14"<?= $g==='14' ? $activeStyle:''?>>Horreur</a></li>
+            <li><a href="/Critiverse/public/animes?genre=2"<?= $g==='2'  ? $activeStyle:''?>>Aventure</a></li>
         </ul>
     </nav>
 

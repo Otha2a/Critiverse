@@ -50,9 +50,9 @@ try {
          WHERE r.media_type = ?
          GROUP BY r.id
          ORDER BY r.score DESC, likes DESC, r.created_at DESC
-         LIMIT ?"
+         LIMIT {$limit}"
     );
-    $stmt->execute([$userId, $type, $limit]);
+    $stmt->execute([$userId, $type]);
     echo json_encode(['success' => true, 'reviews' => $stmt->fetchAll()]);
 } catch (PDOException $e) {
     http_response_code(500);

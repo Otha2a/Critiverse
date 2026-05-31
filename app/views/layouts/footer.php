@@ -1,4 +1,3 @@
-    <hr>
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-left">

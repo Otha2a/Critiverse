@@ -17,16 +17,17 @@ main{display:block!important}
 ';
 require_once __DIR__ . '/../layouts/header.php';
 ?>
+    <?php $g = $_GET['genre'] ?? ''; ?>
     <nav class="navbar">
         <ul>
-            <li><a href="/Critiverse/public/series?genre=10759">Action</a></li>
-            <li><a href="/Critiverse/public/series?genre=35">Com&eacute;die</a></li>
-            <li><a href="/Critiverse/public/series?genre=18">Drame</a></li>
-            <li><a href="/Critiverse/public/series?genre=27">Horreur</a></li>
-            <li><a href="/Critiverse/public/series?genre=10749">Romance</a></li>
-            <li><a href="/Critiverse/public/series?genre=10765">Science-Fiction</a></li>
-            <li><a href="/Critiverse/public/series?genre=9648">Myst&egrave;re</a></li>
-            <li><a href="/Critiverse/public/series?genre=80">Crime</a></li>
+            <li><a href="/Critiverse/public/series?genre=10759"<?= $g==='10759' ? $activeStyle:''?>>Action</a></li>
+            <li><a href="/Critiverse/public/series?genre=35"<?= $g==='35'    ? $activeStyle:''?>>Com&eacute;die</a></li>
+            <li><a href="/Critiverse/public/series?genre=18"<?= $g==='18'    ? $activeStyle:''?>>Drame</a></li>
+            <li><a href="/Critiverse/public/series?genre=27"<?= $g==='27'    ? $activeStyle:''?>>Horreur</a></li>
+            <li><a href="/Critiverse/public/series?genre=10749"<?= $g==='10749' ? $activeStyle:''?>>Romance</a></li>
+            <li><a href="/Critiverse/public/series?genre=10765"<?= $g==='10765' ? $activeStyle:''?>>Science-Fiction</a></li>
+            <li><a href="/Critiverse/public/series?genre=9648"<?= $g==='9648'  ? $activeStyle:''?>>Myst&egrave;re</a></li>
+            <li><a href="/Critiverse/public/series?genre=80"<?= $g==='80'    ? $activeStyle:''?>>Crime</a></li>
         </ul>
     </nav>
 

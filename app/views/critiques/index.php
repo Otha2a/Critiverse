@@ -1,8 +1,9 @@
 <?php
-$activePage = 'critiques';
-$css        = 'critiques';
-$title      = 'Critiques Populaires - Critiverse';
-$isLoggedIn = isset($_SESSION['user_id']);
+$activePage        = 'critiques';
+$css               = 'critiques';
+$title             = 'Critiques Populaires - Critiverse';
+$searchPlaceholder = 'Rechercher une critique...';
+$isLoggedIn        = isset($_SESSION['user_id']);
 require_once __DIR__ . '/../layouts/header.php';
 ?>
 
@@ -165,6 +166,7 @@ async function loadSection(type, containerId, getInfo, tagClass, emoji) {
         }
 
         container.innerHTML = cards.join('') || '<p class="empty-msg">Aucun avis publié pour le moment.</p>';
+        applyFilter();
     } catch (err) {
         container.innerHTML = '<p class="empty-msg">Erreur lors du chargement.</p>';
         console.error(err);
@@ -203,6 +205,43 @@ async function vote(reviewId, type, btn) {
         }
     } catch (err) { console.error('Erreur vote:', err); }
 }
+
+// ── Recherche ────────────────────────────────────────────────────────────────
+let currentQuery = '';
+
+function applyFilter() {
+    ['film', 'serie', 'anime'].forEach(type => {
+        const container = document.getElementById(`list-${type}`);
+        if (!container) return;
+        const cards = container.querySelectorAll('.critique-card');
+        if (!cards.length) return;
+
+        let hasVisible = false;
+        cards.forEach(card => {
+            const title    = (card.querySelector('.critique-title')?.textContent || '').trim().toLowerCase();
+            const username = (card.querySelector('.critique-meta strong')?.textContent || '').trim().toLowerCase();
+            const matches  = !currentQuery || title.includes(currentQuery) || username.includes(currentQuery);
+            card.style.display = matches ? '' : 'none';
+            if (matches) hasVisible = true;
+        });
+
+        container.querySelector('.no-results-msg')?.remove();
+        if (!hasVisible && currentQuery) {
+            container.insertAdjacentHTML('beforeend',
+                `<p class="no-results-msg empty-msg">Aucun résultat pour "<strong>${currentQuery}</strong>".</p>`
+            );
+        }
+    });
+}
+
+function doSearch() {
+    currentQuery = document.getElementById('searchInput').value.trim().toLowerCase();
+    applyFilter();
+}
+
+document.getElementById('searchInput').addEventListener('keydown', e => {
+    if (e.key === 'Enter') doSearch();
+});
 
 // ── Lancement ────────────────────────────────────────────────────────────────
 loadSection('film',  'list-film',  getFilmInfo,  'tag-film',  '🎬');

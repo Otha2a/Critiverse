@@ -8,7 +8,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <?php $cssFile = htmlspecialchars($css ?? 'accueil'); $cssVer = @filemtime($_SERVER['DOCUMENT_ROOT'] . '/Critiverse/public/assets/css/' . $cssFile . '.css') ?: time(); ?>
+    <?php
+        $styleVer = @filemtime($_SERVER['DOCUMENT_ROOT'] . '/Critiverse/public/assets/css/style.css') ?: time();
+        $cssFile  = htmlspecialchars($css ?? 'accueil');
+        $cssVer   = @filemtime($_SERVER['DOCUMENT_ROOT'] . '/Critiverse/public/assets/css/' . $cssFile . '.css') ?: time();
+    ?>
+    <link rel="stylesheet" href="/Critiverse/public/assets/css/style.css?v=<?= $styleVer ?>">
     <link rel="stylesheet" href="/Critiverse/public/assets/css/<?= $cssFile ?>.css?v=<?= $cssVer ?>">
     <?php if (!empty($extraCss)): ?><style><?= $extraCss ?></style><?php endif; ?>
 </head>
@@ -18,7 +23,8 @@
             <a href="/Critiverse/public/"><img src="/Critiverse/archives/images/autres/logo.png" class="logo" alt="Logo"></a>
             <input type="text" id="searchInput" placeholder="<?= htmlspecialchars($searchPlaceholder ?? 'Rechercher') ?>">
             <button type="button" onclick="if(typeof doSearch==='function')doSearch()">🔎</button>
-
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;">
             <?php if (isset($_SESSION['user_id'])): ?>
                 <span style="font-weight:bold;padding:8px 12px;">👤 <?= htmlspecialchars($_SESSION['username']) ?></span>
                 <a href="/Critiverse/public/logout">
