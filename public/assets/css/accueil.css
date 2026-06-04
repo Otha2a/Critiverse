@@ -1,11 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
-
-/* ── BASE ─────────────────────────────────────────────────────────────────── */
-
-* { box-sizing: border-box; }
-
-body { margin: 0; }
-
 /* ── DROPDOWN ─────────────────────────────────────────────────────────────── */
 
 .dropdown {
@@ -25,7 +17,7 @@ body { margin: 0; }
 
 .dropdown a {
     display: block;
-    color: black;
+    color: var(--text);
     text-decoration: none;
     padding: 10px 15px;
 }
@@ -69,9 +61,6 @@ body { margin: 0; }
     font-size: 20px;
 }
 
-/* ── NAVBAR ───────────────────────────────────────────────────────────────── */
-
-.logo { margin-right: auto; width: 60px; }
 
 /* ── HERO ─────────────────────────────────────────────────────────────────── */
 
@@ -157,7 +146,7 @@ body { margin: 0; }
     box-shadow: 0 6px 20px rgba(47,109,246,0.35);
 }
 
-.btn-outline {
+.btn-hero-outline {
     background-color: transparent;
     color: #2f6df6;
     padding: 14px 32px;
@@ -171,7 +160,7 @@ body { margin: 0; }
     font-family: inherit;
 }
 
-.btn-outline:hover {
+.btn-hero-outline:hover {
     background-color: rgba(47,109,246,0.07);
     transform: translateY(-2px);
 }
@@ -280,7 +269,7 @@ body { margin: 0; }
 
 .mission-inner p {
     font-size: 16px;
-    color: #4b5563;
+    color: var(--text-muted);
     line-height: 1.85;
     margin-bottom: 16px;
 }

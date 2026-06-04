@@ -51,6 +51,9 @@ $nav = $activePage ?? '';
         <a href="/Critiverse/public/animes"<?= $nav==='animes'? $activeStyle:''?>>Animes</a>
         <a href="/Critiverse/public/critiques"<?= $nav==='critiques'  ? $activeStyle:''?>>Critiques</a>
         <a href="/Critiverse/public/abonnement"<?= $nav==='abonnement' ? $activeStyle:''?>>Abonnement</a>
+        <?php if (isset($_SESSION['user_id'])): ?>
+        <a href="/Critiverse/public/watchlist"<?= $nav==='watchlist' ? $activeStyle:''?>>🎯 Watchlist</a>
+        <?php endif; ?>
     </nav>
 
     <!-- Droite : utilisateur -->
@@ -90,9 +93,8 @@ $nav = $activePage ?? '';
 $activeStyle = ' style="background:rgba(91,126,245,0.15);color:#5b7ef5;"';
 
 // Bannière pub pour les utilisateurs plan gratuit connectés
-if (isset($_SESSION['user_id']) && ($plan ?? 'gratuit') === 'gratuit'):
-?>
+if (isset($_SESSION['user_id']) && ($plan ?? 'gratuit') === 'gratuit') { ?>
 <div class="pub-banner">
     📢 <strong>Publicité</strong> — Passez à <a href="/Critiverse/public/abonnement">Premium</a> pour supprimer les publicités et accéder à plus de fonctionnalités !
 </div>
-<?php endif; ?>
+<?php } ?>

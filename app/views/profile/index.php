@@ -27,10 +27,17 @@ $mediaLabel = fn($type) => match($type) {
     <!-- ── Colonne gauche : carte identité ── -->
     <aside class="prof-sidebar">
         <div class="prof-avatar" style="background:<?= $color ?>">
-            <?= mb_strtoupper(mb_substr($user['username'], 0, 1)) ?>
+            <?php if (!empty($user['avatar'])): ?>
+                <img src="<?= htmlspecialchars($user['avatar']) ?>" alt="Avatar" class="prof-avatar-img">
+            <?php else: ?>
+                <?= mb_strtoupper(mb_substr($user['username'], 0, 1)) ?>
+            <?php endif; ?>
         </div>
         <h1 class="prof-username"><?= htmlspecialchars($user['username']) ?></h1>
         <?= $badgeHtml ?>
+        <?php if (!empty($user['bio'])): ?>
+            <p class="prof-bio-display"><?= htmlspecialchars($user['bio']) ?></p>
+        <?php endif; ?>
         <p class="prof-since">
             Membre depuis <?= date('F Y', strtotime($user['created_at'])) ?>
         </p>
@@ -58,11 +65,46 @@ $mediaLabel = fn($type) => match($type) {
             <div class="prof-alert success">✅ Profil mis à jour avec succès !</div>
         <?php elseif ($success === 'password'): ?>
             <div class="prof-alert success">✅ Mot de passe modifié avec succès !</div>
+        <?php elseif ($success === 'profile'): ?>
+            <div class="prof-alert success">✅ Photo et bio mises à jour !</div>
         <?php endif; ?>
 
         <?php if ($error): ?>
             <div class="prof-alert error">⚠️ <?= htmlspecialchars($error) ?></div>
         <?php endif; ?>
+
+        <!-- Photo de profil & Bio -->
+        <section class="prof-section">
+            <h2>🖼️ Photo de profil &amp; Bio</h2>
+            <form method="POST" action="/Critiverse/public/profile/update"
+                  class="prof-form" enctype="multipart/form-data">
+                <input type="hidden" name="action" value="update_profile">
+
+                <div class="prof-form-group">
+                    <label for="avatar-input">Photo de profil</label>
+                    <div class="prof-avatar-upload">
+                        <?php if (!empty($user['avatar'])): ?>
+                            <img src="<?= htmlspecialchars($user['avatar']) ?>"
+                                 class="prof-avatar-preview" alt="Avatar actuel">
+                        <?php endif; ?>
+                        <input type="file" id="avatar-input" name="avatar"
+                               accept="image/jpeg,image/png,image/gif,image/webp"
+                               class="prof-file-input">
+                        <p class="prof-file-hint">JPG, PNG, GIF ou WEBP · max 2 Mo</p>
+                    </div>
+                </div>
+
+                <div class="prof-form-group">
+                    <label for="bio-input">Bio <span class="prof-char-limit">(max 300 caractères)</span></label>
+                    <textarea id="bio-input" name="bio" class="prof-bio-input"
+                              maxlength="300"
+                              placeholder="Présentez-vous en quelques mots..."><?= htmlspecialchars($user['bio'] ?? '') ?></textarea>
+                    <p class="prof-char-count"><span id="bio-count"><?= mb_strlen($user['bio'] ?? '') ?></span> / 300</p>
+                </div>
+
+                <button type="submit" class="prof-btn">Enregistrer</button>
+            </form>
+        </section>
 
         <!-- Modifier les infos -->
         <section class="prof-section">
@@ -137,4 +179,15 @@ $mediaLabel = fn($type) => match($type) {
     </main>
 </div>
 
+<script>
+(function () {
+    var bio   = document.getElementById('bio-input');
+    var count = document.getElementById('bio-count');
+    if (bio && count) {
+        bio.addEventListener('input', function () {
+            count.textContent = bio.value.length;
+        });
+    }
+})();
+</script>
 <?php require_once __DIR__ . '/../layouts/footer.php'; ?>

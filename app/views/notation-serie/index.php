@@ -2,7 +2,7 @@
 $activePage        = 'series';
 $css               = 'animes';
 $searchPlaceholder = 'Rechercher une s&eacute;rie...';
-$extraCss = 'main{display:block}.details-container{display:flex;flex-wrap:wrap;gap:40px;max-width:1200px;margin:auto;padding:40px}.serie-info{flex:1 1 580px;min-width:320px}.serie-top{display:flex;flex-wrap:wrap;gap:30px;align-items:flex-start}.serie-cover{flex:0 0 280px}.serie-cover img{width:100%;border-radius:12px;box-shadow:0 10px 20px rgba(0,0,0,.3)}.serie-summary{flex:1;min-width:260px}.serie-info h1{margin-top:0;color:#333}.rating-section{flex:1 1 320px;min-width:320px;background:#fff;padding:30px;border-radius:15px;box-shadow:0 4px 15px rgba(0,0,0,.1);height:fit-content;margin-left:auto}.star-rating{display:flex;flex-direction:row-reverse;justify-content:flex-end;gap:10px;margin:15px 0}.star-rating input{display:none}.star-rating label{font-size:45px;color:#ddd;cursor:pointer;transition:.2s}.star-rating label:hover,.star-rating label:hover~label,.star-rating input:checked~label{color:#ffca08}.synopsis-box{margin:20px 0;line-height:1.7;background:#f9f9f9;padding:20px;border-radius:10px;border-left:4px solid #2f6df6;font-size:15px;color:#444}textarea{width:100%;height:120px;padding:15px;border:1px solid #ddd;border-radius:8px;resize:none;font-family:inherit;margin-bottom:15px;box-sizing:border-box}#submit-rating{background:#2f6df6;color:white;border:none;padding:15px;border-radius:8px;cursor:pointer;width:100%;font-weight:bold;font-size:16px;transition:.3s}#submit-rating:hover{background:#1a52d5}.reviews-area{max-width:1200px;margin:40px auto;padding:0 40px}.review-card{background:white;padding:20px;border-radius:10px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.05)}.review-header{display:flex;justify-content:space-between;margin-bottom:10px}.stars-display{color:#ffca08;font-weight:bold}.review-date{color:#888;font-size:.9em}.seasons-area{max-width:1200px;margin:0 auto;padding:0 40px 40px}.seasons-list{display:flex;flex-wrap:wrap;gap:16px}.season-card{width:140px;cursor:pointer;border-radius:10px;overflow:hidden;background:white;box-shadow:0 2px 8px rgba(0,0,0,.1);transition:transform .2s,box-shadow .2s;text-align:center}.season-card:hover{transform:scale(1.04)}.season-card.active{outline:3px solid #2f6df6}.season-card img{width:100%;height:200px;object-fit:cover;display:block}.season-label{padding:8px 6px;font-size:13px;font-weight:bold}.season-ep-count{padding:0 6px 8px;font-size:12px;color:#777}.episodes-container{margin-top:24px;background:white;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,.08);overflow:hidden}.episode-row{display:flex;gap:16px;padding:14px 18px;border-bottom:1px solid #f0f0f0;align-items:flex-start;cursor:pointer;transition:background .15s}.episode-row:last-child{border-bottom:none}.episode-row:hover{background:#f7f9ff}.episode-thumb{flex:0 0 120px;height:70px;border-radius:6px;object-fit:cover}.episode-thumb-placeholder{flex:0 0 120px;height:70px;border-radius:6px;background:#e0e0e0;display:flex;align-items:center;justify-content:center;color:#aaa;font-size:12px}.episode-body{flex:1}.episode-title{font-weight:bold;font-size:14px;margin-bottom:4px}.episode-meta{font-size:12px;color:#888;margin-bottom:6px}.episode-synopsis{font-size:13px;color:#555;line-height:1.5;display:none}.episode-row.open .episode-synopsis{display:block}';
+$extraCss = 'main{display:block}.details-container{display:flex;flex-wrap:wrap;gap:40px;max-width:1200px;margin:auto;padding:40px}.serie-info{flex:1 1 580px;min-width:320px}.serie-top{display:flex;flex-wrap:wrap;gap:30px;align-items:flex-start}.serie-cover{flex:0 0 280px}.serie-cover img{width:100%;border-radius:12px;box-shadow:0 10px 20px rgba(0,0,0,.3)}.serie-summary{flex:1;min-width:260px}.serie-info h1{margin-top:0;color:var(--text)}.rating-section{flex:1 1 320px;min-width:320px;background:#fff;padding:30px;border-radius:15px;box-shadow:0 4px 15px rgba(0,0,0,.1);height:fit-content;margin-left:auto}.star-rating{display:flex;flex-direction:row-reverse;justify-content:flex-end;gap:10px;margin:15px 0}.star-rating input{display:none}.star-rating label{font-size:45px;color:#ddd;cursor:pointer;transition:.2s}.star-rating label:hover,.star-rating label:hover~label,.star-rating input:checked~label{color:#ffca08}.synopsis-box{margin:20px 0;line-height:1.7;background:#f9f9f9;padding:20px;border-radius:10px;border-left:4px solid #2f6df6;font-size:15px;color:#444}textarea{width:100%;height:120px;padding:15px;border:1px solid #ddd;border-radius:8px;resize:none;font-family:inherit;margin-bottom:15px;box-sizing:border-box}#submit-rating{background:#2f6df6;color:white;border:none;padding:15px;border-radius:8px;cursor:pointer;width:100%;font-weight:bold;font-size:16px;transition:.3s}#submit-rating:hover{background:#1a52d5}.reviews-area{max-width:1200px;margin:40px auto;padding:0 40px}.review-card{background:white;padding:20px;border-radius:10px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.05)}.review-header{display:flex;justify-content:space-between;margin-bottom:10px}.stars-display{color:#ffca08;font-weight:bold}.review-date{color:#888;font-size:.9em}.seasons-area{max-width:1200px;margin:0 auto;padding:0 40px 40px}.seasons-list{display:flex;flex-wrap:wrap;gap:16px}.season-card{width:140px;cursor:pointer;border-radius:10px;overflow:hidden;background:white;box-shadow:0 2px 8px rgba(0,0,0,.1);transition:transform .2s,box-shadow .2s;text-align:center}.season-card:hover{transform:scale(1.04)}.season-card.active{outline:3px solid #2f6df6}.season-card img{width:100%;height:200px;object-fit:cover;display:block}.season-label{padding:8px 6px;font-size:13px;font-weight:bold}.season-ep-count{padding:0 6px 8px;font-size:12px;color:#777}.episodes-container{margin-top:24px;background:white;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,.08);overflow:hidden}.episode-row{display:flex;gap:16px;padding:14px 18px;border-bottom:1px solid #f0f0f0;align-items:flex-start;cursor:pointer;transition:background .15s}.episode-row:last-child{border-bottom:none}.episode-row:hover{background:#f7f9ff}.episode-thumb{flex:0 0 120px;height:70px;border-radius:6px;object-fit:cover}.episode-thumb-placeholder{flex:0 0 120px;height:70px;border-radius:6px;background:#e0e0e0;display:flex;align-items:center;justify-content:center;color:#aaa;font-size:12px}.episode-body{flex:1}.episode-title{font-weight:bold;font-size:14px;margin-bottom:4px}.episode-meta{font-size:12px;color:#888;margin-bottom:6px}.episode-synopsis{font-size:13px;color:#555;line-height:1.5;display:none}.episode-row.open .episode-synopsis{display:block}';
 require_once __DIR__ . '/../layouts/header.php';
 ?>
     <nav class="navbar">
@@ -63,14 +63,34 @@ require_once __DIR__ . '/../layouts/header.php';
             if (e.key === 'Enter') doSearch();
         });
 
+        function buildStreamingHtml(fr) {
+            const seen = new Set();
+            const all  = [...(fr?.flatrate||[]), ...(fr?.free||[]), ...(fr?.ads||[])].filter(p => {
+                if (seen.has(p.provider_id)) return false;
+                seen.add(p.provider_id);
+                return true;
+            });
+            if (!all.length) {
+                const jwLink = fr?.link || 'https://www.justwatch.com/fr';
+                return `<div style="margin-top:12px;font-size:13px;color:#888;">📺 Non disponible en streaming en France — <a href="${jwLink}" target="_blank" rel="noopener" style="color:#2f6df6;font-weight:600;">Voir sur JustWatch</a></div>`;
+            }
+            const logos = all.map(p => `<img src="https://image.tmdb.org/t/p/original${p.logo_path}" alt="${p.provider_name}" title="${p.provider_name}" style="width:40px;height:40px;border-radius:8px;object-fit:cover;">`).join('');
+            return `<div style="margin-top:16px;padding:14px 16px;background:#f0f7ff;border-radius:10px;border-left:4px solid #2f6df6;"><strong style="font-size:14px;display:block;margin-bottom:10px;color:#1a1a1a;">📺 Disponible en streaming sur :</strong><div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;">${logos}</div></div>`;
+        }
+
         async function loadSerieData() {
             if (!serieId) {
                 document.getElementById('serie-details-target').innerHTML = "<h2>Erreur : Aucune série sélectionnée.</h2>";
                 return;
             }
             try {
-                const res   = await fetch(`${TMDB_URL}/tv/${serieId}?api_key=${API_KEY}&language=fr-FR`);
-                const serie = await res.json();
+                const [serieRes, provRes] = await Promise.all([
+                    fetch(`${TMDB_URL}/tv/${serieId}?api_key=${API_KEY}&language=fr-FR`),
+                    fetch(`${TMDB_URL}/tv/${serieId}/watch/providers?api_key=${API_KEY}`)
+                ]);
+                const serie         = await serieRes.json();
+                const provData      = await provRes.json();
+                const streamingHtml = buildStreamingHtml(provData?.results?.FR);
 
                 const synopsis = serie.overview || "Aucun résumé disponible.";
                 const genres   = serie.genres ? serie.genres.map(g => g.name).join(', ') : 'N/A';
@@ -93,6 +113,8 @@ require_once __DIR__ . '/../layouts/header.php';
                                 <p><strong>Genres :</strong> ${genres}</p>
                                 <p><strong>Note TMDB :</strong> ⭐ ${serie.vote_average ? serie.vote_average.toFixed(1) : 'N/A'}/10</p>
                                 <div class="synopsis-box"><strong>Résumé :</strong><br>${synopsis}</div>
+                                ${streamingHtml}
+                                ${isLoggedIn ? '<button id="watchlist-btn" class="wl-btn" onclick="toggleWatchlist()">➕ Ajouter à la watchlist</button>' : ''}
                             </div>
                         </div>
                     </div>
@@ -238,7 +260,7 @@ require_once __DIR__ . '/../layouts/header.php';
                             <span class="stars-display">${"★".repeat(r.score)}${"☆".repeat(5 - r.score)}</span>
                             <span class="review-date">Le ${new Date(r.created_at).toLocaleDateString('fr-FR')}</span>
                         </div>
-                        <p style="font-weight:bold;color:#2f6df6;margin:0 0 6px;">👤 ${r.username || 'Anonyme'}</p>
+                        <p style="margin:0 0 6px;"><a href="/Critiverse/public/user?u=${encodeURIComponent(r.username || '')}" style="font-weight:bold;color:#2f6df6;text-decoration:none;">👤 ${r.username || 'Anonyme'}</a></p>
                         <p style="margin:0 0 10px;">${r.comment}</p>
                         <div style="display:flex;gap:10px;">
                             <button type="button" data-vote="like" onclick="vote(${r.id},'like',this)"
@@ -256,7 +278,43 @@ require_once __DIR__ . '/../layouts/header.php';
             }
         }
 
-        loadSerieData();
+        loadSerieData().then(() => checkWatchlist());
+
+        async function checkWatchlist() {
+            if (!isLoggedIn) return;
+            try {
+                const res  = await fetch(`/Critiverse/public/api/watchlist.php?check=1&type=serie&media_id=${serieId}`);
+                const data = await res.json();
+                if (data.in_watchlist) setWatchlistSaved();
+            } catch (e) { /* ignore */ }
+        }
+
+        function setWatchlistSaved() {
+            const btn = document.getElementById('watchlist-btn');
+            if (!btn) return;
+            btn.textContent = '✅ Dans la watchlist';
+            btn.classList.add('saved');
+        }
+
+        async function toggleWatchlist() {
+            if (!isLoggedIn) { window.location.href = '/Critiverse/public/login'; return; }
+            try {
+                const res  = await fetch('/Critiverse/public/api/watchlist.php', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({type: 'serie', media_id: parseInt(serieId)})
+                });
+                const data = await res.json();
+                const btn  = document.getElementById('watchlist-btn');
+                if (data.action === 'added') {
+                    btn.textContent = '✅ Dans la watchlist';
+                    btn.classList.add('saved');
+                } else {
+                    btn.textContent = '➕ Ajouter à la watchlist';
+                    btn.classList.remove('saved');
+                }
+            } catch (e) { /* ignore */ }
+        }
 
         async function vote(reviewId, type, btn) {
             if (!isLoggedIn) { window.location.href = '/Critiverse/public/login'; return; }

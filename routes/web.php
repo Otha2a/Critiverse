@@ -4,8 +4,11 @@
 $router->get('/', 'HomeController@index');
 $router->get('/profile',        'ProfileController@index');
 $router->post('/profile/update', 'ProfileController@update');
+$router->get('/user',            'UserController@show');
+$router->get('/watchlist',       'WatchlistController@index');
 $router->get('/apropos',         'AproposController@index');
 $router->get('/mentions',    'MentionsController@index');
+$router->get('/faq',         'FaqController@index');
 $router->get('/abonnement',              'AbonnementController@index');
 $router->post('/abonnement',             'AbonnementController@subscribe');
 $router->get('/messages',                'MessagesController@inbox');

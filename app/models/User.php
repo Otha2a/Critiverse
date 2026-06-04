@@ -22,10 +22,16 @@ class User
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
 
-        // Ajoute la colonne plan si elle n'existe pas encore (migration)
+        // Migrations
         try {
             $this->pdo->exec("ALTER TABLE users ADD COLUMN plan ENUM('gratuit','premium','pro') DEFAULT 'gratuit'");
-        } catch (PDOException) { /* colonne déjà existante, on ignore */ }
+        } catch (PDOException) { /* colonne déjà existante */ }
+        try {
+            $this->pdo->exec("ALTER TABLE users ADD COLUMN bio TEXT NULL");
+        } catch (PDOException) { /* colonne déjà existante */ }
+        try {
+            $this->pdo->exec("ALTER TABLE users ADD COLUMN avatar VARCHAR(255) NULL");
+        } catch (PDOException) { /* colonne déjà existante */ }
     }
 
     public function create(string $username, string $email, string $password): void
@@ -40,6 +46,13 @@ class User
     {
         $stmt = $this->pdo->prepare("SELECT * FROM users WHERE email = ?");
         $stmt->execute([$email]);
+        return $stmt->fetch();
+    }
+
+    public function findByUsername(string $username): array|false
+    {
+        $stmt = $this->pdo->prepare("SELECT * FROM users WHERE username = ?");
+        $stmt->execute([$username]);
         return $stmt->fetch();
     }
 
@@ -60,6 +73,17 @@ class User
     {
         $stmt = $this->pdo->prepare("UPDATE users SET username = ?, email = ? WHERE id = ?");
         $stmt->execute([$username, $email, $id]);
+    }
+
+    public function updateProfile(int $id, string $bio, ?string $avatar): void
+    {
+        if ($avatar !== null) {
+            $stmt = $this->pdo->prepare("UPDATE users SET bio = ?, avatar = ? WHERE id = ?");
+            $stmt->execute([$bio, $avatar, $id]);
+        } else {
+            $stmt = $this->pdo->prepare("UPDATE users SET bio = ? WHERE id = ?");
+            $stmt->execute([$bio, $id]);
+        }
     }
 
     public function updatePassword(int $id, string $password): void

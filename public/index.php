@@ -9,6 +9,7 @@ require_once __DIR__ . '/../app/models/Database.php';
 require_once __DIR__ . '/../app/controllers/HomeController.php';
 require_once __DIR__ . '/../app/controllers/AproposController.php';
 require_once __DIR__ . '/../app/controllers/MentionsController.php';
+require_once __DIR__ . '/../app/controllers/FaqController.php';
 require_once __DIR__ . '/../app/controllers/AbonnementController.php';
 require_once __DIR__ . '/../app/controllers/ProfileController.php';
 require_once __DIR__ . '/../app/controllers/MessagesController.php';
@@ -24,6 +25,9 @@ require_once __DIR__ . '/../app/controllers/CritiquesController.php';
 require_once __DIR__ . '/../app/controllers/ActualitesController.php';
 require_once __DIR__ . '/../app/controllers/AuthController.php';
 require_once __DIR__ . '/../app/controllers/ForumController.php';
+require_once __DIR__ . '/../app/models/User.php';
+require_once __DIR__ . '/../app/controllers/UserController.php';
+require_once __DIR__ . '/../app/controllers/WatchlistController.php';
 
 // URL demandée
 $uri = rawurldecode(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));

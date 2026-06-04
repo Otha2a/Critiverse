@@ -1,0 +1,150 @@
+/* ── Header page ─────────────────────────────────────────────── */
+.wl-hero {
+    padding: 36px 24px 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.wl-hero h1 {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: var(--text);
+    margin: 0 0 6px;
+}
+
+.wl-hero p { font-size: 14px; color: var(--text-muted); margin: 0; }
+
+/* ── Section (Films / Séries / Animes) ───────────────────────── */
+.wl-section {
+    max-width: 1100px;
+    margin: 0 auto 40px;
+    padding: 0 24px;
+}
+
+.wl-section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.wl-section-header h2 {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--text);
+    margin: 0;
+}
+
+.wl-count {
+    background: var(--bg-card);
+    color: var(--text-muted);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+}
+
+/* ── Grille de cartes ────────────────────────────────────────── */
+.wl-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.wl-card {
+    width: 148px;
+    background: var(--bg-card);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s;
+}
+
+.wl-card:hover { transform: translateY(-4px); }
+
+.wl-card-img {
+    position: relative;
+    width: 148px;
+    height: 222px;
+    background: var(--bg-hover);
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.wl-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.wl-card-img a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.wl-card-body {
+    padding: 8px 10px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+}
+
+.wl-card-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.wl-card-date {
+    font-size: 11px;
+    color: var(--text-muted);
+}
+
+.wl-remove-btn {
+    margin-top: auto;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: 600;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+    width: 100%;
+}
+
+.wl-remove-btn:hover {
+    background: #fdecea;
+    border-color: #c62828;
+    color: #c62828;
+}
+
+/* ── États vides / chargement ────────────────────────────────── */
+.wl-empty {
+    color: var(--text-muted);
+    font-size: 14px;
+    font-style: italic;
+}
+
+.wl-loading {
+    color: var(--text-muted);
+    font-size: 13px;
+}
+
+/* .wl-btn est défini dans style.css (global) */
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 600px) {
+    .wl-card, .wl-card-img { width: 130px; }
+    .wl-card-img { height: 195px; }
+}

@@ -33,7 +33,7 @@ require_once __DIR__ . '/../layouts/header.php';
     </nav>
 
     <?php if (!$isLoggedIn): ?>
-    <div style="background:#fff3cd;border-left:4px solid #f0a500;padding:14px 20px;margin:16px 20px;border-radius:8px;display:flex;align-items:center;gap:12px;font-size:14px;">
+    <div class="login-banner">
         <span style="font-size:20px;">🔒</span>
         <span>Connectez-vous pour noter les films et rejoindre la communauté.
         <a href="/Critiverse/public/login" style="color:#2f6df6;font-weight:600;margin-left:6px;">Se connecter</a>

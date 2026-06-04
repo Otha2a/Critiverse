@@ -2,7 +2,7 @@
 $activePage        = 'animes';
 $css               = 'animes';
 $searchPlaceholder = 'Rechercher un anime...';
-$extraCss = 'main{display:block}.details-container{display:flex;flex-wrap:wrap;gap:40px;max-width:1200px;margin:auto;padding:40px}.anime-info{flex:1 1 580px;min-width:320px}.anime-top{display:flex;flex-wrap:wrap;gap:30px;align-items:flex-start}.anime-cover{flex:0 0 280px}.anime-cover img{width:100%;border-radius:12px;box-shadow:0 10px 20px rgba(0,0,0,.3)}.anime-summary{flex:1;min-width:260px}.anime-info h1{margin-top:0;color:#333}.rating-section{flex:1 1 320px;min-width:320px;background:#fff;padding:30px;border-radius:15px;box-shadow:0 4px 15px rgba(0,0,0,.1);height:fit-content;margin-left:auto}.star-rating{display:flex;flex-direction:row-reverse;justify-content:flex-end;gap:10px;margin:15px 0}.star-rating input{display:none}.star-rating label{font-size:45px;color:#ddd;cursor:pointer;transition:.2s}.star-rating label:hover,.star-rating label:hover~label,.star-rating input:checked~label{color:#ffca08}.synopsis-box{margin:20px 0;line-height:1.7;background:#f9f9f9;padding:20px;border-radius:10px;border-left:4px solid #2f6df6;font-size:15px;color:#444}textarea{width:100%;height:120px;padding:15px;border:1px solid #ddd;border-radius:8px;resize:none;font-family:inherit;margin-bottom:15px;box-sizing:border-box}#submit-rating{background:#2f6df6;color:white;border:none;padding:15px;border-radius:8px;cursor:pointer;width:100%;font-weight:bold;font-size:16px;transition:.3s}#submit-rating:hover{background:#1a52d5}.reviews-area{max-width:1200px;margin:40px auto;padding:0 40px}.review-card{background:white;padding:20px;border-radius:10px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.05)}.review-header{display:flex;justify-content:space-between;margin-bottom:10px}.stars-display{color:#ffca08;font-weight:bold}.review-date{color:#888;font-size:.9em}.episodes-area{max-width:1200px;margin:0 auto;padding:0 40px 40px}.episodes-container{background:white;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,.08);overflow:hidden}.episode-row{display:flex;align-items:center;gap:16px;padding:14px 18px;border-bottom:1px solid #f0f0f0;cursor:pointer;transition:background .15s}.episode-row:last-child{border-bottom:none}.episode-row:hover{background:#f7f9ff}.episode-num{flex:0 0 40px;font-weight:bold;font-size:15px;color:#2f6df6;text-align:center}.episode-body{flex:1}.episode-title{font-weight:bold;font-size:14px;margin-bottom:3px}.episode-meta{font-size:12px;color:#888;display:flex;gap:10px;flex-wrap:wrap}.badge{padding:2px 8px;border-radius:10px;font-size:11px;font-weight:bold}.badge-filler{background:#fff3cd;color:#856404}.badge-recap{background:#cff4fc;color:#055160}#load-more-btn{display:block;width:100%;padding:14px;background:#2f6df6;color:white;border:none;font-size:15px;font-weight:bold;cursor:pointer;border-radius:0 0 12px 12px;transition:background .2s}#load-more-btn:hover{background:#1a52d5}';
+$extraCss = 'main{display:block}.details-container{display:flex;flex-wrap:wrap;gap:40px;max-width:1200px;margin:auto;padding:40px}.anime-info{flex:1 1 580px;min-width:320px}.anime-top{display:flex;flex-wrap:wrap;gap:30px;align-items:flex-start}.anime-cover{flex:0 0 280px}.anime-cover img{width:100%;border-radius:12px;box-shadow:0 10px 20px rgba(0,0,0,.3)}.anime-summary{flex:1;min-width:260px}.anime-info h1{margin-top:0;color:var(--text)}.rating-section{flex:1 1 320px;min-width:320px;background:#fff;padding:30px;border-radius:15px;box-shadow:0 4px 15px rgba(0,0,0,.1);height:fit-content;margin-left:auto}.star-rating{display:flex;flex-direction:row-reverse;justify-content:flex-end;gap:10px;margin:15px 0}.star-rating input{display:none}.star-rating label{font-size:45px;color:#ddd;cursor:pointer;transition:.2s}.star-rating label:hover,.star-rating label:hover~label,.star-rating input:checked~label{color:#ffca08}.synopsis-box{margin:20px 0;line-height:1.7;background:#f9f9f9;padding:20px;border-radius:10px;border-left:4px solid #2f6df6;font-size:15px;color:#444}textarea{width:100%;height:120px;padding:15px;border:1px solid #ddd;border-radius:8px;resize:none;font-family:inherit;margin-bottom:15px;box-sizing:border-box}#submit-rating{background:#2f6df6;color:white;border:none;padding:15px;border-radius:8px;cursor:pointer;width:100%;font-weight:bold;font-size:16px;transition:.3s}#submit-rating:hover{background:#1a52d5}.reviews-area{max-width:1200px;margin:40px auto;padding:0 40px}.review-card{background:white;padding:20px;border-radius:10px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.05)}.review-header{display:flex;justify-content:space-between;margin-bottom:10px}.stars-display{color:#ffca08;font-weight:bold}.review-date{color:#888;font-size:.9em}.episodes-area{max-width:1200px;margin:0 auto;padding:0 40px 40px}.episodes-container{background:white;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,.08);overflow:hidden}.episode-row{display:flex;align-items:center;gap:16px;padding:14px 18px;border-bottom:1px solid #f0f0f0;cursor:pointer;transition:background .15s}.episode-row:last-child{border-bottom:none}.episode-row:hover{background:#f7f9ff}.episode-num{flex:0 0 40px;font-weight:bold;font-size:15px;color:#2f6df6;text-align:center}.episode-body{flex:1}.episode-title{font-weight:bold;font-size:14px;margin-bottom:3px}.episode-meta{font-size:12px;color:#888;display:flex;gap:10px;flex-wrap:wrap}.badge{padding:2px 8px;border-radius:10px;font-size:11px;font-weight:bold}.badge-filler{background:#fff3cd;color:#856404}.badge-recap{background:#cff4fc;color:#055160}#load-more-btn{display:block;width:100%;padding:14px;background:#2f6df6;color:white;border:none;font-size:15px;font-weight:bold;cursor:pointer;border-radius:0 0 12px 12px;transition:background .2s}#load-more-btn:hover{background:#1a52d5}';
 require_once __DIR__ . '/../layouts/header.php';
 ?>
     <nav class="navbar">
@@ -58,6 +58,27 @@ require_once __DIR__ . '/../layouts/header.php';
             if (e.key === 'Enter') doSearch();
         });
 
+        async function fetchAnimeStreaming(id) {
+            try {
+                await new Promise(r => setTimeout(r, 400));
+                const res  = await fetch(`https://api.jikan.moe/v4/anime/${id}/streaming`);
+                const data = await res.json();
+                return data.data || [];
+            } catch (e) { return []; }
+        }
+
+        function buildAnimeStreamingHtml(links) {
+            if (!links.length) return '';
+            const items = links.map(s =>
+                `<a href="${s.url}" target="_blank" rel="noopener noreferrer"
+                    style="background:#e8f0fe;padding:5px 14px;border-radius:20px;font-size:13px;font-weight:600;text-decoration:none;color:#2f6df6;border:1px solid #c5d8fb;">${s.name}</a>`
+            ).join('');
+            return `<div style="margin-top:16px;padding:14px 16px;background:#f0f7ff;border-radius:10px;border-left:4px solid #2f6df6;">
+                <strong style="font-size:14px;display:block;margin-bottom:10px;color:#1a1a1a;">📺 Disponible en streaming sur :</strong>
+                <div style="display:flex;flex-wrap:wrap;gap:8px;">${items}</div>
+            </div>`;
+        }
+
         function cleanSynopsis(text) {
             if (!text) return text;
             return text.replace(/\s*\[Written by MAL Rewrite\]\s*$/i, '').trim();
@@ -84,8 +105,9 @@ require_once __DIR__ . '/../layouts/header.php';
                 const res   = await fetch(`https://api.jikan.moe/v4/anime/${animeId}`);
                 const json  = await res.json();
                 const anime = json.data;
-                const rawSynopsis  = anime.synopsis || "Aucun résumé disponible.";
-                const synopsisText = await fetchFrenchSynopsis(animeId, cleanSynopsis(rawSynopsis));
+                const rawSynopsis    = anime.synopsis || "Aucun résumé disponible.";
+                const synopsisText  = await fetchFrenchSynopsis(animeId, cleanSynopsis(rawSynopsis));
+                const streamingLinks = await fetchAnimeStreaming(animeId);
 
                 document.title = `${anime.title} - Critiverse`;
 
@@ -99,6 +121,8 @@ require_once __DIR__ . '/../layouts/header.php';
                                 <h1>${anime.title}</h1>
                                 <p><strong>Note MyAnimeList :</strong> ⭐ ${anime.score || 'N/A'}/10</p>
                                 <div class="synopsis-box"><strong>Résumé :</strong><br>${synopsisText}</div>
+                                ${buildAnimeStreamingHtml(streamingLinks)}
+                                ${isLoggedIn ? '<button id="watchlist-btn" class="wl-btn" onclick="toggleWatchlist()">➕ Ajouter à la watchlist</button>' : ''}
                             </div>
                         </div>
                     </div>
@@ -225,7 +249,7 @@ require_once __DIR__ . '/../layouts/header.php';
                             <span class="stars-display">${"★".repeat(r.score)}${"☆".repeat(5 - r.score)}</span>
                             <span class="review-date">Le ${new Date(r.created_at).toLocaleDateString('fr-FR')}</span>
                         </div>
-                        <p style="font-weight:bold;color:#2f6df6;margin:0 0 6px;">👤 ${r.username || 'Anonyme'}</p>
+                        <p style="margin:0 0 6px;"><a href="/Critiverse/public/user?u=${encodeURIComponent(r.username || '')}" style="font-weight:bold;color:#2f6df6;text-decoration:none;">👤 ${r.username || 'Anonyme'}</a></p>
                         <p style="margin:0 0 10px;">${r.comment}</p>
                         <div style="display:flex;gap:10px;">
                             <button type="button" data-vote="like" onclick="vote(${r.id},'like',this)"
@@ -243,7 +267,43 @@ require_once __DIR__ . '/../layouts/header.php';
             }
         }
 
-        loadAnimeData();
+        loadAnimeData().then(() => checkWatchlist());
+
+        async function checkWatchlist() {
+            if (!isLoggedIn) return;
+            try {
+                const res  = await fetch(`/Critiverse/public/api/watchlist.php?check=1&type=anime&media_id=${animeId}`);
+                const data = await res.json();
+                if (data.in_watchlist) setWatchlistSaved();
+            } catch (e) { /* ignore */ }
+        }
+
+        function setWatchlistSaved() {
+            const btn = document.getElementById('watchlist-btn');
+            if (!btn) return;
+            btn.textContent = '✅ Dans la watchlist';
+            btn.classList.add('saved');
+        }
+
+        async function toggleWatchlist() {
+            if (!isLoggedIn) { window.location.href = '/Critiverse/public/login'; return; }
+            try {
+                const res  = await fetch('/Critiverse/public/api/watchlist.php', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({type: 'anime', media_id: parseInt(animeId)})
+                });
+                const data = await res.json();
+                const btn  = document.getElementById('watchlist-btn');
+                if (data.action === 'added') {
+                    btn.textContent = '✅ Dans la watchlist';
+                    btn.classList.add('saved');
+                } else {
+                    btn.textContent = '➕ Ajouter à la watchlist';
+                    btn.classList.remove('saved');
+                }
+            } catch (e) { /* ignore */ }
+        }
 
         async function vote(reviewId, type, btn) {
             if (!isLoggedIn) { window.location.href = '/Critiverse/public/login'; return; }

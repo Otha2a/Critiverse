@@ -18,11 +18,11 @@
 
 /* ── Variables — thème clair ─────────────────────────────────── */
 [data-theme="light"] {
-    --bg:         rgb(251, 234, 214);
+    --bg:         #f4f5f7;
     --bg-card:    #ffffff;
-    --bg-hover:   rgb(235, 183, 125);
-    --bg-input:   #f3f4f6;
-    --border:     rgb(220, 185, 140);
+    --bg-hover:   #e5e7eb;
+    --bg-input:   #eaecf0;
+    --border:     #d1d5db;
     --text:       #111111;
     --text-muted: #555555;
     --accent:     #2f6df6;
@@ -30,8 +30,8 @@
     --accent-warm:#e67e22;
     --card-shadow:0 2px 10px rgba(0,0,0,0.08);
     --header-bg:  #ffffff;
-    --navbar-bg:  rgb(251, 234, 214);
-    --footer-bg:  rgb(251, 234, 214);
+    --navbar-bg:  #f4f5f7;
+    --footer-bg:  #f4f5f7;
 }
 
 /* ── Bouton toggle ───────────────────────────────────────────── */
@@ -330,3 +330,66 @@ header button:hover, .site-header button:hover { background-color: var(--accent-
 }
 
 .footer-socials a:hover img { transform: scale(1.15); opacity: 1; }
+
+/* ── Footer — overrides mode clair ──────────────────────────── */
+[data-theme="light"] .footer-brand-name        { color: #111111; }
+[data-theme="light"] .footer-col h4            { color: #111111; }
+[data-theme="light"] .footer-col a             { color: #444444; }
+[data-theme="light"] .footer-col a:hover       { color: #111111; }
+[data-theme="light"] .footer-tagline           { color: #555555; }
+[data-theme="light"] .footer-bottom            { color: #333333; }
+
+/* ── Bandeau connexion ───────────────────────────────────────── */
+.login-banner {
+    background: rgba(240, 165, 0, 0.12);
+    border-left: 4px solid #f0a500;
+    padding: 14px 20px;
+    margin: 16px 20px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    color: var(--text);
+}
+
+[data-theme="light"] .login-banner {
+    background: #fff3cd;
+    border-left-color: #f0a500;
+}
+
+/* ── Bouton Watchlist (global) ───────────────────────────────── */
+.wl-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+    padding: 11px 22px;
+    background: linear-gradient(135deg, #2f6df6 0%, #5b7ef5 100%);
+    border: none;
+    color: white;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s, background 0.3s;
+    font-family: inherit;
+    box-shadow: 0 4px 14px rgba(47,109,246,0.35);
+    letter-spacing: 0.01em;
+}
+
+.wl-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(47,109,246,0.45);
+}
+
+.wl-btn:active { transform: translateY(0); }
+
+.wl-btn.saved {
+    background: linear-gradient(135deg, #16a34a 0%, #22c55e 100%);
+    box-shadow: 0 4px 14px rgba(22,163,74,0.35);
+}
+
+.wl-btn.saved:hover {
+    box-shadow: 0 6px 20px rgba(22,163,74,0.45);
+}

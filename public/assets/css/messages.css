@@ -71,19 +71,38 @@
     margin: 0;
 }
 
-.msg-user-list li a, .msg-conv-list li a {
+/* Stretched-link pattern : <li> cliquable + pseudo en vrai <a> */
+.msg-row-item {
+    position: relative;
+}
+
+.msg-row-link {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+
+.msg-row-content {
+    position: relative;
+    z-index: 0;
     display: flex;
     align-items: center;
     gap: 10px;
     padding: 12px 16px;
-    text-decoration: none;
-    color: inherit;
     transition: background 0.15s;
 }
 
-.msg-user-list li a:hover, .msg-conv-list li a:hover { background: #f9fafb; }
+.msg-row-item:hover .msg-row-content { background: #f9fafb; }
+.msg-row-item.msg-unread .msg-row-content { background: #eff6ff; }
 
-.msg-conv-list li.msg-unread a { background: #eff6ff; }
+.msg-username-profile {
+    position: relative;
+    z-index: 2;
+    color: inherit;
+    text-decoration: none;
+    font-weight: 600;
+}
+.msg-username-profile:hover { text-decoration: underline; }
 
 .msg-avatar {
     width: 38px;
@@ -151,7 +170,7 @@
     color: #9ca3af;
 }
 
-.msg-empty-state h3 { margin: 12px 0 6px; color: #374151; font-size: 1.1rem; }
+.msg-empty-state h3 { margin: 12px 0 6px; color: var(--text); font-size: 1.1rem; }
 .msg-empty-state p  { font-size: 14px; }
 
 /* ── En-tête de conversation ─────────────────────────────────── */

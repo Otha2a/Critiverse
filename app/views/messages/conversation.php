@@ -38,7 +38,10 @@ function badgePlan(string $plan): string {
                 <?= mb_strtoupper(mb_substr($other['username'],0,1)) ?>
             </span>
             <div>
-                <strong><?= htmlspecialchars($other['username']) ?></strong>
+                <a href="/Critiverse/public/user?u=<?= urlencode($other['username']) ?>"
+                   style="font-weight:700;color:var(--text);text-decoration:none;">
+                    <?= htmlspecialchars($other['username']) ?>
+                </a>
                 <?= badgePlan($other['plan']) ?>
             </div>
         </div>

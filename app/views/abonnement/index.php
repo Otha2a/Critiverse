@@ -30,12 +30,12 @@ $connecte    = isset($_SESSION['user_id']);
             <div class="abo-price"><span class="abo-amount">0€</span><span class="abo-period">/mois</span></div>
         </div>
         <ul class="abo-features">
-            <li>✅ Consulter les critiques</li>
+            <li>✅ Consulter et publier des critiques</li>
             <li>✅ Noter films, séries et animés</li>
             <li>✅ Accès aux actualités</li>
             <li>❌ Pas de badge membre</li>
             <li>❌ Publicités présentes</li>
-            <li>❌ Pas d'accès au forum privé</li>
+            <li>❌ Messagerie privée non disponible</li>
         </ul>
         <?php if (!$connecte): ?>
             <a href="/Critiverse/public/register"><button class="abo-btn abo-btn-outline">Commencer gratuitement</button></a>
@@ -62,7 +62,7 @@ $connecte    = isset($_SESSION['user_id']);
             <li>✅ Tout le plan Gratuit</li>
             <li>✅ Badge membre Premium ⭐</li>
             <li>✅ Sans publicités</li>
-            <li>✅ Accès au forum privé</li>
+            <li>✅ Messagerie privée entre membres</li>
             <li>✅ Critiques illimitées</li>
             <li>❌ Pas de support prioritaire</li>
         </ul>
@@ -87,11 +87,11 @@ $connecte    = isset($_SESSION['user_id']);
         </div>
         <ul class="abo-features">
             <li>✅ Tout le plan Premium</li>
-            <li>✅ Badge membre Pro 👑</li>
-            <li>✅ Support prioritaire</li>
-            <li>✅ Accès anticipé aux nouveautés</li>
-            <li>✅ Statistiques personnalisées</li>
-            <li>✅ Listes personnalisées illimitées</li>
+            <li>✅ Badge membre Pro exclusif 👑</li>
+            <li>✅ Messagerie privée illimitée</li>
+            <li>✅ Support prioritaire par email</li>
+            <li>✅ Profil mis en avant dans les critiques</li>
+            <li>✅ Accès anticipé aux nouvelles fonctionnalités</li>
         </ul>
         <?php if (!$connecte): ?>
             <a href="/Critiverse/public/login"><button class="abo-btn abo-btn-outline">Se connecter pour souscrire</button></a>

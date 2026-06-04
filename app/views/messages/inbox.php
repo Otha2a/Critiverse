@@ -29,16 +29,23 @@ function badgePlan(string $plan): string {
             <p class="msg-section-label">Résultats</p>
             <ul class="msg-user-list">
                 <?php foreach ($users as $u): ?>
-                    <li>
-                        <a href="/Critiverse/public/messages/conversation?user=<?= $u['id'] ?>">
+                    <li class="msg-row-item">
+                        <a href="/Critiverse/public/messages/conversation?user=<?= $u['id'] ?>"
+                           class="msg-row-link" aria-label="Envoyer un message à <?= htmlspecialchars($u['username']) ?>"></a>
+                        <div class="msg-row-content">
                             <span class="msg-avatar" style="background:<?= $u['plan']==='pro'?'#7c3aed':'#2f6df6' ?>">
                                 <?= mb_strtoupper(mb_substr($u['username'],0,1)) ?>
                             </span>
                             <span class="msg-user-info">
-                                <strong><?= htmlspecialchars($u['username']) ?></strong>
+                                <strong>
+                                    <a href="/Critiverse/public/user?u=<?= urlencode($u['username']) ?>"
+                                       class="msg-username-profile">
+                                        <?= htmlspecialchars($u['username']) ?>
+                                    </a>
+                                </strong>
                                 <?= badgePlan($u['plan']) ?>
                             </span>
-                        </a>
+                        </div>
                     </li>
                 <?php endforeach; ?>
                 <?php if (empty($users)): ?>
@@ -53,14 +60,19 @@ function badgePlan(string $plan): string {
         <?php else: ?>
             <ul class="msg-conv-list">
                 <?php foreach ($conversations as $conv): ?>
-                    <li class="<?= $conv['unread'] > 0 ? 'msg-unread' : '' ?>">
-                        <a href="/Critiverse/public/messages/conversation?user=<?= $conv['other_id'] ?>">
+                    <li class="msg-row-item <?= $conv['unread'] > 0 ? 'msg-unread' : '' ?>">
+                        <a href="/Critiverse/public/messages/conversation?user=<?= $conv['other_id'] ?>"
+                           class="msg-row-link" aria-label="Conversation avec <?= htmlspecialchars($conv['other_name']) ?>"></a>
+                        <div class="msg-row-content">
                             <span class="msg-avatar" style="background:<?= $conv['other_plan']==='pro'?'#7c3aed':'#2f6df6' ?>">
                                 <?= mb_strtoupper(mb_substr($conv['other_name'],0,1)) ?>
                             </span>
                             <span class="msg-conv-info">
                                 <span class="msg-conv-name">
-                                    <?= htmlspecialchars($conv['other_name']) ?>
+                                    <a href="/Critiverse/public/user?u=<?= urlencode($conv['other_name']) ?>"
+                                       class="msg-username-profile">
+                                        <?= htmlspecialchars($conv['other_name']) ?>
+                                    </a>
                                     <?= badgePlan($conv['other_plan']) ?>
                                     <?php if ($conv['unread'] > 0): ?>
                                         <span class="msg-unread-dot"><?= $conv['unread'] ?></span>
@@ -68,7 +80,7 @@ function badgePlan(string $plan): string {
                                 </span>
                                 <span class="msg-conv-preview"><?= htmlspecialchars(mb_substr($conv['last_message'],0,40)) ?>...</span>
                             </span>
-                        </a>
+                        </div>
                     </li>
                 <?php endforeach; ?>
             </ul>

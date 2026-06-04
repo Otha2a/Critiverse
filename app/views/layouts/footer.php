@@ -29,6 +29,7 @@
                     <a href="/Critiverse/public/apropos">Notre équipe</a>
                     <a href="/Critiverse/public/contact">Nous contacter</a>
                     <a href="/Critiverse/public/mentions">Mentions légales</a>
+                    <a href="/Critiverse/public/faq">FAQ</a>
                 </div>
             </div>
         </div>

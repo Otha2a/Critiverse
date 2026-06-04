@@ -32,12 +32,12 @@
     font-size: 1.2rem;
     font-weight: 700;
     margin: 0 0 4px;
-    color: #1a1a1a;
+    color: var(--text);
 }
 
 .actu-hero p {
     font-size: 0.85rem;
-    color: #555;
+    color: var(--text-muted);
     margin: 0;
 }
 
@@ -55,7 +55,7 @@
     font-size: 1rem;
     font-weight: 700;
     margin: 0;
-    color: #1a1a1a;
+    color: var(--text);
 }
 
 .actu-badge {
@@ -84,7 +84,7 @@
     border-radius: 50%;
     border: none;
     background: rgba(0,0,0,0.12);
-    color: #333;
+    color: var(--text);
     font-size: 1.6rem;
     line-height: 1;
     cursor: pointer;
@@ -183,7 +183,7 @@
 
 .actu-card-year {
     font-size: 0.75rem;
-    color: #888;
+    color: var(--text-muted);
     margin: 0 0 2px;
 }
 
@@ -196,7 +196,7 @@
 
 /* ── États chargement / erreur ──────────────────────────────── */
 .actu-loading {
-    color: #888;
+    color: var(--text-muted);
     font-style: italic;
     padding: 12px 0;
 }

@@ -14,7 +14,6 @@ require_once __DIR__ . '/../layouts/header.php';
     <section class="actu-section">
         <div class="actu-section-header">
             <h2>🎬 Films en salle</h2>
-            <span class="actu-badge">Via TMDB</span>
         </div>
         <div class="actu-carousel">
             <button class="actu-arrow" onclick="defileCarousel('grid-films',-1)">&#8249;</button>
@@ -27,7 +26,6 @@ require_once __DIR__ . '/../layouts/header.php';
     <section class="actu-section">
         <div class="actu-section-header">
             <h2>📺 Séries en cours</h2>
-            <span class="actu-badge">Via TMDB</span>
         </div>
         <div class="actu-carousel">
             <button class="actu-arrow" onclick="defileCarousel('grid-series',-1)">&#8249;</button>
@@ -40,7 +38,6 @@ require_once __DIR__ . '/../layouts/header.php';
     <section class="actu-section">
         <div class="actu-section-header">
             <h2>⚔️ Animés de la saison</h2>
-            <span class="actu-badge">Via Jikan · MyAnimeList</span>
         </div>
         <div class="actu-carousel">
             <button class="actu-arrow" onclick="defileCarousel('grid-animes',-1)">&#8249;</button>

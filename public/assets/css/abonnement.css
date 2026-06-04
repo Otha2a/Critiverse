@@ -75,13 +75,13 @@
 .abo-card-header h2 {
     font-size: 1.3rem;
     font-weight: 800;
-    color: #111;
+    color: var(--text);
     margin: 0 0 10px;
 }
 
 .abo-price { display: flex; align-items: baseline; justify-content: center; gap: 4px; }
 .abo-amount { font-size: 2rem; font-weight: 800; color: #2f6df6; }
-.abo-period { font-size: 14px; color: #888; }
+.abo-period { font-size: 14px; color: var(--text-muted); }
 
 .abo-features {
     list-style: none;
@@ -145,11 +145,11 @@
 .abo-form-box h2 {
     font-size: 1.4rem;
     font-weight: 800;
-    color: #111;
+    color: var(--text);
     margin: 0 0 6px;
 }
 
-.abo-form-sub { color: #888; font-size: 14px; margin: 0 0 28px; }
+.abo-form-sub { color: var(--text-muted); font-size: 14px; margin: 0 0 28px; }
 
 .abo-form { display: flex; flex-direction: column; gap: 18px; }
 
@@ -161,7 +161,7 @@
 .abo-form-group label {
     font-size: 13px;
     font-weight: 600;
-    color: #333;
+    color: var(--text);
 }
 
 .abo-form-group input {
@@ -200,9 +200,9 @@
     transition: border-color 0.2s, background 0.2s;
 }
 
-.abo-radio:hover { border-color: #2f6df6; background: #f0f5ff; }
+.abo-radio:hover { border-color: #2f6df6; background: var(--bg-hover); }
 .abo-radio input { accent-color: #2f6df6; width: 16px; height: 16px; }
-.abo-radio-featured { border-color: #2f6df6; background: #f0f5ff; font-weight: 600; color: #1a1a1a; }
+.abo-radio-featured { border-color: #2f6df6; background: rgba(47,109,246,0.12); font-weight: 600; color: var(--text); }
 
 /* Alerte succès */
 .abo-alert { padding: 14px 16px; border-radius: 10px; font-size: 14px; margin-bottom: 24px; }

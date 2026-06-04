@@ -1,4 +1,13 @@
 
+/* ── Lien pseudo cliquable ───────────────────────────────────── */
+.username-link {
+    color: #2f6df6;
+    font-weight: 700;
+    text-decoration: none;
+    transition: opacity 0.15s;
+}
+.username-link:hover { opacity: 0.75; text-decoration: underline; }
+
 /* partie images */
 
 main {

@@ -11,7 +11,7 @@ require_once __DIR__ . '/../layouts/header.php';
     <p class="hero-sub">Films, séries, animes — un seul endroit pour tout noter, tout critiquer, tout suivre.</p>
     <div class="hero-btns">
         <a href="/Critiverse/public/films" class="btn-primary">Commencer à explorer</a>
-        <a href="/Critiverse/public/critiques" class="btn-outline">Voir les critiques</a>
+        <a href="/Critiverse/public/critiques" class="btn-hero-outline">Voir les critiques</a>
     </div>
 </section>
 
